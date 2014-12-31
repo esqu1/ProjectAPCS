@@ -33,7 +33,7 @@ void draw(){
 
 
   // Raise overall light in scene 
-  ambientLight(70, 70, 10); 
+  //ambientLight(70, 70, 10); 
 
   // Center geometry in display windwow.
   // you can changlee 3rd argument ('0')
@@ -50,7 +50,7 @@ void draw(){
   }
   
   // Used in rotate function calls above
-  angle += 0.2;
+  angle += 0.5;
 }
 
 

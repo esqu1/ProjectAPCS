@@ -28,40 +28,64 @@ class Cube {
   void drawCube(){
     beginShape(QUADS);
     // Front face
-    fill(blue); vertex(-w/2 + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
-    fill(blue); vertex(w + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
-    fill(blue); vertex(w + shiftX, h + shiftY, -d/2 + shiftZ); 
-    fill(blue); vertex(-w/2 + shiftX, h + shiftY, -d/2 + shiftZ); 
+    fill(blue); 
+    vertex(-w/2 + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
+    //fill(blue); 
+    vertex(w + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
+    //fill(blue); 
+    vertex(w + shiftX, h + shiftY, -d/2 + shiftZ); 
+    //fill(blue); 
+    vertex(-w/2 + shiftX, h + shiftY, -d/2 + shiftZ); 
 
     // Back face
-    fill(green); vertex(-w/2 + shiftX, -h/2 + shiftY, d + shiftZ); 
-    fill(green); vertex(w + shiftX, -h/2 + shiftY, d + shiftZ); 
-    fill(green); vertex(w + shiftX, h + shiftY, d + shiftZ); 
-    fill(green); vertex(-w/2 + shiftX, h + shiftY, d + shiftZ);
+    fill(green); 
+    vertex(-w/2 + shiftX, -h/2 + shiftY, d + shiftZ); 
+    //fill(green); 
+    vertex(w + shiftX, -h/2 + shiftY, d + shiftZ); 
+    //fill(green); 
+    vertex(w + shiftX, h + shiftY, d + shiftZ); 
+    //fill(green); 
+    vertex(-w/2 + shiftX, h + shiftY, d + shiftZ);
 
     // Left face
-    fill(red); vertex(-w/2 + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
-    fill(red); vertex(-w/2 + shiftX, -h/2 + shiftY, d + shiftZ); 
-    fill(red); vertex(-w/2 + shiftX, h + shiftY, d + shiftZ); 
-    fill(red); vertex(-w/2 + shiftX, h + shiftY, -d/2 + shiftZ); 
+    fill(red); 
+    vertex(-w/2 + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
+    //fill(red); 
+    vertex(-w/2 + shiftX, -h/2 + shiftY, d + shiftZ); 
+    //fill(red); 
+    vertex(-w/2 + shiftX, h + shiftY, d + shiftZ); 
+    //fill(red); 
+    vertex(-w/2 + shiftX, h + shiftY, -d/2 + shiftZ); 
 
     // Right face
-    fill(orange); vertex(w + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
-    fill(orange); vertex(w + shiftX, -h/2 + shiftY, d + shiftZ); 
-    fill(orange); vertex(w + shiftX, h + shiftY, d + shiftZ); 
-    fill(orange); vertex(w + shiftX, h + shiftY, -d/2 + shiftZ); 
+    fill(orange); 
+    vertex(w + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
+    //fill(orange); 
+    vertex(w + shiftX, -h/2 + shiftY, d + shiftZ); 
+    //fill(orange); 
+    vertex(w + shiftX, h + shiftY, d + shiftZ); 
+    //fill(orange); 
+    vertex(w + shiftX, h + shiftY, -d/2 + shiftZ); 
 
     // Top face
-    fill(yellow); vertex(-w/2 + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
-    fill(yellow); vertex(w + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
-    fill(yellow); vertex(w + shiftX, -h/2 + shiftY, d + shiftZ); 
-    fill(yellow); vertex(-w/2 + shiftX, -h/2 + shiftY, d + shiftZ); 
+    fill(yellow); 
+    vertex(-w/2 + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
+    //fill(yellow); 
+    vertex(w + shiftX, -h/2 + shiftY, -d/2 + shiftZ); 
+    //fill(yellow); 
+    vertex(w + shiftX, -h/2 + shiftY, d + shiftZ); 
+    //fill(yellow); 
+    vertex(-w/2 + shiftX, -h/2 + shiftY, d + shiftZ); 
 
     // Bottom face
-    fill(white); vertex(-w/2 + shiftX, h + shiftY, -d/2 + shiftZ); 
-    fill(white); vertex(w + shiftX, h + shiftY, -d/2 + shiftZ); 
-    fill(white); vertex(w + shiftX, h + shiftY, d + shiftZ); 
-    fill(white); vertex(-w/2 + shiftX, h + shiftY, d + shiftZ); 
+    fill(white); 
+    vertex(-w/2 + shiftX, h + shiftY, -d/2 + shiftZ); 
+    //fill(white); 
+    vertex(w + shiftX, h + shiftY, -d/2 + shiftZ); 
+    //fill(white); 
+    vertex(w + shiftX, h + shiftY, d + shiftZ); 
+    //fill(white); 
+    vertex(-w/2 + shiftX, h + shiftY, d + shiftZ); 
 
     endShape(); 
 
