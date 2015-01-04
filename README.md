@@ -5,4 +5,7 @@ FINAL PROJECT FOR APCS
 By Peter Strbik and Brandon Lin
 
 ==
-Testing of dual contributors....
+Update Log
+
+2014-12-31
+- Used the SpaceJunk Example to generate a colored cubex
