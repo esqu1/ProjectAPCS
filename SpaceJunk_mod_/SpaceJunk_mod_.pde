@@ -18,7 +18,7 @@ Cube[] cubes = new Cube[limit];
 
 void setup() {
   size(640, 360, P3D); 
-  background(0); 
+  background(157,157,157); 
   noStroke();
   anglex = 90;
   angley = 90;
@@ -35,7 +35,7 @@ void setup() {
 void draw(){
   background(157,157,157); 
   fill(200);
-  translate(width/2, height/2, -200 + mouseX * 0.65);
+  translate(width/2, height/2, 100);
 
   if(anglex < 90 && rotatedy && rotatedz){
     anglex++;
@@ -64,12 +64,16 @@ void draw(){
     rotateY(radians(angley));
     rotateZ(radians(initanglez*90));
     rotateZ(radians(anglez));
+    
     cubes[i].drawCube();
     popMatrix();
   }
 }
 
 void keyPressed() {
+  println("rotatedx: " + rotatedx);
+  println("rotatedy: " + rotatedy);
+  println("rotatedz: " + rotatedz);
   if(rotatedx && rotatedy && rotatedz){
     if(key == 'i'){
       anglex = 0;
