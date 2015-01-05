@@ -8,7 +8,7 @@
  */
 
 // Used for oveall rotation
-int anglex = 0, initanglex, angley = 0, initangley,anglez,initanglez;
+int anglex, initanglex, angley, initangley,anglez,initanglez;
 boolean rotated = true;
 
 // Cube count-lower/raise to test performance
@@ -21,6 +21,12 @@ void setup() {
   size(640, 360, P3D); 
   background(0); 
   noStroke();
+  anglex = 90;
+  angley = 90;
+  anglez = 90;
+  initanglex = 0;
+  initangley = 0;
+  initanglez = 0;
 
   // Instantiate cubes, passing in random vals for size and postion
   cubes[0] = new Cube(30, 30, 30, 0, 0, 0);
