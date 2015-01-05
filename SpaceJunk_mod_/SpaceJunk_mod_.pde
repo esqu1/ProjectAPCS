@@ -9,7 +9,7 @@
 
 // Used for oveall rotation
 int anglex, initanglex, angley, initangley,anglez,initanglez;
-boolean rotated = true;
+boolean rotatedx = true, rotatedy = true, rotatedz = true;
 
 // Cube count-lower/raise to test performance
 int limit = 2;
@@ -34,20 +34,20 @@ void setup() {
 }
 
 void draw(){
-  background(0); 
+  background(157,157,157); 
   fill(200);
   translate(width/2, height/2, -200 + mouseX * 0.65);
 
-  if(anglex < 90){
+  if(anglex < 90 && rotatedy){
     anglex++;
   }else{
-    rotated = true;
+    rotatedx = true;
   }
   
-  if(angley < 90){
+  if(angley < 90 && rotatedx){
     angley++;
   }else{
-    rotated = true;
+    rotatedy = true;
   }
   
   
@@ -64,16 +64,18 @@ void draw(){
 }
 
 void keyPressed() {
-  println(rotated);
-  if(rotated){
+  println(rotatedx);
+  if(rotatedx && rotatedy && rotatedz){
     if(key == 'i'){
       anglex = 0;
       initanglex++;
+      rotatedx = false;
     }else if(key == 'h'){
       angley = 0;
       initangley++;
+      rotatedy = false;
     }
   }
-  rotated = false;
+  
 }
 
