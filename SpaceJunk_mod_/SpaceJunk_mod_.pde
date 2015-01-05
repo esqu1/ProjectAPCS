@@ -8,7 +8,7 @@
  */
 
 // Used for oveall rotation
-int anglex = 90, initanglex, angley = 90, initangley,anglez,initanglez;
+int anglex, initanglex, angley, initangley,anglez,initanglez;
 boolean rotated = true;
 
 // Cube count-lower/raise to test performance
@@ -21,6 +21,12 @@ void setup() {
   size(640, 360, P3D); 
   background(0); 
   noStroke();
+  anglex = 90;
+  angley = 90;
+  anglez = 90;
+  initanglex = 0;
+  initangley = 0;
+  initanglez = 0;
 
   // Instantiate cubes, passing in random vals for size and postion
   cubes[0] = new Cube(30, 30, 30, 0, 0, 0);
@@ -45,22 +51,25 @@ void draw(){
   }
   
   
-  rotate(radians(initanglex*90));
-  rotate(radians(anglex));
-  rotate(radians(initangley*90));
-  rotate(radians(angley));
+  
   for (int i = 0; i < cubes.length; i++){
+    pushMatrix();
+    rotateX(radians(initanglex*90));
+    rotateX(radians(anglex));
+    rotateY(radians(initangley*90));
+    rotateY(radians(angley));
     cubes[i].drawCube();
+    popMatrix();
   }
 }
 
 void keyPressed() {
   println(rotated);
   if(rotated){
-    if(key == 'h'){
+    if(key == 'i'){
       anglex = 0;
       initanglex++;
-    }else if(key == 'i'){
+    }else if(key == 'h'){
       angley = 0;
       initangley++;
     }
