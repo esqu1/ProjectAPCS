@@ -1,10 +1,9 @@
 /**
- * Space Junk  
- * by Ira Greenberg (zoom suggestion by Danny Greenberg).
+ * Virtual Rubik's Cube
+ * By Peter Strbik and Brandon Lin
  * 
- * Rotating cubes in space using a custom Cube class. 
- * Color controlled by light sources. Move the mouse left
- * and right to zoom.
+ * Credits go to the Space Junk example for allowing
+ * us to create the cubelets.
  */
 
 // Used for oveall rotation
@@ -38,18 +37,23 @@ void draw(){
   fill(200);
   translate(width/2, height/2, -200 + mouseX * 0.65);
 
-  if(anglex < 90 && rotatedy){
+  if(anglex < 90 && rotatedy && rotatedz){
     anglex++;
   }else{
     rotatedx = true;
   }
   
-  if(angley < 90 && rotatedx){
+  if(angley < 90 && rotatedx && rotatedz){
     angley++;
   }else{
     rotatedy = true;
   }
   
+  if(anglez < 90 && rotatedx && rotatedy){
+    anglez++;
+  }else{
+    rotatedz = true;
+  }
   
   
   for (int i = 0; i < cubes.length; i++){
@@ -58,13 +62,14 @@ void draw(){
     rotateX(radians(anglex));
     rotateY(radians(initangley*90));
     rotateY(radians(angley));
+    rotateZ(radians(initanglez*90));
+    rotateZ(radians(anglez));
     cubes[i].drawCube();
     popMatrix();
   }
 }
 
 void keyPressed() {
-  println(rotatedx);
   if(rotatedx && rotatedy && rotatedz){
     if(key == 'i'){
       anglex = 0;
@@ -74,6 +79,10 @@ void keyPressed() {
       angley = 0;
       initangley++;
       rotatedy = false;
+    }else if(key == 'f'){
+      anglez = 0;
+      initanglez++;
+      rotatedz = false;
     }
   }
   
