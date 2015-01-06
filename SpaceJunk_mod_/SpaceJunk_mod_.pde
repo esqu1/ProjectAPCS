@@ -14,11 +14,11 @@ boolean rotatedx = true, rotatedy = true, rotatedz = true;
 int limit = 2;
 
 // Array for all cubes
-Cube[] cubes = new Cube[limit];
+Cube[] cubes = new Cube[27];
 
 void setup() {
-  size(640, 360, P3D); 
-  background(157,157,157); 
+  size(800, 400, P3D); 
+  background(255); 
   noStroke();
   anglex = 90;
   angley = 90;
@@ -28,8 +28,36 @@ void setup() {
   initanglez = 0;
 
   // Instantiate cubes, passing in random vals for size and postion
-  cubes[0] = new Cube(30, 30, 30, 0, 0, 0);
-  cubes[1] = new Cube(30, 30, 30, 200, 0, 0);
+  //cubes[0] = new Cube(30, 30, 30, 0, 0, 0);
+  //cubes[1] = new Cube(30, 30, 30, 200, 0, 0);
+  
+  cubes[0] = new Cube(30, 0, 0, 0);
+  cubes[1] = new Cube(30, -45, -45, -45);
+  cubes[2] = new Cube(30, 0, -45, -45);
+  cubes[3] = new Cube(30, 45, -45, -45);
+  cubes[4] = new Cube(30, -45, -45, 0);
+  cubes[5] = new Cube(30, 0, -45, 0);
+  cubes[6] = new Cube(30, 45, -45, 0);
+  cubes[7] = new Cube(30, -45, -45, 45);
+  cubes[8] = new Cube(30, 0, -45, 45);
+  cubes[9] = new Cube(30, 45, -45, 45);
+  cubes[10] = new Cube(30, -45, 0, -45);
+  cubes[11] = new Cube(30, 0, 0, -45);
+  cubes[12] = new Cube(30, 45, 0, -45);
+  cubes[13] = new Cube(30, -45, 0, 0);
+  cubes[14] = new Cube(30, 45, 0, 0);
+  cubes[15] = new Cube(30, -45, 0, 45);
+  cubes[16] = new Cube(30, 0, 0, 45);
+  cubes[17] = new Cube(30, 45, 0, 45);
+  cubes[18] = new Cube(30, -45, 45, -45);
+  cubes[19] = new Cube(30, 0, 45, -45);
+  cubes[20] = new Cube(30, 45, 45, -45);
+  cubes[21] = new Cube(30, -45, 45, 0);
+  cubes[22] = new Cube(30, 0, 45, 0);
+  cubes[23] = new Cube(30, 45, 45, 0);
+  cubes[24] = new Cube(30, -45, 45, 45);
+  cubes[25] = new Cube(30, 0, 45, 45);
+  cubes[26] = new Cube(30, 45, 45, 45);
 }
 
 void draw(){

@@ -12,6 +12,7 @@ Update Log
 
 2014-01-05
 - Implemented (slightly) turning of two cubelets about an axis upon a key press. rotateZ is still glitched, however.
+- Full Rubik's Cube created with black border.
 
 OUR PLAN
 
