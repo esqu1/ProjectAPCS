@@ -74,6 +74,7 @@ void keyPressed() {
   println("rotatedx: " + rotatedx);
   println("rotatedy: " + rotatedy);
   println("rotatedz: " + rotatedz);
+  println(key);
   if(rotatedx && rotatedy && rotatedz){
     if(key == 'i'){
       anglex = 0;
