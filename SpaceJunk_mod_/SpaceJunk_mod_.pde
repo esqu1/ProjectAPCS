@@ -64,6 +64,8 @@ void draw(){
   background(157,157,157); 
   fill(200);
   translate(width/2, height/2, 100);
+  rotateX(radians(-40));
+  rotateY(radians(-40));
 
   if(anglex < 90 && rotatedy && rotatedz){
     anglex++;
