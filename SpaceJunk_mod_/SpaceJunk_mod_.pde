@@ -123,3 +123,20 @@ void keyPressed() {
   
 }
 
+
+void swap(int[][] swapper){
+  Cube temp = cubes[swapper[0][0]];
+  cubes[swapper[0][0]] = cubes[swapper[0][1]];
+  cubes[swapper[0][1]] = cubes[swapper[0][2]];
+  cubes[swapper[0][2]] = cubes[swapper[0][3]];
+  cubes[swapper[0][3]] = temp;
+  Cube temp2 = cubes[swapper[1][0]];
+  cubes[swapper[1][0]] = cubes[swapper[1][1]];
+  cubes[swapper[1][1]] = cubes[swapper[1][2]];
+  cubes[swapper[1][2]] = cubes[swapper[1][3]];
+  cubes[swapper[1][3]] = temp;
+}
+
+void Rturn(){}
+  
+

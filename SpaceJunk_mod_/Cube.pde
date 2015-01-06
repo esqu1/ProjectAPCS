@@ -8,7 +8,7 @@ public class Cube{
   color orange = color(255, 162, 0);
   int sideLength;
   int shiftX, shiftY, shiftZ; 
-  
+
   Cube(int sideLength, int shiftX, int shiftY, int shiftZ){
    this.sideLength = sideLength;
    this.shiftX = shiftX;
