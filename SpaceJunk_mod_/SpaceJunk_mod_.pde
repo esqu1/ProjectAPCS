@@ -88,14 +88,14 @@ void draw(){
   
   for (int i = 0; i < cubes.length; i++){
     pushMatrix();
-    rotateX(radians(initanglex*90));
-    rotateX(radians(anglex));
-    rotateY(radians(initangley*90));
-    rotateY(radians(angley));
-    rotateZ(radians(initanglez*90));
-    rotateZ(radians(anglez));
+    //rotateX(radians(initanglex*90));
+    //rotateX(radians(anglex));
+    //rotateY(radians(initangley*90));
+    //rotateY(radians(angley));
+    //rotateZ(radians(initanglez*90));
+    //rotateZ(radians(anglez));
     
-    cubes[i].drawCube();
+    //cubes[i].drawCube();
     popMatrix();
   }
 }
@@ -118,6 +118,8 @@ void keyPressed() {
       anglez = 0;
       initanglez++;
       rotatedz = false;
+    }else if(key == 'u'){
+      Uturn();
     }
   }
   
@@ -137,6 +139,17 @@ void swap(int[][] swapper){
   cubes[swapper[1][3]] = temp;
 }
 
-void Rturn(){}
+void Uturn(){
+  int[][] matrix = { {1,3,5,7} , {2,4,6,8} };
+  swap(matrix);
+  for(int k = 0; k < 90; k++){
+    for(int[] i : matrix){
+      for(int j : i){
+        rotateY(radians(k));
+        cubes[j].drawCube();
+      }
+    }
+  }
+}
   
 
