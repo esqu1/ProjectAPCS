@@ -29,6 +29,7 @@ void setup() {
   size(800, 400, P3D); 
   background(255); 
   noStroke();
+  frameRate(1);
   anglex = 90;
   angley = 90;
   anglez = 90;
@@ -159,19 +160,21 @@ void swap(int[][] swapper) {
 void Uturn() {
   int[][] matrix = { 
     {
-      1, 3, 5, 7
+      1, 3, 9, 7
     } 
     , {
-      2, 4, 6, 8
+      2, 6, 8, 4
     }
   };
 
-  for (int k = 0; k < 45; k++) {
-    delay(100);
+  for (int k = 0; k < 90; k++) {
+    //delay(10);
     for (int[] i : matrix) {
       for (int j : i) {
+        pushMatrix();
         rotateY(radians(k));
         cubes[j].drawCube();
+        popMatrix();
       }
     }
   }
