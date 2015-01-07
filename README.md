@@ -17,6 +17,10 @@ Update Log
 2015-01-06
 - Fixed annoying flickering issue on the cube.
 
+2015-01-07
+- U-Turn attempted to implement.
+- The cube is now made to draw initially only once.
+
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.
