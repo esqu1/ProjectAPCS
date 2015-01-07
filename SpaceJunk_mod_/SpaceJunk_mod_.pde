@@ -95,7 +95,7 @@ void draw(){
     //rotateZ(radians(initanglez*90));
     //rotateZ(radians(anglez));
     
-    //cubes[i].drawCube();
+    cubes[i].drawCube();
     popMatrix();
   }
 }
@@ -136,7 +136,7 @@ void swap(int[][] swapper){
   cubes[swapper[1][0]] = cubes[swapper[1][1]];
   cubes[swapper[1][1]] = cubes[swapper[1][2]];
   cubes[swapper[1][2]] = cubes[swapper[1][3]];
-  cubes[swapper[1][3]] = temp;
+  cubes[swapper[1][3]] = temp2;
 }
 
 void Uturn(){
