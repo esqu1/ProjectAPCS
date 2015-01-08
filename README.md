@@ -21,6 +21,9 @@ Update Log
 - U-Turn attempted to implement.
 - The cube is now made to draw initially only once.
 
+2015-01-08
+- Fixed issue of cube not being centered on axes. (U-turn still not working properly. Still some bugs in cube rotations.)
+
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.
