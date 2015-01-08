@@ -14,7 +14,7 @@ int asdf = 0;
 // Array for all cubes
 Cube[] cubes = new Cube[27];
 
-void pause(double time) {
+void pause(double time){
   println("tick");
   int t = millis();
   while (true) {
@@ -26,7 +26,7 @@ void pause(double time) {
 }
 
 
-void setup() {
+void setup(){
   size(800, 400, P3D); 
   background(255); 
   noStroke();
@@ -74,6 +74,7 @@ void setup() {
 }
 
 void draw() {
+  println(cubes[1].rot(new PVector(10,10,10),0,45));
   background(157,157,157);
   fill(200);
   translate(width/2, height/2, 100);
