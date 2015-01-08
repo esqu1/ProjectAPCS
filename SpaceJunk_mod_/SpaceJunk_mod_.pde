@@ -9,7 +9,8 @@
 // Used for oveall rotation
 int anglex, initanglex, angley, initangley, anglez, initanglez;
 boolean rotatedx = true, rotatedy = true, rotatedz = true;
-
+int asdf = 0;
+  
 // Array for all cubes
 Cube[] cubes = new Cube[27];
 
@@ -29,7 +30,7 @@ void setup() {
   size(800, 400, P3D); 
   background(255); 
   noStroke();
-  frameRate(1);
+  frameRate(60);
   anglex = 90;
   angley = 90;
   anglez = 90;
@@ -41,39 +42,40 @@ void setup() {
   //cubes[0] = new Cube(30, 30, 30, 0, 0, 0);
   //cubes[1] = new Cube(30, 30, 30, 200, 0, 0);
 
-  cubes[0] = new Cube(30, 0, 0, 0);
-  cubes[1] = new Cube(30, -45, -45, -45);
-  cubes[2] = new Cube(30, 0, -45, -45);
-  cubes[3] = new Cube(30, 45, -45, -45);
-  cubes[4] = new Cube(30, -45, -45, 0);
-  cubes[5] = new Cube(30, 0, -45, 0);
-  cubes[6] = new Cube(30, 45, -45, 0);
-  cubes[7] = new Cube(30, -45, -45, 45);
-  cubes[8] = new Cube(30, 0, -45, 45);
-  cubes[9] = new Cube(30, 45, -45, 45);
-  cubes[10] = new Cube(30, -45, 0, -45);
-  cubes[11] = new Cube(30, 0, 0, -45);
-  cubes[12] = new Cube(30, 45, 0, -45);
-  cubes[13] = new Cube(30, -45, 0, 0);
-  cubes[14] = new Cube(30, 45, 0, 0);
-  cubes[15] = new Cube(30, -45, 0, 45);
-  cubes[16] = new Cube(30, 0, 0, 45);
-  cubes[17] = new Cube(30, 45, 0, 45);
-  cubes[18] = new Cube(30, -45, 45, -45);
-  cubes[19] = new Cube(30, 0, 45, -45);
-  cubes[20] = new Cube(30, 45, 45, -45);
-  cubes[21] = new Cube(30, -45, 45, 0);
-  cubes[22] = new Cube(30, 0, 45, 0);
-  cubes[23] = new Cube(30, 45, 45, 0);
-  cubes[24] = new Cube(30, -45, 45, 45);
-  cubes[25] = new Cube(30, 0, 45, 45);
-  cubes[26] = new Cube(30, 45, 45, 45);
+  cubes[0] = new Cube(30, -7.5, -7.5, -7.5);
+  
+  cubes[1] = new Cube(30, -52.5, -52.5, -52.5);
+  cubes[2] = new Cube(30, -7.5, -52.5, -52.5);
+  cubes[3] = new Cube(30, 37.5, -52.5, -52.5);
+  cubes[4] = new Cube(30, -52.5, -52.5, -7.5);
+  cubes[5] = new Cube(30, -7.5, -52.5, -7.5);
+  cubes[6] = new Cube(30, 37.5, -52.5, -7.5);
+  cubes[7] = new Cube(30, -52.5, -52.5, 37.5);
+  cubes[8] = new Cube(30, -7.5, -52.5, 37.5);
+  cubes[9] = new Cube(30, 37.5, -52.5, 37.5);
+  cubes[10] = new Cube(30, -52.5, -7.5, -52.5);
+  cubes[11] = new Cube(30, -7.5, -7.5, -52.5);
+  cubes[12] = new Cube(30, 37.5, -7.5, -52.5);
+  cubes[13] = new Cube(30, -52.5, -7.5, -7.5);
+  cubes[14] = new Cube(30, 37.5, -7.5, -7.5);
+  cubes[15] = new Cube(30, -52.5, -7.5, 37.5);
+  cubes[16] = new Cube(30, -7.5, -7.5, 37.5);
+  cubes[17] = new Cube(30, 37.5, -7.5, 37.5);
+  cubes[18] = new Cube(30, -52.5, 37.5, -52.5);
+  cubes[19] = new Cube(30, -7.5, 37.5, -52.5);
+  cubes[20] = new Cube(30, 37.5, 37.5, -52.5);
+  cubes[21] = new Cube(30, -52.5, 37.5, -7.5);
+  cubes[22] = new Cube(30, -7.5, 37.5, -7.5);
+  cubes[23] = new Cube(30, 37.5, 37.5, -7.5);
+  cubes[24] = new Cube(30, -52.5, 37.5, 37.5);
+  cubes[25] = new Cube(30, -7.5, 37.5, 37.5);
+  cubes[26] = new Cube(30, 37.5, 37.5, 37.5);
+  
 }
 
 void draw() {
   background(157,157,157);
   fill(200);
-  int asdf = 0;
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
@@ -107,14 +109,14 @@ void draw() {
 
   for (int i = 0; i < cubes.length; i++) {
     pushMatrix();
-    //rotateX(radians(initanglex*90));
-    //rotateX(radians(anglex));
-    //rotateY(radians(initangley*90));
-    //rotateY(radians(angley));
-    //rotateZ(radians(initanglez*90));
-    //rotateZ(radians(anglez));
+    rotateX(radians(initanglex*90));
+    rotateX(radians(anglex));
+    rotateY(radians(initangley*90));
+    rotateY(radians(angley));
+    rotateZ(radians(initanglez*90));
+    rotateZ(radians(anglez));
 
-    //cubes[i].drawCube();
+    cubes[i].drawCube();
     popMatrix();
   }
 }
