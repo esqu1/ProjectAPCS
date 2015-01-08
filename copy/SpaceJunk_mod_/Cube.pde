@@ -7,15 +7,11 @@ public class Cube {
   color white = color(255, 255, 255);
   color orange = color(255, 162, 0);
   int sideLength;
-  float shiftX, shiftY, shiftZ; 
-  PVector position;
+  PVector p;
 
   Cube(int sideLength, float shiftX, float shiftY, float shiftZ) {
     this.sideLength = sideLength;
-    this.shiftX = shiftX;
-    this.shiftY = shiftY;
-    this.shiftZ = shiftZ; 
-    this.position = new PVector(shiftX, shiftY, shiftZ);
+    this.p = new PVector(shiftX, shiftY, shiftZ);
   }
 
 
@@ -23,81 +19,81 @@ public class Cube {
     beginShape(QUADS);
     //Back 
     fill(black);
-    vertex(-sideLength/2 + shiftX, -sideLength/2 + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, -sideLength/2 + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, sideLength + shiftY, -sideLength/2 + shiftZ);
-    vertex(-sideLength/2 + shiftX, sideLength + shiftY, -sideLength/2 + shiftZ);
+    vertex(-sideLength/2 + p.x, -sideLength/2 + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, -sideLength/2 + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, sideLength + p.y, -sideLength/2 + p.z);
+    vertex(-sideLength/2 + p.x, sideLength + p.y, -sideLength/2 + p.z);
 
     fill(blue);
-    vertex(-sideLength/2 + shiftX + (0.1 * sideLength), -sideLength/2 + shiftY + (0.1 * sideLength), -sideLength/2 + shiftZ - .01);
-    vertex(sideLength + shiftX - (0.1 * sideLength), -sideLength/2 + shiftY + (0.1 * sideLength), -sideLength/2 + shiftZ - .01);
-    vertex(sideLength + shiftX - (0.1 * sideLength), sideLength + shiftY - (0.1 * sideLength), -sideLength/2 + shiftZ - .01);
-    vertex(-sideLength/2 + shiftX + (0.1 * sideLength), sideLength + shiftY - (0.1 * sideLength), -sideLength/2 + shiftZ - .01);
+    vertex(-sideLength/2 + p.x + (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
+    vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
+    vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
+    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
 
     //Front 
     fill(black);
-    vertex(-sideLength/2 + shiftX, -sideLength/2 + shiftY, sideLength + shiftZ);
-    vertex(sideLength + shiftX, -sideLength/2 + shiftY, sideLength + shiftZ);
-    vertex(sideLength + shiftX, sideLength + shiftY, sideLength + shiftZ);
-    vertex(-sideLength/2 + shiftX, sideLength + shiftY, sideLength + shiftZ);
+    vertex(-sideLength/2 + p.x, -sideLength/2 + p.y, sideLength + p.z);
+    vertex(sideLength + p.x, -sideLength/2 + p.y, sideLength + p.z);
+    vertex(sideLength + p.x, sideLength + p.y, sideLength + p.z);
+    vertex(-sideLength/2 + p.x, sideLength + p.y, sideLength + p.z);
 
     fill(green);
-    vertex(-sideLength/2 + shiftX  + (0.1 * sideLength), -sideLength/2 + shiftY  + (0.1 * sideLength), sideLength + shiftZ + .01);
-    vertex(sideLength + shiftX  - (0.1 * sideLength), -sideLength/2 + shiftY  + (0.1 * sideLength), sideLength + shiftZ + .01);
-    vertex(sideLength + shiftX  - (0.1 * sideLength), sideLength + shiftY  - (0.1 * sideLength), sideLength + shiftZ + .01);
-    vertex(-sideLength/2 + shiftX  + (0.1 * sideLength), sideLength + shiftY  - (0.1 * sideLength), sideLength + shiftZ + .01);
+    vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y  + (0.1 * sideLength), sideLength + p.z + .01);
+    vertex(sideLength + p.x  - (0.1 * sideLength), -sideLength/2 + p.y  + (0.1 * sideLength), sideLength + p.z + .01);
+    vertex(sideLength + p.x  - (0.1 * sideLength), sideLength + p.y  - (0.1 * sideLength), sideLength + p.z + .01);
+    vertex(-sideLength/2 + p.x  + (0.1 * sideLength), sideLength + p.y  - (0.1 * sideLength), sideLength + p.z + .01);
 
     //Left
     fill(black);
-    vertex(-sideLength/2 + shiftX, -sideLength/2 + shiftY, -sideLength/2 + shiftZ);
-    vertex(-sideLength/2 + shiftX, -sideLength/2 + shiftY, sideLength + shiftZ);
-    vertex(-sideLength/2 + shiftX, sideLength + shiftY, sideLength + shiftZ);
-    vertex(-sideLength/2 + shiftX, sideLength + shiftY, -sideLength/2 + shiftZ);
+    vertex(-sideLength/2 + p.x, -sideLength/2 + p.y, -sideLength/2 + p.z);
+    vertex(-sideLength/2 + p.x, -sideLength/2 + p.y, sideLength + p.z);
+    vertex(-sideLength/2 + p.x, sideLength + p.y, sideLength + p.z);
+    vertex(-sideLength/2 + p.x, sideLength + p.y, -sideLength/2 + p.z);
 
     fill(orange);
-    vertex(-sideLength/2 + shiftX - .01, -sideLength/2 + shiftY + (0.1 * sideLength), -sideLength/2 + shiftZ + (0.1 * sideLength));
-    vertex(-sideLength/2 + shiftX - .01, -sideLength/2 + shiftY + (0.1 * sideLength), sideLength + shiftZ - (0.1 * sideLength));
-    vertex(-sideLength/2 + shiftX - .01, sideLength + shiftY - (0.1 * sideLength), sideLength + shiftZ - (0.1 * sideLength));
-    vertex(-sideLength/2 + shiftX - .01, sideLength + shiftY - (0.1 * sideLength), -sideLength/2 + shiftZ + (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x - .01, -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x - .01, -sideLength/2 + p.y + (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x - .01, sideLength + p.y - (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x - .01, sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
 
     //Right
     fill(black);
-    vertex(sideLength + shiftX, -sideLength/2 + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, -sideLength/2 + shiftY, sideLength + shiftZ);
-    vertex(sideLength + shiftX, sideLength + shiftY, sideLength + shiftZ);
-    vertex(sideLength + shiftX, sideLength + shiftY, -sideLength/2 + shiftZ);
+    vertex(sideLength + p.x, -sideLength/2 + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, -sideLength/2 + p.y, sideLength + p.z);
+    vertex(sideLength + p.x, sideLength + p.y, sideLength + p.z);
+    vertex(sideLength + p.x, sideLength + p.y, -sideLength/2 + p.z);
 
     fill(red);
-    vertex(sideLength + shiftX + .01, -sideLength/2 + shiftY + (0.1 * sideLength), -sideLength/2 + shiftZ + (0.1 * sideLength));
-    vertex(sideLength + shiftX + .01, -sideLength/2 + shiftY + (0.1 * sideLength), sideLength + shiftZ - (0.1 * sideLength));
-    vertex(sideLength + shiftX + .01, sideLength + shiftY - (0.1 * sideLength), sideLength + shiftZ - (0.1 * sideLength));
-    vertex(sideLength + shiftX + .01, sideLength + shiftY - (0.1 * sideLength), -sideLength/2 + shiftZ + (0.1 * sideLength));
+    vertex(sideLength + p.x + .01, -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
+    vertex(sideLength + p.x + .01, -sideLength/2 + p.y + (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
+    vertex(sideLength + p.x + .01, sideLength + p.y - (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
+    vertex(sideLength + p.x + .01, sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
 
     //Top
     fill(black);
-    vertex(-sideLength/2 + shiftX, -sideLength/2 + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, -sideLength/2 + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, -sideLength/2 + shiftY, sideLength + shiftZ);
-    vertex(-sideLength/2 + shiftX, -sideLength/2 + shiftY, sideLength + shiftZ);
+    vertex(-sideLength/2 + p.x, -sideLength/2 + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, -sideLength/2 + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, -sideLength/2 + p.y, sideLength + p.z);
+    vertex(-sideLength/2 + p.x, -sideLength/2 + p.y, sideLength + p.z);
 
     fill(white);
-    vertex(-sideLength/2 + shiftX  + (0.1 * sideLength), -sideLength/2 + shiftY - .01, -sideLength/2 + shiftZ  + (0.1 * sideLength));
-    vertex(sideLength + shiftX - (0.1 * sideLength), -sideLength/2 + shiftY - .01, -sideLength/2 + shiftZ  + (0.1 * sideLength));
-    vertex(sideLength + shiftX - (0.1 * sideLength), -sideLength/2 + shiftY - .01, sideLength + shiftZ - (0.1 * sideLength));
-    vertex(-sideLength/2 + shiftX  + (0.1 * sideLength), -sideLength/2 + shiftY - .01, sideLength + shiftZ - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y - .01, -sideLength/2 + p.z  + (0.1 * sideLength));
+    vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y - .01, -sideLength/2 + p.z  + (0.1 * sideLength));
+    vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y - .01, sideLength + p.z - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y - .01, sideLength + p.z - (0.1 * sideLength));
 
     //Bottom
     fill(black);
-    vertex(-sideLength/2 + shiftX, sideLength + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, sideLength + shiftY, -sideLength/2 + shiftZ);
-    vertex(sideLength + shiftX, sideLength + shiftY, sideLength + shiftZ);
-    vertex(-sideLength/2 + shiftX, sideLength + shiftY, sideLength + shiftZ);
+    vertex(-sideLength/2 + p.x, sideLength + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, sideLength + p.y, -sideLength/2 + p.z);
+    vertex(sideLength + p.x, sideLength + p.y, sideLength + p.z);
+    vertex(-sideLength/2 + p.x, sideLength + p.y, sideLength + p.z);
 
     fill(yellow);
-    vertex(-sideLength/2 + shiftX + (0.1 * sideLength), sideLength + shiftY + .01, -sideLength/2 + shiftZ + (0.1 * sideLength));
-    vertex(sideLength + shiftX - (0.1 * sideLength), sideLength + shiftY + .01, -sideLength/2 + shiftZ + (0.1 * sideLength));
-    vertex(sideLength + shiftX - (0.1 * sideLength), sideLength + shiftY + .01, sideLength + shiftZ - (0.1 * sideLength));
-    vertex(-sideLength/2 + shiftX + (0.1 * sideLength), sideLength + shiftY + .01, sideLength + shiftZ - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
+    vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
+    vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
 
     endShape();
   }
