@@ -8,6 +8,7 @@ public class Cube {
   color orange = color(255, 162, 0);
   int sideLength;
   PVector p;
+  
 
   Cube(int sideLength, float shiftX, float shiftY, float shiftZ) {
     this.sideLength = sideLength;
@@ -98,15 +99,15 @@ public class Cube {
     endShape();
   }
 
-  PVector rot(PVector o, int axis, int angle) {
-    PVector x = new PVector(0, 0, 0);
+  void rot(int axis, int angle) {
     if (axis == 0) {      
-      return new PVector(o.x, o.y*cos(radians(angle)) - o.z*sin(radians(angle)), o.y*sin(radians(angle)) + o.z*cos(radians(angle)));
+      p = new PVector(p.x, p.y*cos(radians(angle)) - p.z*sin(radians(angle)), p.y*sin(radians(angle)) + p.z*cos(radians(angle)));
     } else if (axis == 1) {
-      return new PVector(o.x*cos(radians(angle)) + o.z*sin(radians(angle)), o.y, -o.x*sin(radians(angle)) + o.z*cos(radians(angle)));
+      p = new PVector(p.x*cos(radians(angle)) + p.z*sin(radians(angle)), p.y, -p.x*sin(radians(angle)) + p.z*cos(radians(angle)));
     } else {
-      return new PVector(o.x*cos(radians(angle)) - o.y*sin(radians(angle)), o.x*sin(radians(angle))+o.y*cos(radians(angle)));
+      p = new PVector(p.x*cos(radians(angle)) - p.y*sin(radians(angle)), p.x*sin(radians(angle))+p.y*cos(radians(angle)));
     }
   }
 }
+
 

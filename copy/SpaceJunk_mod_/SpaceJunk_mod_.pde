@@ -10,11 +10,11 @@
 int anglex, initanglex, angley, initangley, anglez, initanglez;
 boolean rotatedx = true, rotatedy = true, rotatedz = true;
 int asdf = 0;
-  
+
 // Array for all cubes
 Cube[] cubes = new Cube[27];
 
-void pause(double time){
+void pause(double time) {
   println("tick");
   int t = millis();
   while (true) {
@@ -26,11 +26,10 @@ void pause(double time){
 }
 
 
-void setup(){
-  size(800, 400, P3D); 
+void setup() {
+  size(800, 400, P3D);
   background(255); 
   noStroke();
-  frameRate(60);
   anglex = 90;
   angley = 90;
   anglez = 90;
@@ -43,7 +42,7 @@ void setup(){
   //cubes[1] = new Cube(30, 30, 30, 200, 0, 0);
 
   cubes[0] = new Cube(30, -7.5, -7.5, -7.5);
-  
+
   cubes[1] = new Cube(30, -52.5, -52.5, -52.5);
   cubes[2] = new Cube(30, -7.5, -52.5, -52.5);
   cubes[3] = new Cube(30, 37.5, -52.5, -52.5);
@@ -70,16 +69,14 @@ void setup(){
   cubes[24] = new Cube(30, -52.5, 37.5, 37.5);
   cubes[25] = new Cube(30, -7.5, 37.5, 37.5);
   cubes[26] = new Cube(30, 37.5, 37.5, 37.5);
-  
 }
 
 void draw() {
-  println(cubes[1].rot(new PVector(10,10,10),0,45));
-  background(157,157,157);
+  background(157, 157, 157);
   fill(200);
   translate(width/2, height/2, 100);
-  rotateX(radians(-40));
-  rotateY(radians(-40));
+  //rotateX(radians(-40));
+  //rotateY(radians(-40));
   if (asdf == 0) {
     for (int i = 0; i < cubes.length; i++) {
       cubes[i].drawCube();
@@ -129,9 +126,8 @@ void keyPressed() {
   println(key);
   if (rotatedx && rotatedy && rotatedz) {
     if (key == 'i') {
-      anglex = 0;
-      initanglex++;
-      rotatedx = false;
+      //frameRate(0.01);
+      rotX(0);
     } else if (key == 'h') {
       angley = 0;
       initangley++;
@@ -170,17 +166,16 @@ void Uturn() {
     }
   };
 
-  for (int k = 0; k < 90; k++) {
-    //delay(10);
-    for (int[] i : matrix) {
-      for (int j : i) {
-        pushMatrix();
-        rotateY(radians(k));
-        cubes[j].drawCube();
-        popMatrix();
-      }
+
+  swap(matrix);
+}
+
+// Problem: the cubes will not be rotated; their orientation stays the same.
+void rotX(int dir) {
+  for (int i = 0; i < 90; i++) {
+    for (Cube j : cubes) {
+      j.rot(0, 1);
     }
   }
-  swap(matrix);
 }
 
