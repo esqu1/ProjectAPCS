@@ -25,6 +25,10 @@ Update Log
 - Fixed issue of cube not being centered on axes. (U-turn still not working properly. Still some bugs in cube rotations.)
 - A PVector was used instead of shiftX.
 
+2015-01-09
+- Created an array for the cube's colors to check if the cube is solved.
+- Bug fixed that made animation not appear; but doesn't run now with while loop.
+
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.

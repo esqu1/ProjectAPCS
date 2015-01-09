@@ -14,6 +14,17 @@ int asdf = 0;
 // Array for all cubes
 Cube[] cubes = new Cube[27];
 
+// Array for colors
+int[][] colors = {
+  { 1,1,1,1,1,1,1,1,1 },
+  { 2,2,2,2,2,2,2,2,2 },
+  { 3,3,3,3,3,3,3,3,3 },
+  { 4,4,4,4,4,4,4,4,4 },
+  { 5,5,5,5,5,5,5,5,5 },
+  { 6,6,6,6,6,6,6,6,6 } 
+};
+
+
 void pause(double time) {
   println("tick");
   int t = millis();
@@ -154,7 +165,7 @@ void keyPressed() {
   if (rotatedx && rotatedy && rotatedz) {
     if (key == 'i') {
       for (Cube j : cubes) {
-        j.rot(0, 1);
+        rotX(0);
       }
     } else if (key == 'k') {
         for (Cube j : cubes) {
