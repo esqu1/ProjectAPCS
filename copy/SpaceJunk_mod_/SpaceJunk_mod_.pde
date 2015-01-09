@@ -218,6 +218,7 @@ void rotX(int dir) {
   for (int i = 0; i < 90; i++) {
     for (Cube j : cubes) {
       j.rot(0, 1);
+      println(j.p);
     }
   }
 }

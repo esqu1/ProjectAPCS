@@ -99,7 +99,7 @@ public class Cube {
     endShape();
   }
 
-  void rot(int axis, int angle) {
+  void rot(int axis, float angle) {
     if (axis == 0) {      
       p = new PVector(p.x, p.y*cos(radians(angle)) - p.z*sin(radians(angle)), p.y*sin(radians(angle)) + p.z*cos(radians(angle)));
     } else if (axis == 1) {
