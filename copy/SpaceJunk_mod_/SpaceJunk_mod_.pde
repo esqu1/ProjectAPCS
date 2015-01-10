@@ -215,9 +215,9 @@ void Uturn() {
 
 // Problem: the cubes will not be rotated; their orientation stays the same.
 void rotX(int dir) {
-  for (int i = 0; i < 90; i++) {
+  for (int i = 0; i < 900; i++) {
     for (Cube j : cubes) {
-      j.rot(0, 1);
+      j.rot(0, .1);
       println(j.p);
     }
   }
