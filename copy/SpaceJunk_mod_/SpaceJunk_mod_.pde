@@ -123,7 +123,7 @@ void draw() {
       }
     }
   }
-
+/*
   if (anglex < 90 && rotatedy && rotatedz) {
     anglex++;
   } else {
@@ -141,7 +141,7 @@ void draw() {
   } else {
     rotatedz = true;
   }
-
+*/
 
   for (int i = 0; i < cubes.length; i++) {
     pushMatrix();

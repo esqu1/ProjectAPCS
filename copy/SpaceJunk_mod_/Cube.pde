@@ -42,17 +42,17 @@ public class Cube {
     beginShape(QUADS);
     //Back 
     fill(black);
-    vertex(vertex1);
-    vertex(vertex2);
-    vertex(vertex6);
-    vertex(vertex5);
+    vertex(vertex1[0],vertex1[1],vertex1[2]);
+    vertex(vertex2[0],vertex2[1],vertex2[2]);
+    vertex(vertex6[0],vertex6[1],vertex6[2]);
+    vertex(vertex5[0],vertex5[1],vertex5[2]);
 
     fill(blue);
     vertex(-sideLength/2 + p.x + (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
     vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
     vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
     vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
-
+/*
     //Front 
     fill(black);
     vertex(vertex4);
@@ -116,7 +116,7 @@ public class Cube {
     vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
     vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
     vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
-    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
+    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));*/
 
     endShape();
   }
