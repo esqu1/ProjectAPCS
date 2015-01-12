@@ -253,6 +253,3 @@ void rotX(int dir) {
   }
 }
 
-void rotateCubies(int Cubie, int axis, int angle) {
-}
-
