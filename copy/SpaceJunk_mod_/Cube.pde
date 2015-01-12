@@ -52,13 +52,13 @@ public class Cube {
     vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
     vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
     vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
-/*
+
     //Front 
     fill(black);
-    vertex(vertex4);
-    vertex(vertex3);
-    vertex(vertex7);
-    vertex(vertex8);
+    vertex(vertex4[0],vertex4[1],vertex4[2]);
+    vertex(vertex3[0],vertex3[1],vertex3[2]);
+    vertex(vertex7[0],vertex7[1],vertex7[2]);
+    vertex(vertex8[0],vertex8[1],vertex8[2]);
 
     fill(green);
     vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y  + (0.1 * sideLength), sideLength + p.z + .01);
@@ -68,10 +68,10 @@ public class Cube {
 
     //Left
     fill(black);
-    vertex(vertex1);
-    vertex(vertex4);
-    vertex(vertex8);
-    vertex(vertex5);
+    vertex(vertex1[0],vertex1[1],vertex1[2]);
+    vertex(vertex4[0],vertex4[1],vertex4[2]);
+    vertex(vertex8[0],vertex8[1],vertex8[2]);
+    vertex(vertex5[0],vertex5[1],vertex5[2]);
 
     fill(orange);
     vertex(-sideLength/2 + p.x - .01, -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
@@ -81,10 +81,10 @@ public class Cube {
 
     //Right
     fill(black);
-    vertex(vertex2);
-    vertex(vertex3);
-    vertex(vertex7);
-    vertex(vertex6);
+    vertex(vertex2[0],vertex2[1],vertex2[2]);
+    vertex(vertex3[0],vertex3[1],vertex3[2]);
+    vertex(vertex7[0],vertex7[1],vertex7[2]);
+    vertex(vertex6[0],vertex6[1],vertex6[2]);
 
     fill(red);
     vertex(sideLength + p.x + .01, -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
@@ -94,10 +94,10 @@ public class Cube {
 
     //Top
     fill(black);
-    vertex(vertex1);
-    vertex(vertex2);
-    vertex(vertex3);
-    vertex(vertex4);
+    vertex(vertex1[0],vertex1[1],vertex1[2]);
+    vertex(vertex2[0],vertex2[1],vertex2[2]);
+    vertex(vertex3[0],vertex3[1],vertex3[2]);
+    vertex(vertex4[0],vertex4[1],vertex4[2]);
 
     fill(white);
     vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y - .01, -sideLength/2 + p.z  + (0.1 * sideLength));
@@ -107,16 +107,16 @@ public class Cube {
 
     //Bottom
     fill(black);
-    vertex(vertex5);
-    vertex(vertex6);
-    vertex(vertex7);
-    vertex(vertex8);
+    vertex(vertex5[0],vertex5[1],vertex5[2]);
+    vertex(vertex6[0],vertex6[1],vertex6[2]);
+    vertex(vertex7[0],vertex7[1],vertex7[2]);
+    vertex(vertex8[0],vertex8[1],vertex8[2]);
 
     fill(yellow);
     vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
     vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
     vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
-    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));*/
+    vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
 
     endShape();
   }
