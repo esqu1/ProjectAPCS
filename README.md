@@ -31,6 +31,7 @@ Update Log
 
 2015-01-12
 - Converted vertices to arrays of floats.
+- Implementing a 3D array instead.
 
 OUR PLAN
 

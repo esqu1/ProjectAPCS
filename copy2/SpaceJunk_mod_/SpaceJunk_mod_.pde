@@ -12,8 +12,8 @@ boolean rotatedx = true, rotatedy = true, rotatedz = true;
 int asdf = 0;
 
 // Array for all cubes
-Cube[] cubes = new Cube[27];
-Cube[][][] cubes2 = new Cube[3][3][3];
+//Cube[] cubes = new Cube[27];
+Cube[][][] cubes = new Cube[3][3][3];
 
 // Array for colors
 int[][] colors = {
@@ -41,18 +41,6 @@ int[][] colors = {
     6, 6, 6, 6, 6, 6, 6, 6, 6
   }
 };
-
-/*
-void pause(double time) {
- println("tick");
- int t = millis();
- while (true) {
- if (millis() - t >= time) {
- println("tock");
- break;
- }
- }
- }*/
 
 public static void pause(int n) {
   try {
@@ -106,7 +94,7 @@ void setup() {
    cubes[23] = new Cube(30, 37.5, 37.5, -7.5);
    cubes[24] = new Cube(30, -52.5, 37.5, 37.5);
    cubes[25] = new Cube(30, -7.5, 37.5, 37.5);
-   cubes[26] = new Cube(30, 37.5, 37.5, 37.5); */
+   cubes[26] = new Cube(30, 37.5, 37.5, 37.5); 
    for(
   cubes[0] = new Cube(30, 0, 0, 0);
   cubes[1] = new Cube(30, -45, -45, -45);
@@ -134,23 +122,25 @@ void setup() {
   cubes[23] = new Cube(30, 45, 45, 0);
   cubes[24] = new Cube(30, -45, 45, 45);
   cubes[25] = new Cube(30, 0, 45, 45);
-  cubes[26] = new Cube(30, 45, 45, 45);
+  cubes[26] = new Cube(30, 45, 45, 45);*/
+  
+  for(int i = -1; i < 2; i++){
+    for(int j = -1; j < 2; j++){
+      for(int k = -1; k < 2; k++){
+        cubes[i+1][j+1][k+1] = new Cube(30,45*i,45*j,45*k);
+      }
+    }
+  }
 }
 
 void draw() {
   background(157, 157, 157);
   fill(200);
-  frameRate(1);
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
   if (asdf == 0) {
-    for (int i = 0; i < cubes.length; i++) {
-      cubes[i].drawCube();
-      if (i == cubes.length - 1) {
-        asdf = 1;
-      }
-    }
+    drawAllCubes();
   }
   /*
   if (anglex < 90 && rotatedy && rotatedz) {
@@ -172,17 +162,16 @@ void draw() {
    }
    */
 
-  for (int i = 0; i < cubes.length; i++) {
-    //pushMatrix();
-    /*rotateX(radians(initanglex*90));
-    rotateX(radians(anglex));
-    rotateY(radians(initangley*90));
-    rotateY(radians(angley));
-    rotateZ(radians(initanglez*90));
-    rotateZ(radians(anglez));*/
+  drawAllCubes();
+}
 
-    cubes[i].drawCube();
-    //popMatrix();
+void drawAllCubes(){
+  for(int i = 0; i < 3; i++){
+    for(int j = 0; j < 3; j++){
+      for(int k = 0; k < 3; k++){
+        cubes[i][j][k].drawCube();
+      }
+    }
   }
 }
 
@@ -194,10 +183,6 @@ void keyPressed() {
   if (rotatedx && rotatedy && rotatedz) {
     if (key == 'i') {
       rotX(0);
-    } else if (key == 'k') {
-      for (Cube j : cubes) {
-        j.rot(0, -1);
-      }
     } else if (key == 'h') {
       angley = 0; 
       initangley++; 
@@ -207,12 +192,12 @@ void keyPressed() {
       initanglez++; 
       rotatedz = false;
     } else if (key == 'u') {
-      Uturn();
+      //Uturn();
     }
   }
 }
 
-
+/*
 void swap(int[][] swapper) {
   Cube temp = cubes[swapper[0][0]]; 
   cubes[swapper[0][0]] = cubes[swapper[0][1]]; 
@@ -224,35 +209,22 @@ void swap(int[][] swapper) {
   cubes[swapper[1][1]] = cubes[swapper[1][2]]; 
   cubes[swapper[1][2]] = cubes[swapper[1][3]]; 
   cubes[swapper[1][3]] = temp2;
-}
-
-void Uturn() {
-  int[][] matrix = { 
-    {
-      1, 3, 9, 7
-    } 
-    , {
-      2, 6, 8, 4
-    }
-  };
+}*/
 
 
-  swap(matrix);
-}
 
 // Problem: the cubes will not be rotated; their orientation stays the same.
 void rotX(int dir) {
-  for (int i = 0; i < 90; i++) {
-    println(i);
-    clear();
-    if(anglex < 
-    for (Cube j : cubes) {
-      j.rot(0, 1);
-      j.drawCube();
+  if(anglex < 90){
+    for(int i = 0; i < 3; i++){
+      for(int j = 0; j < 3; j++){
+        for(int k = 0; k < 3; k++){
+          cubes[i][j][k].rot(0,1);
+        }
+      }
     }
-    //redraw();
-    
-    pause(1);
+  }else{
+      anglex = 0;
   }
 }
 
