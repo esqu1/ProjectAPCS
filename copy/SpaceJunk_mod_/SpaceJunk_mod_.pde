@@ -164,9 +164,7 @@ void keyPressed() {
   println(key);
   if (rotatedx && rotatedy && rotatedz) {
     if (key == 'i') {
-      for (Cube j : cubes) {
         rotX(0);
-      }
     } else if (key == 'k') {
         for (Cube j : cubes) {
           j.rot(0,-1);
@@ -222,4 +220,9 @@ void rotX(int dir) {
     }
   }
 }
+
+ void rotateCubies(int Cubie, int axis, int angle){
+   
+ }
+   
 
