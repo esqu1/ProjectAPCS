@@ -143,7 +143,7 @@ void rotX(int dir) {
       for(int j = 0; j < 3; j++){
         for(int k = 0; k < 3; k++){
           cubes[i][j][k].rotCubie(0,1);
-          cubes[i][j][k].rot(0,1);
+          //cubes[i][j][k].rot(0,1);
           
         }
       }
