@@ -56,9 +56,9 @@ void setup() {
   size(800, 400, P3D);
   background(255); 
   noStroke();
-  anglex = 90;
-  angley = 90;
-  anglez = 90;
+  anglex = 0;
+  angley = 0;
+  anglez = 0;
   initanglex = 0;
   initangley = 0;
   initanglez = 0;
@@ -106,17 +106,15 @@ void keyPressed() {
   println(key);
   if (rotatedx && rotatedy && rotatedz) {
     if (key == 'i') {
-      rotX(0);
-    } else if (key == 'h') {
-      angley = 0; 
-      initangley++; 
-      rotatedy = false;
+      RTurn(0);
+    } else if (key == 'j') {
+      UTurn(0);
     } else if (key == 'f') {
       anglez = 0; 
       initanglez++; 
       rotatedz = false;
     } else if (key == 'u') {
-      //Uturn();
+      UTurn(0);
     }
   }
 }
@@ -135,8 +133,6 @@ void swap(int[][] swapper) {
   cubes[swapper[1][3]] = temp2;
 }*/
 
-
-// Problem: the cubes will not be rotated; their orientation stays the same.
 void RTurn(int dir) {
   if(anglex < 90){
     for(int i = 0; i < 3; i++){
@@ -148,10 +144,27 @@ void RTurn(int dir) {
         }
       }
     }
-  }else{
+    anglex++;
+  }/*else{
       anglex = 0;
-  }
+  }*/
 }
 
+void UTurn(int dir) {
+  if(angley < 90){
+    for(int i = 0; i < 3; i++){
+      for(int j = 0; j < 3; j++){
+        for(int k = 0; k < 3; k++){
+          if(j == 0){
+            cubes[i][j][k].rotCubie(1,1);         
+          } 
+        }
+      }
+    }
+    angley++;
+  }/*else{
+      anglex = 0;
+  }*/
+}
 
 
