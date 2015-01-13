@@ -76,33 +76,33 @@ void setup() {
     }
   }
   */
-  cubes[0][0][0] = new Cube(30, -45, -45, -45);
-  cubes[0][0][1] = new Cube(30, 0, -45, -45);
-  cubes[0][0][2] = new Cube(30, 45, -45, -45);
-  cubes[0][1][0] = new Cube(30, -45, -45, 0);
-  cubes[0][1][1] = new Cube(30, 0, -45, 0);
-  cubes[0][1][2] = new Cube(30, 45, -45, 0);
-  cubes[0][2][0] = new Cube(30, -45, -45, 45);
-  cubes[0][2][1] = new Cube(30, 0, -45, 45);
-  cubes[0][2][2] = new Cube(30, 45, -45, 45);
-  cubes[1][0][0] = new Cube(30, -45, 0, -45);
-  cubes[1][0][1] = new Cube(30, 0, 0, -45);
-  cubes[1][0][2] = new Cube(30, 45, 0, -45);
-  cubes[1][1][0] = new Cube(30, -45, 0, 0);
-  cubes[1][1][1] = new Cube(30, 0, 0, 0);
-  cubes[1][1][2] = new Cube(30, 45, 0, 0);
-  cubes[1][2][0] = new Cube(30, -45, 0, 45);
-  cubes[1][2][1] = new Cube(30, 0, 0, 45);
-  cubes[1][2][2] = new Cube(30, 45, 0, 45);
-  cubes[2][0][0] = new Cube(30, -45, 45, -45);
-  cubes[2][0][1] = new Cube(30, 0, 45, -45);
-  cubes[2][0][2] = new Cube(30, 45, 45, -45);
-  cubes[2][1][0] = new Cube(30, -45, 45, 0);
-  cubes[2][1][1] = new Cube(30, 0, 45, 0);
-  cubes[2][1][2] = new Cube(30, 45, 45, 0);
-  cubes[2][2][0] = new Cube(30, -45, 45, 45);
-  cubes[2][2][1] = new Cube(30, 0, 45, 45);
-  cubes[2][2][2] = new Cube(30, 45, 45, 45);
+  cubes[0][0][0] = new Cube(30, -52.5, -52.5, -52.5);
+  cubes[0][0][1] = new Cube(30, -7.5, -52.5, -52.5);
+  cubes[0][0][2] = new Cube(30, 37.5, -52.5, -52.5);
+  cubes[0][1][0] = new Cube(30, -52.5, -52.5, -7.5);
+  cubes[0][1][1] = new Cube(30, -7.5, -52.5, -7.5);
+  cubes[0][1][2] = new Cube(30, 37.5, -52.5, -7.5);
+  cubes[0][2][0] = new Cube(30, -52.5, -52.5, 37.5);
+  cubes[0][2][1] = new Cube(30, -7.5, -52.5, 37.5);
+  cubes[0][2][2] = new Cube(30, 37.5, -52.5, 37.5);
+  cubes[1][0][0] = new Cube(30, -52.5, -7.5, -52.5);
+  cubes[1][0][1] = new Cube(30, -7.5, -7.5, -52.5);
+  cubes[1][0][2] = new Cube(30, 37.5, -7.5, -52.5);
+  cubes[1][1][0] = new Cube(30, -52.5, -7.5, -7.5);
+  cubes[1][1][1] = new Cube(30, -7.5, -7.5, -7.5);
+  cubes[1][1][2] = new Cube(30, 37.5, -7.5, -7.5);
+  cubes[1][2][0] = new Cube(30, -52.5, -7.5, 37.5);
+  cubes[1][2][1] = new Cube(30, -7.5, -7.5, 37.5);
+  cubes[1][2][2] = new Cube(30, 37.5, -7.5, 37.5);
+  cubes[2][0][0] = new Cube(30, -52.5, 37.5, -52.5);
+  cubes[2][0][1] = new Cube(30, -7.5, 37.5, -52.5);
+  cubes[2][0][2] = new Cube(30, 37.5, 37.5, -52.5);
+  cubes[2][1][0] = new Cube(30, -52.5, 37.5, -7.5);
+  cubes[2][1][1] = new Cube(30, -7.5, 37.5, -7.5);
+  cubes[2][1][2] = new Cube(30, 37.5, 37.5, -7.5);
+  cubes[2][2][0] = new Cube(30, -52.5, 37.5, 37.5);
+  cubes[2][2][1] = new Cube(30, -7.5, 37.5, 37.5);
+  cubes[2][2][2] = new Cube(30, 37.5, 37.5, 37.5);
 
   drawAllCubes();
 }
@@ -175,14 +175,14 @@ void swap(int[][] swapper) {
  cubes[swapper[1][1]] = cubes[swapper[1][2]]; 
  cubes[swapper[1][2]] = cubes[swapper[1][3]]; 
  cubes[swapper[1][3]] = temp2;
- }*/
-
+ }
+*/
 void RTurn(int dir) {
   if (angler < 90 && !stable) {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         for (int k = 0; k < 3; k++) {
-          if (i == 2) {
+          if (k == 2) {
             cubes[i][j][k].rotCubie(0, 1);
           }
         }
@@ -201,7 +201,7 @@ void UTurn(int dir) {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         for (int k = 0; k < 3; k++) {
-          if (j == 0) {
+          if (i == 2) {
             cubes[i][j][k].rotCubie(1, 1);
           }
         }
