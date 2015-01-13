@@ -67,7 +67,7 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-
+/*
   for (int i = -1; i < 2; i++) {
     for (int j = -1; j < 2; j++) {
       for (int k = -1; k < 2; k++) {
@@ -75,6 +75,34 @@ void setup() {
       }
     }
   }
+  */
+  cubes[0][0][0] = new Cube(30, -45, -45, -45);
+  cubes[0][0][1] = new Cube(30, 0, -45, -45);
+  cubes[0][0][2] = new Cube(30, 45, -45, -45);
+  cubes[0][1][0] = new Cube(30, -45, -45, 0);
+  cubes[0][1][1] = new Cube(30, 0, -45, 0);
+  cubes[0][1][2] = new Cube(30, 45, -45, 0);
+  cubes[0][2][0] = new Cube(30, -45, -45, 45);
+  cubes[0][2][1] = new Cube(30, 0, -45, 45);
+  cubes[0][2][2] = new Cube(30, 45, -45, 45);
+  cubes[1][0][0] = new Cube(30, -45, 0, -45);
+  cubes[1][0][1] = new Cube(30, 0, 0, -45);
+  cubes[1][0][2] = new Cube(30, 45, 0, -45);
+  cubes[1][1][0] = new Cube(30, -45, 0, 0);
+  cubes[1][1][1] = new Cube(30, 0, 0, 0);
+  cubes[1][1][2] = new Cube(30, 45, 0, 0);
+  cubes[1][2][0] = new Cube(30, -45, 0, 45);
+  cubes[1][2][1] = new Cube(30, 0, 0, 45);
+  cubes[1][2][2] = new Cube(30, 45, 0, 45);
+  cubes[2][0][0] = new Cube(30, -45, 45, -45);
+  cubes[2][0][1] = new Cube(30, 0, 45, -45);
+  cubes[2][0][2] = new Cube(30, 45, 45, -45);
+  cubes[2][1][0] = new Cube(30, -45, 45, 0);
+  cubes[2][1][1] = new Cube(30, 0, 45, 0);
+  cubes[2][1][2] = new Cube(30, 45, 45, 0);
+  cubes[2][2][0] = new Cube(30, -45, 45, 45);
+  cubes[2][2][1] = new Cube(30, 0, 45, 45);
+  cubes[2][2][2] = new Cube(30, 45, 45, 45);
 
   drawAllCubes();
 }
