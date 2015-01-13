@@ -32,6 +32,7 @@ Update Log
 2015-01-12
 - Converted vertices to arrays of floats.
 - Implementing a 3D array instead.
+- New structure now works when rotating 1 degree at a time.
 
 OUR PLAN
 
