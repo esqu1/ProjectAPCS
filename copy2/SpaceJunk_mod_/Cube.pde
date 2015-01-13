@@ -152,15 +152,24 @@ public class Cube {
       vertex7[1] = v7[1]*cos(radians(angle)) - v7[2]*sin(radians(angle));    vertex7[2] = v7[1]*sin(radians(angle)) + v7[2]*cos(radians(angle));
       vertex8[1] = v8[1]*cos(radians(angle)) - v8[2]*sin(radians(angle));    vertex8[2] = v8[1]*sin(radians(angle)) + v8[2]*cos(radians(angle));
     }else if(axis == 1){
+      vertex1[0] = v1[0]*cos(radians(angle)) + v1[2]*sin(radians(angle));    vertex1[2] = v1[2]*cos(radians(angle)) - v1[0]*sin(radians(angle));
+      vertex2[0] = v2[0]*cos(radians(angle)) + v2[2]*sin(radians(angle));    vertex2[2] = v2[2]*cos(radians(angle)) - v2[0]*sin(radians(angle));
+      vertex3[0] = v3[0]*cos(radians(angle)) + v3[2]*sin(radians(angle));    vertex3[2] = v3[2]*cos(radians(angle)) - v3[0]*sin(radians(angle));
+      vertex4[0] = v4[0]*cos(radians(angle)) + v4[2]*sin(radians(angle));    vertex4[2] = v4[2]*cos(radians(angle)) - v4[0]*sin(radians(angle));
+      vertex5[0] = v5[0]*cos(radians(angle)) + v5[2]*sin(radians(angle));    vertex5[2] = v5[2]*cos(radians(angle)) - v5[0]*sin(radians(angle));
+      vertex6[0] = v6[0]*cos(radians(angle)) + v6[2]*sin(radians(angle));    vertex6[2] = v6[2]*cos(radians(angle)) - v6[0]*sin(radians(angle));
+      vertex7[0] = v7[0]*cos(radians(angle)) + v7[2]*sin(radians(angle));    vertex7[2] = v7[2]*cos(radians(angle)) - v7[0]*sin(radians(angle));
+      vertex8[0] = v8[0]*cos(radians(angle)) + v8[2]*sin(radians(angle));    vertex8[2] = v8[2]*cos(radians(angle)) - v8[0]*sin(radians(angle));
+    }else if(axis == 2){
       //oops i broke this section
-      vertex1[0] = v1[0]*cos(radians(angle)) - v1[1]*sin(radians(angle));    vertex1[2] = v1[0]*sin(radians(angle)) + v1[1]*cos(radians(angle));
-      vertex2[0] = v2[0]*cos(radians(angle)) - v2[1]*sin(radians(angle));    vertex2[2] = v2[0]*sin(radians(angle)) + v2[1]*cos(radians(angle));
-      vertex3[0] = v3[0]*cos(radians(angle)) - v3[1]*sin(radians(angle));    vertex3[2] = v3[0]*sin(radians(angle)) + v3[1]*cos(radians(angle));
-      vertex4[0] = v4[0]*cos(radians(angle)) - v4[1]*sin(radians(angle));    vertex4[2] = v4[0]*sin(radians(angle)) + v4[1]*cos(radians(angle));
-      vertex5[0] = v5[0]*cos(radians(angle)) - v5[1]*sin(radians(angle));    vertex5[2] = v5[0]*sin(radians(angle)) + v5[1]*cos(radians(angle));
-      vertex6[0] = v6[0]*cos(radians(angle)) - v6[1]*sin(radians(angle));    vertex6[2] = v6[0]*sin(radians(angle)) + v6[1]*cos(radians(angle));
-      vertex7[0] = v7[0]*cos(radians(angle)) - v7[1]*sin(radians(angle));    vertex7[2] = v7[0]*sin(radians(angle)) + v7[1]*cos(radians(angle));
-      vertex8[0] = v8[0]*cos(radians(angle)) - v8[1]*sin(radians(angle));    vertex8[2] = v8[0]*sin(radians(angle)) + v8[1]*cos(radians(angle));
+      vertex1[0] = v1[0]*cos(radians(angle)) - v1[1]*sin(radians(angle));    vertex1[1] = v1[0]*sin(radians(angle)) + v1[1]*cos(radians(angle));
+      vertex2[0] = v2[0]*cos(radians(angle)) - v2[1]*sin(radians(angle));    vertex2[1] = v2[0]*sin(radians(angle)) + v2[1]*cos(radians(angle));
+      vertex3[0] = v3[0]*cos(radians(angle)) - v3[1]*sin(radians(angle));    vertex3[1] = v3[0]*sin(radians(angle)) + v3[1]*cos(radians(angle));
+      vertex4[0] = v4[0]*cos(radians(angle)) - v4[1]*sin(radians(angle));    vertex4[1] = v4[0]*sin(radians(angle)) + v4[1]*cos(radians(angle));
+      vertex5[0] = v5[0]*cos(radians(angle)) - v5[1]*sin(radians(angle));    vertex5[1] = v5[0]*sin(radians(angle)) + v5[1]*cos(radians(angle));
+      vertex6[0] = v6[0]*cos(radians(angle)) - v6[1]*sin(radians(angle));    vertex6[1] = v6[0]*sin(radians(angle)) + v6[1]*cos(radians(angle));
+      vertex7[0] = v7[0]*cos(radians(angle)) - v7[1]*sin(radians(angle));    vertex7[1] = v7[0]*sin(radians(angle)) + v7[1]*cos(radians(angle));
+      vertex8[0] = v8[0]*cos(radians(angle)) - v8[1]*sin(radians(angle));    vertex8[1] = v8[0]*sin(radians(angle)) + v8[1]*cos(radians(angle));
     }
   }
       
