@@ -34,6 +34,8 @@ Update Log
 - Implementing a 3D array instead.
 - New structure now works when rotating 1 degree at a time.
 
+2015-01-13
+- A right face turn was implemented.
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.

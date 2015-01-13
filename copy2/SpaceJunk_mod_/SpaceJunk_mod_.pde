@@ -137,12 +137,14 @@ void swap(int[][] swapper) {
 
 
 // Problem: the cubes will not be rotated; their orientation stays the same.
-void rotX(int dir) {
+void RTurn(int dir) {
   if(anglex < 90){
     for(int i = 0; i < 3; i++){
       for(int j = 0; j < 3; j++){
         for(int k = 0; k < 3; k++){
-          cubes[i][j][k].rotCubie(0,1);          
+          if(i == 2){
+            cubes[i][j][k].rotCubie(0,1);         
+          } 
         }
       }
     }
