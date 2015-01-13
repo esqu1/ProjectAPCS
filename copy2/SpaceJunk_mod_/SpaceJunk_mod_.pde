@@ -7,9 +7,10 @@
  */
 
 // Used for oveall rotation
-int anglex, initanglex, angley, initangley, anglez, initanglez;
+int angler, initangler, angleu, initangleu, anglez, initanglez;
 boolean rotatedx = true, rotatedy = true, rotatedz = true;
 int asdf = 0;
+char F;
 
 // Array for all cubes
 //Cube[] cubes = new Cube[27];
@@ -56,11 +57,11 @@ void setup() {
   size(800, 400, P3D);
   background(255); 
   noStroke();
-  anglex = 0;
-  angley = 0;
+  angler = 0;
+  angleu = 0;
   anglez = 0;
-  initanglex = 0;
-  initangley = 0;
+  initangler = 0;
+  initangleu = 0;
   initanglez = 0;
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
@@ -87,6 +88,8 @@ void draw() {
   rotateY(radians(-40));
 
   drawAllCubes();
+  
+  turn();
 }
 
 void drawAllCubes(){
@@ -99,6 +102,14 @@ void drawAllCubes(){
   }
 }
 
+void turn(){
+  println(F);
+  switch(F){
+    case 'r': RTurn(0);
+    case 'u': UTurn(0);
+  }
+}
+
 void keyPressed() {
   println("rotatedx: " + rotatedx);
   println("rotatedy: " + rotatedy);
@@ -106,9 +117,9 @@ void keyPressed() {
   println(key);
   if (rotatedx && rotatedy && rotatedz) {
     if (key == 'i') {
-      RTurn(0);
+      F = 'r';
     } else if (key == 'j') {
-      UTurn(0);
+      F = 'u';
     } else if (key == 'f') {
       anglez = 0; 
       initanglez++; 
@@ -134,7 +145,7 @@ void swap(int[][] swapper) {
 }*/
 
 void RTurn(int dir) {
-  if(anglex < 90){
+  if(angler < 90){
     for(int i = 0; i < 3; i++){
       for(int j = 0; j < 3; j++){
         for(int k = 0; k < 3; k++){
@@ -144,27 +155,27 @@ void RTurn(int dir) {
         }
       }
     }
-    anglex++;
-  }/*else{
-      anglex = 0;
-  }*/
+    angler++;
+  }else{
+      angler = -1;
+  }
 }
 
 void UTurn(int dir) {
-  if(angley < 90){
+  if(angleu < 90){
     for(int i = 0; i < 3; i++){
       for(int j = 0; j < 3; j++){
         for(int k = 0; k < 3; k++){
           if(j == 0){
-            cubes[i][j][k].rotCubie(1,1);         
+            cubes[i][j][k].rotCubie(1,1);
           } 
         }
       }
     }
-    angley++;
-  }/*else{
-      anglex = 0;
-  }*/
+    angleu++;
+  }else{
+      angleu = -1;
+  }
 }
 
 
