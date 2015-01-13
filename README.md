@@ -36,6 +36,7 @@ Update Log
 
 2015-01-13
 - A right face turn was implemented.
+- Center realigned to actual center; simulaneous turns and multiple turns taken care of.
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.
