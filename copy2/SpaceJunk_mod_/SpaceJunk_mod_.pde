@@ -62,67 +62,9 @@ void setup() {
   initanglex = 0;
   initangley = 0;
   initanglez = 0;
-
-  // Instantiate cubes, passing in random vals for size and postion
-  //cubes[0] = new Cube(30, 30, 30, 0, 0, 0);
-  //cubes[1] = new Cube(30, 30, 30, 200, 0, 0);
-
-  /*
-  cubes[0] = new Cube(30, -7.5, -7.5, -7.5);
-   cubes[1] = new Cube(30, -52.5, -52.5, -52.5);
-   cubes[2] = new Cube(30, -7.5, -52.5, -52.5);
-   cubes[3] = new Cube(30, 37.5, -52.5, -52.5);
-   cubes[4] = new Cube(30, -52.5, -52.5, -7.5);
-   cubes[5] = new Cube(30, -7.5, -52.5, -7.5);
-   cubes[6] = new Cube(30, 37.5, -52.5, -7.5);
-   cubes[7] = new Cube(30, -52.5, -52.5, 37.5);
-   cubes[8] = new Cube(30, -7.5, -52.5, 37.5);
-   cubes[9] = new Cube(30, 37.5, -52.5, 37.5);
-   cubes[10] = new Cube(30, -52.5, -7.5, -52.5);
-   cubes[11] = new Cube(30, -7.5, -7.5, -52.5);
-   cubes[12] = new Cube(30, 37.5, -7.5, -52.5);
-   cubes[13] = new Cube(30, -52.5, -7.5, -7.5);
-   cubes[14] = new Cube(30, 37.5, -7.5, -7.5);
-   cubes[15] = new Cube(30, -52.5, -7.5, 37.5);
-   cubes[16] = new Cube(30, -7.5, -7.5, 37.5);
-   cubes[17] = new Cube(30, 37.5, -7.5, 37.5);
-   cubes[18] = new Cube(30, -52.5, 37.5, -52.5);
-   cubes[19] = new Cube(30, -7.5, 37.5, -52.5);
-   cubes[20] = new Cube(30, 37.5, 37.5, -52.5);
-   cubes[21] = new Cube(30, -52.5, 37.5, -7.5);
-   cubes[22] = new Cube(30, -7.5, 37.5, -7.5);
-   cubes[23] = new Cube(30, 37.5, 37.5, -7.5);
-   cubes[24] = new Cube(30, -52.5, 37.5, 37.5);
-   cubes[25] = new Cube(30, -7.5, 37.5, 37.5);
-   cubes[26] = new Cube(30, 37.5, 37.5, 37.5); 
-   for(
-  cubes[0] = new Cube(30, 0, 0, 0);
-  cubes[1] = new Cube(30, -45, -45, -45);
-  cubes[2] = new Cube(30, 0, -45, -45);
-  cubes[3] = new Cube(30, 45, -45, -45);
-  cubes[4] = new Cube(30, -45, -45, 0);
-  cubes[5] = new Cube(30, 0, -45, 0);
-  cubes[6] = new Cube(30, 45, -45, 0);
-  cubes[7] = new Cube(30, -45, -45, 45);
-  cubes[8] = new Cube(30, 0, -45, 45);
-  cubes[9] = new Cube(30, 45, -45, 45);
-  cubes[10] = new Cube(30, -45, 0, -45);
-  cubes[11] = new Cube(30, 0, 0, -45);
-  cubes[12] = new Cube(30, 45, 0, -45);
-  cubes[13] = new Cube(30, -45, 0, 0);
-  cubes[14] = new Cube(30, 45, 0, 0);
-  cubes[15] = new Cube(30, -45, 0, 45);
-  cubes[16] = new Cube(30, 0, 0, 45);
-  cubes[17] = new Cube(30, 45, 0, 45);
-  cubes[18] = new Cube(30, -45, 45, -45);
-  cubes[19] = new Cube(30, 0, 45, -45);
-  cubes[20] = new Cube(30, 45, 45, -45);
-  cubes[21] = new Cube(30, -45, 45, 0);
-  cubes[22] = new Cube(30, 0, 45, 0);
-  cubes[23] = new Cube(30, 45, 45, 0);
-  cubes[24] = new Cube(30, -45, 45, 45);
-  cubes[25] = new Cube(30, 0, 45, 45);
-  cubes[26] = new Cube(30, 45, 45, 45);*/
+  translate(width/2, height/2, 100);
+  rotateX(radians(-40));
+  rotateY(radians(-40));
   
   for(int i = -1; i < 2; i++){
     for(int j = -1; j < 2; j++){
@@ -131,6 +73,10 @@ void setup() {
       }
     }
   }
+   
+  drawAllCubes();
+
+  
 }
 
 void draw() {
@@ -139,28 +85,6 @@ void draw() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-  if (asdf == 0) {
-    drawAllCubes();
-  }
-  /*
-  if (anglex < 90 && rotatedy && rotatedz) {
-   anglex++;
-   } else {
-   rotatedx = true;
-   }
-   
-   if (angley < 90 && rotatedx && rotatedz) {
-   angley++;
-   } else {
-   rotatedy = true;
-   }
-   
-   if (anglez < 90 && rotatedx && rotatedy) {
-   anglez++;
-   } else {
-   rotatedz = true;
-   }
-   */
 
   drawAllCubes();
 }
@@ -210,7 +134,6 @@ void swap(int[][] swapper) {
   cubes[swapper[1][2]] = cubes[swapper[1][3]]; 
   cubes[swapper[1][3]] = temp2;
 }*/
-
 
 
 // Problem: the cubes will not be rotated; their orientation stays the same.
