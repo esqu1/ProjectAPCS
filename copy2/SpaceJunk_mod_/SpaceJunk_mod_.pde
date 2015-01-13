@@ -105,8 +105,8 @@ void drawAllCubes(){
 void turn(){
   println(F);
   switch(F){
-    case 'r': RTurn(0);
-    case 'u': UTurn(0);
+    case 'r': RTurn(0); break;
+    case 'u': UTurn(0); break;
   }
 }
 
@@ -157,7 +157,8 @@ void RTurn(int dir) {
     }
     angler++;
   }else{
-      angler = -1;
+      angler = 0;
+      F = '~';
   }
 }
 
@@ -174,7 +175,8 @@ void UTurn(int dir) {
     }
     angleu++;
   }else{
-      angleu = -1;
+      angleu = 0;
+      F = '~';
   }
 }
 
