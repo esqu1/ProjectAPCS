@@ -67,15 +67,15 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-/*
+  /*
   for (int i = -1; i < 2; i++) {
-    for (int j = -1; j < 2; j++) {
-      for (int k = -1; k < 2; k++) {
-        cubes[i+1][j+1][k+1] = new Cube(30, 45*i, 45*j, 45*k);
-      }
-    }
-  }
-  */
+   for (int j = -1; j < 2; j++) {
+   for (int k = -1; k < 2; k++) {
+   cubes[i+1][j+1][k+1] = new Cube(30, 45*i, 45*j, 45*k);
+   }
+   }
+   }
+   */
   cubes[0][0][0] = new Cube(30, -52.5, -52.5, -52.5);
   cubes[0][0][1] = new Cube(30, -7.5, -52.5, -52.5);
   cubes[0][0][2] = new Cube(30, 37.5, -52.5, -52.5);
@@ -130,7 +130,6 @@ void drawAllCubes() {
 }
 
 void turn() {
-  println(F);
   switch(F) {
   case 'r': 
     RTurn(0); 
@@ -142,10 +141,6 @@ void turn() {
 }
 
 void keyPressed() {
-  println("rotatedx: " + rotatedx);
-  println("rotatedy: " + rotatedy);
-  println("rotatedz: " + rotatedz);
-  println(key);
   if (stable) {
     if (key == 'i') {
       stable = false;
@@ -163,33 +158,34 @@ void keyPressed() {
   }
 }
 
-/*
-void swap(int[][] swapper) {
- Cube temp = cubes[swapper[0][0]]; 
- cubes[swapper[0][0]] = cubes[swapper[0][1]]; 
- cubes[swapper[0][1]] = cubes[swapper[0][2]]; 
- cubes[swapper[0][2]] = cubes[swapper[0][3]]; 
- cubes[swapper[0][3]] = temp; 
- Cube temp2 = cubes[swapper[1][0]]; 
- cubes[swapper[1][0]] = cubes[swapper[1][1]]; 
- cubes[swapper[1][1]] = cubes[swapper[1][2]]; 
- cubes[swapper[1][2]] = cubes[swapper[1][3]]; 
- cubes[swapper[1][3]] = temp2;
- }
-*/
+void swapFace(int[] l) {
+  Cube temp = cubes[l[0]][l[1]][l[2]];
+  cubes[l[0]][l[1]][l[2]] = cubes[l[3]][l[4]][l[5]];
+  cubes[l[3]][l[4]][l[5]] = cubes[l[6]][l[7]][l[8]];
+  cubes[l[6]][l[7]][l[8]] = cubes[l[9]][l[10]][l[11]];
+  cubes[l[9]][l[10]][l[11]] = temp;
+  Cube temp2 = cubes[l[12]][l[13]][l[14]];
+  cubes[l[12]][l[13]][l[14]] = cubes[l[15]][l[16]][l[17]];
+  cubes[l[15]][l[16]][l[17]] = cubes[l[18]][l[19]][l[20]];
+  cubes[l[18]][l[19]][l[20]] = cubes[l[21]][l[22]][l[23]];
+  cubes[l[21]][l[22]][l[23]] = temp2;
+}
+
 void RTurn(int dir) {
-  if (angler < 90 && !stable) {
+  if (angler < 30 && !stable) {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         for (int k = 0; k < 3; k++) {
           if (k == 2) {
-            cubes[i][j][k].rotCubie(0, 1);
+            cubes[i][j][k].rotCubie(0, 3);
           }
         }
       }
     }
     angler++;
   } else {
+    int[] mat = {2,2,2,2,0,2,0,0,2,0,2,2,0,1,2,1,2,2,2,1,2,1,0,2};
+    swapFace(mat);
     angler = 0;
     F = '~';
     stable = true;
@@ -197,18 +193,30 @@ void RTurn(int dir) {
 }
 
 void UTurn(int dir) {
-  if (angleu < 90 && !stable) {
+  if (angleu < 30 && !stable) {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         for (int k = 0; k < 3; k++) {
-          if (i == 2) {
-            cubes[i][j][k].rotCubie(1, 1);
+          if (i == 0) {
+            cubes[i][j][k].rotCubie(1, -3);
           }
         }
       }
     }
     angleu++;
   } else {
+    int[] mat = {0,0,0,0,2,0,0,2,2,0,0,2,0,1,0,0,2,1,0,1,2,0,0,1};
+    swapFace(mat);
+    /*Cube temp = cubes[0][0][0];
+    cubes[0][0][0] = cubes[0][2][0];
+    cubes[0][2][0] = cubes[0][2][2];
+    cubes[0][2][2] = cubes[0][0][2];
+    cubes[0][0][2] = temp;
+    Cube temp2 = cubes[0][1][0];
+    cubes[0][1][0] = cubes[0][2][1];
+    cubes[0][2][1] = cubes[0][1][2];
+    cubes[0][1][2] = cubes[0][0][1];
+    cubes[0][0][1] = temp2;*/
     angleu = 0;
     F = '~';
     stable = true;
