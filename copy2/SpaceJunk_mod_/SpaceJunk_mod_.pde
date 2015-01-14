@@ -8,8 +8,7 @@
 
 // Used for oveall rotation
 int angler, initangler, angleu, initangleu, anglez, initanglez;
-boolean rotatedx = true, rotatedy = true, rotatedz = true;
-boolean stable = true;
+boolean rotatedx = true, rotatedy = true, rotatedz = true, stable = true, checkSolve = false;
 int asdf = 0;
 char F;
 
@@ -143,6 +142,12 @@ void turn() {
   case 'U':
     UTurn(-1);
     break;
+  case 'f':
+    FTurn(1);
+    break;
+  case 'F':
+    FTurn(-1);
+    break;
   }
 }
 
@@ -160,6 +165,12 @@ void keyPressed() {
     } else if (key == 'f'){
       stable = false;
       F = 'U';
+    } else if (key == 'h'){
+      stable = false;
+      F = 'f';
+    } else if (key == 'g'){
+      stable = false; 
+      F = 'F';
     }
   }
 }
@@ -178,7 +189,7 @@ void swapFace(int[] l) {
 }
 
 void RTurn(int dir) {
-  if (angler < 30 && !stable) {
+  if (angleu < 30 && !stable) {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         for (int k = 0; k < 3; k++) {
@@ -195,7 +206,7 @@ void RTurn(int dir) {
         }
       }
     }
-    angler++;
+    angleu++;
   } else {
     int[] mat = { 
       2, 2, 2, 2, 0, 2, 0, 0, 2, 0, 2, 2, 0, 1, 2, 1, 2, 2, 2, 1, 2, 1, 0, 2
@@ -207,7 +218,7 @@ void RTurn(int dir) {
       mat = swap;
     } 
     swapFace(mat);
-    angler = 0;
+    angleu = 0;
     F = '~';
     stable = true;
   }
@@ -243,3 +254,32 @@ void UTurn(int dir) {
   }
 }
 
+void FTurn(int dir) {
+  if (angleu < 30 && !stable) {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        for (int k = 0; k < 3; k++) {
+          if (j == 2) {
+            switch(dir){
+              case 1: cubes[i][j][k].rotCubie(2, 3); break;
+              case -1: cubes[i][j][k].rotCubie(2,-3); break;
+            }
+          }
+        }
+      }
+    }
+    angleu++;
+  } else {
+    int[] mat = {
+      0,2,0,2,2,0,2,2,2,0,2,2,0,2,1,1,2,0,2,2,1,1,2,2
+    };
+    if(dir == -1){
+      int[] swap = { 0,2,2,2,2,2,2,2,0,0,2,0,1,2,2,2,2,1,1,2,0,0,2,1};
+      mat = swap;
+    }
+    swapFace(mat);
+    angleu = 0;
+    F = '~';
+    stable = true;
+  }
+}
