@@ -37,6 +37,10 @@ Update Log
 2015-01-13
 - A right face turn was implemented.
 - Center realigned to actual center; simulaneous turns and multiple turns taken care of.
+
+2015-01-14
+- Created a function that will swap the cubies correspondingly.
+- F Turn created.
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.
