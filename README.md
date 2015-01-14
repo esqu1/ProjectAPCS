@@ -41,6 +41,8 @@ Update Log
 2015-01-14
 - Created a function that will swap the cubies correspondingly.
 - F Turn created.
+- All turns implemented, X rotation working.
+- Black outline for cube working.
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.

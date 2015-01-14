@@ -56,7 +56,8 @@ public static void pause(int n) {
 void setup() {
   size(800, 400, P3D);
   background(255); 
-  noStroke();
+  //noStroke();
+  strokeWeight(10);
   angle = 0;
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
@@ -149,6 +150,25 @@ void turn() {
   case 'L':
     LTurn(1);
     break;
+  case 'd':
+    DTurn(-1);
+    break;
+  case 'D':
+    DTurn(1);
+    break;
+  case 'b':
+    BTurn(-1);
+    break;
+  case 'B':
+    BTurn(1);
+    break;
+  case 'x':
+    XRot(1);
+    break;
+  case 'X':
+    XRot(-1);
+    break;
+    
   }
 }
 
@@ -178,6 +198,24 @@ void keyPressed() {
     } else if (key == 'e') {
       stable = false;
       F = 'L';
+    } else if (key == 's') {
+      stable = false;
+      F = 'd';
+    } else if (key == 'l') {
+      stable = false;
+      F = 'D';
+    } else if (key == 'w') {
+      stable = false;
+      F = 'b';
+    } else if (key == 'o') {
+      stable = false;
+      F = 'B';
+    } else if (key == 'y' || key == 't') {
+      stable = false;
+      F = 'x';
+    } else if (key == 'b' || key == 'n') {
+      stable = false;
+      F = 'X';
     }
   }
 }
@@ -235,7 +273,7 @@ void move(char var, int face, int dir) {
 
 void RTurn(int dir) {
   if (angle < 30 && !stable) {
-    move('k',2,dir);
+    move('k', 2, dir);
     angle++;
   } else {
     int[] mat = { 
@@ -256,7 +294,7 @@ void RTurn(int dir) {
 
 void UTurn(int dir) {
   if (angle < 30 && !stable) {
-    move('i',0,-dir);
+    move('i', 0, -dir);
     angle++;
   } else {
     int[] mat = {
@@ -277,7 +315,7 @@ void UTurn(int dir) {
 
 void FTurn(int dir) {
   if (angle < 30 && !stable) {
-    move('j',2,-dir);
+    move('j', 2, -dir);
     angle++;
   } else {
     int[] mat = {
@@ -298,7 +336,7 @@ void FTurn(int dir) {
 
 void LTurn(int dir) {
   if (angle < 30 && !stable) {
-    move('k',0,dir);
+    move('k', 0, dir);
     angle++;
   } else {
     int[] mat = { 
@@ -320,15 +358,15 @@ void LTurn(int dir) {
 //broken
 void DTurn(int dir) {
   if (angle < 30 && !stable) {
-    move('i',0,-dir);
+    move('i', 2, -dir);
     angle++;
   } else {
     int[] mat = {
-      0, 0, 0, 0, 2, 0, 0, 2, 2, 0, 0, 2, 0, 1, 0, 0, 2, 1, 0, 1, 2, 0, 0, 1
+      2, 0, 0, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 1, 0, 2, 2, 1, 2, 1, 2, 2, 0, 1
     };
     if (dir == -1) {
       int[] swap = { 
-        0, 0, 2, 0, 2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 2, 1, 0, 1, 0
+        2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 0, 0, 2, 0, 1, 2, 1, 2, 2, 2, 1, 2, 1, 0
       };
       mat = swap;
     }
@@ -342,15 +380,15 @@ void DTurn(int dir) {
 //broken
 void BTurn(int dir) {
   if (angle < 30 && !stable) {
-    move('j',2,-dir);
+    move('j', 0, -dir);
     angle++;
   } else {
     int[] mat = {
-      0, 2, 0, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0, 2, 1, 1, 2, 0, 2, 2, 1, 1, 2, 2
+      0, 0, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 0, 0, 1, 1, 0, 0, 2, 0, 1, 1, 0, 2
     };
     if (dir == -1) {
       int[] swap = { 
-        0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 0, 1, 2, 2, 2, 2, 1, 1, 2, 0, 0, 2, 1
+        0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0, 0, 1, 0, 2, 2, 0, 1, 1, 0, 0, 0, 0, 1
       };
       mat = swap;
     }
@@ -360,3 +398,29 @@ void BTurn(int dir) {
     stable = true;
   }
 }
+
+void XRot(int dir) {
+  if (angle < 30 && !stable) {
+    for (int i = 0; i < 3; i++) {
+      move('k', i, dir);
+    }
+    angle++;
+  } else {
+    for (int i = 0; i < 3; i++) {
+      int[] mat = { 
+        2, 2, i, 2, 0, i, 0, 0, i, 0, 2, i, 0, 1, i, 1, 2, i, 2, 1, i, 1, 0, i
+      };
+      if (dir == -1) {
+        int[] swap = {
+          0, 2, i, 0, 0, i, 2, 0, i, 2, 2, i, 1, 0, i, 2, 1, i, 1, 2, i, 0, 1, i
+        };
+        mat = swap;
+      }
+      swapFace(mat);
+    }
+    angle = 0;
+    F = '~';
+    stable = true;
+  }
+}
+
