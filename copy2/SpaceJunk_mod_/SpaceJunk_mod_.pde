@@ -7,7 +7,7 @@
  */
 
 // Used for oveall rotation
-int angler, initangler, angleu, initangleu, anglez, initanglez;
+int angle;
 boolean rotatedx = true, rotatedy = true, rotatedz = true, stable = true, checkSolve = false;
 int asdf = 0;
 char F;
@@ -57,12 +57,7 @@ void setup() {
   size(800, 400, P3D);
   background(255); 
   noStroke();
-  angler = 0;
-  angleu = 0;
-  anglez = 0;
-  initangler = 0;
-  initangleu = 0;
-  initanglez = 0;
+  angle = 0;
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
@@ -162,13 +157,13 @@ void keyPressed() {
     } else if (key == 'k') {
       stable = false;
       F = 'R';
-    } else if (key == 'f'){
+    } else if (key == 'f') {
       stable = false;
       F = 'U';
-    } else if (key == 'h'){
+    } else if (key == 'h') {
       stable = false;
       F = 'f';
-    } else if (key == 'g'){
+    } else if (key == 'g') {
       stable = false; 
       F = 'F';
     }
@@ -188,25 +183,48 @@ void swapFace(int[] l) {
   cubes[l[21]][l[22]][l[23]] = temp2;
 }
 
-void RTurn(int dir) {
-  if (angleu < 30 && !stable) {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        for (int k = 0; k < 3; k++) {
-          if (k == 2) {
-            switch(dir) {
-            case -1: 
-              cubes[i][j][k].rotCubie(0, -3); 
-              break;
-            case 1: 
-              cubes[i][j][k].rotCubie(0, 3); 
-              break;
-            }
+void move(char var, int face, int dir) {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      for (int k = 0; k < 3; k++) {
+        if (var == 'i' && i == face) {
+          switch(dir) {
+          case -1: 
+            cubes[i][j][k].rotCubie(1, -3); 
+            break;
+          case 1: 
+            cubes[i][j][k].rotCubie(1, 3); 
+            break;
+          }
+        } else if (var == 'j' && j == face) {
+          switch(dir) {
+          case -1: 
+            cubes[i][j][k].rotCubie(2, 3); 
+            break;
+          case 1: 
+            cubes[i][j][k].rotCubie(2, -3); 
+            break;
+          }
+        } else if (var == 'k' && k == face) {
+          switch(dir) {
+          case -1: 
+            cubes[i][j][k].rotCubie(0, -3); 
+            break;
+          case 1: 
+            cubes[i][j][k].rotCubie(0, 3); 
+            break;
           }
         }
       }
     }
-    angleu++;
+  }
+}
+
+
+void RTurn(int dir) {
+  if (angle < 30 && !stable) {
+    move('k',2,dir);
+    angle++;
   } else {
     int[] mat = { 
       2, 2, 2, 2, 0, 2, 0, 0, 2, 0, 2, 2, 0, 1, 2, 1, 2, 2, 2, 1, 2, 1, 0, 2
@@ -218,68 +236,51 @@ void RTurn(int dir) {
       mat = swap;
     } 
     swapFace(mat);
-    angleu = 0;
+    angle = 0;
     F = '~';
     stable = true;
   }
 }
 
 void UTurn(int dir) {
-  if (angleu < 30 && !stable) {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        for (int k = 0; k < 3; k++) {
-          if (i == 0) {
-            switch(dir){
-              case 1: cubes[i][j][k].rotCubie(1, -3); break;
-              case -1: cubes[i][j][k].rotCubie(1,3); break;
-            }
-          }
-        }
-      }
-    }
-    angleu++;
+  if (angle < 30 && !stable) {
+    move('i',0,-dir);
+    angle++;
   } else {
     int[] mat = {
       0, 0, 0, 0, 2, 0, 0, 2, 2, 0, 0, 2, 0, 1, 0, 0, 2, 1, 0, 1, 2, 0, 0, 1
     };
-    if(dir == -1){
-      int[] swap = { 0,0,2,0,2,2,0,2,0,0,0,0,0,0,1,0,1,2,0,2,1,0,1,0};
+    if (dir == -1) {
+      int[] swap = { 
+        0, 0, 2, 0, 2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 2, 1, 0, 1, 0
+      };
       mat = swap;
     }
     swapFace(mat);
-    angleu = 0;
+    angle = 0;
     F = '~';
     stable = true;
   }
 }
 
 void FTurn(int dir) {
-  if (angleu < 30 && !stable) {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        for (int k = 0; k < 3; k++) {
-          if (j == 2) {
-            switch(dir){
-              case 1: cubes[i][j][k].rotCubie(2, 3); break;
-              case -1: cubes[i][j][k].rotCubie(2,-3); break;
-            }
-          }
-        }
-      }
-    }
-    angleu++;
+  if (angle < 30 && !stable) {
+    move('j',2,-dir);
+    angle++;
   } else {
     int[] mat = {
-      0,2,0,2,2,0,2,2,2,0,2,2,0,2,1,1,2,0,2,2,1,1,2,2
+      0, 2, 0, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0, 2, 1, 1, 2, 0, 2, 2, 1, 1, 2, 2
     };
-    if(dir == -1){
-      int[] swap = { 0,2,2,2,2,2,2,2,0,0,2,0,1,2,2,2,2,1,1,2,0,0,2,1};
+    if (dir == -1) {
+      int[] swap = { 
+        0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 0, 1, 2, 2, 2, 2, 1, 1, 2, 0, 0, 2, 1
+      };
       mat = swap;
     }
     swapFace(mat);
-    angleu = 0;
+    angle = 0;
     F = '~';
     stable = true;
   }
 }
+
