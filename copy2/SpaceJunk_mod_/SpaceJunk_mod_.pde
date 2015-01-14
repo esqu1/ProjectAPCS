@@ -131,12 +131,9 @@ void drawAllCubes() {
 
 void turn() {
   switch(F) {
-  case 'r': 
-    RTurn(0); 
-    break;
-  case 'u': 
-    UTurn(0); 
-    break;
+  case 'r': RTurn(1); break;
+  case 'R': RTurn(-1); break;
+  case 'u': UTurn(1); break;
   }
 }
 
@@ -148,12 +145,9 @@ void keyPressed() {
     } else if (key == 'j') {
       stable = false;
       F = 'u';
-    } else if (key == 'f') {
-      anglez = 0; 
-      initanglez++; 
-      rotatedz = false;
-    } else if (key == 'u') {
-      UTurn(0);
+    } else if (key == 'k'){
+      stable = false;
+      F = 'R';
     }
   }
 }
@@ -177,14 +171,23 @@ void RTurn(int dir) {
       for (int j = 0; j < 3; j++) {
         for (int k = 0; k < 3; k++) {
           if (k == 2) {
-            cubes[i][j][k].rotCubie(0, 3);
+            switch(dir){
+              case -1: cubes[i][j][k].rotCubie(0, -3); break;
+              case 1: cubes[i][j][k].rotCubie(0,3); break;
+            }
           }
         }
       }
     }
     angler++;
   } else {
-    int[] mat = {2,2,2,2,0,2,0,0,2,0,2,2,0,1,2,1,2,2,2,1,2,1,0,2};
+    if (dir == 1){
+      mat = { 2,2,2,2,0,2,0,0,2,0,2,2,0,1,2,1,2,2,2,1,2,1,0,2 };
+    }else if(dir == -1){
+      mat = {0,2,2,0,0,2,2,0,2,2,2,2,1,0,2,2,1,2,1,2,2,0,1,2};
+    }else{
+      mat = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    }  
     swapFace(mat);
     angler = 0;
     F = '~';
