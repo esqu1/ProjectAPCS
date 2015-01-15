@@ -166,7 +166,7 @@ public class Cube {
     float[] v6 = new float[]{vertex6[0], vertex6[1], vertex6[2]};
     float[] v7 = new float[]{vertex7[0], vertex7[1], vertex7[2]};
     float[] v8 = new float[]{vertex8[0], vertex8[1], vertex8[2]};
-    if (axis == 0){ // 
+    if (axis == 0){
       vertex1[1] = v1[1]*cos(radians(angle)) - v1[2]*sin(radians(angle));    vertex1[2] = v1[1]*sin(radians(angle)) + v1[2]*cos(radians(angle));
       vertex2[1] = v2[1]*cos(radians(angle)) - v2[2]*sin(radians(angle));    vertex2[2] = v2[1]*sin(radians(angle)) + v2[2]*cos(radians(angle));
       vertex3[1] = v3[1]*cos(radians(angle)) - v3[2]*sin(radians(angle));    vertex3[2] = v3[1]*sin(radians(angle)) + v3[2]*cos(radians(angle));

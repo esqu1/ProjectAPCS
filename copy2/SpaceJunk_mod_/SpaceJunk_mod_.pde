@@ -8,12 +8,11 @@
 
 // Used for oveall rotation
 int angle;
-boolean rotatedx = true, rotatedy = true, rotatedz = true, stable = true, checkSolve = false;
+boolean stable = true, checkSolve = false;
 int asdf = 0;
 char F;
 
 // Array for all cubes
-//Cube[] cubes = new Cube[27];
 Cube[][][] cubes = new Cube[3][3][3];
 
 // Array for colors
@@ -104,34 +103,6 @@ void setup() {
       }
     }
   }
-  /*
-  cubes[0][0][0] = new Cube(30, -52.5, -52.5, -52.5, WBO);
-  cubes[0][0][1] = new Cube(30, -7.5, -52.5, -52.5, WB);
-  cubes[0][0][2] = new Cube(30, 37.5, -52.5, -52.5, WBR);
-  cubes[0][1][0] = new Cube(30, -52.5, -52.5, -7.5, WO);
-  cubes[0][1][1] = new Cube(30, -7.5, -52.5, -7.5, WC);
-  cubes[0][1][2] = new Cube(30, 37.5, -52.5, -7.5, WR);
-  cubes[0][2][0] = new Cube(30, -52.5, -52.5, 37.5, WGO);
-  cubes[0][2][1] = new Cube(30, -7.5, -52.5, 37.5, WG);
-  cubes[0][2][2] = new Cube(30, 37.5, -52.5, 37.5, WGR);
-  cubes[1][0][0] = new Cube(30, -52.5, -7.5, -52.5, BO);
-  cubes[1][0][1] = new Cube(30, -7.5, -7.5, -52.5, BC);
-  cubes[1][0][2] = new Cube(30, 37.5, -7.5, -52.5, BR);
-  cubes[1][1][0] = new Cube(30, -52.5, -7.5, -7.5, OC);
-  cubes[1][1][1] = new Cube(30, -7.5, -7.5, -7.5, CORE);
-  cubes[1][1][2] = new Cube(30, 37.5, -7.5, -7.5, RC);
-  cubes[1][2][0] = new Cube(30, -52.5, -7.5, 37.5, GO);
-  cubes[1][2][1] = new Cube(30, -7.5, -7.5, 37.5, GC);
-  cubes[1][2][2] = new Cube(30, 37.5, -7.5, 37.5, GR);
-  cubes[2][0][0] = new Cube(30, -52.5, 37.5, -52.5, YBO);
-  cubes[2][0][1] = new Cube(30, -7.5, 37.5, -52.5, YB);
-  cubes[2][0][2] = new Cube(30, 37.5, 37.5, -52.5, YBR);
-  cubes[2][1][0] = new Cube(30, -52.5, 37.5, -7.5, YO);
-  cubes[2][1][1] = new Cube(30, -7.5, 37.5, -7.5, YC);
-  cubes[2][1][2] = new Cube(30, 37.5, 37.5, -7.5, YR);
-  cubes[2][2][0] = new Cube(30, -52.5, 37.5, 37.5, YGO);
-  cubes[2][2][1] = new Cube(30, -7.5, 37.5, 37.5, YG);
-  cubes[2][2][2] = new Cube(30, 37.5, 37.5, 37.5, YGR);*/
   drawAllCubes();
 }
 
@@ -141,9 +112,7 @@ void draw() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-
   drawAllCubes();
-
   turn();
 }
 
@@ -411,7 +380,6 @@ void LTurn(int dir) {
   }
 }
 
-//broken
 void DTurn(int dir) {
   if (angle < 15 && !stable) {
     move('i', 2, -dir);
