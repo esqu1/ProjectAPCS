@@ -174,12 +174,12 @@ void draw() {
   drawAllCubes();
   turn(); // draw the cubes, then check to see if we can continue turning the cubelets
 
-  try {
-    keyim.simulate('C');
+ /* try {
+    keysim.simulate('C');
   }
   catch(AWTException e) {
     println(e);
-  }
+  }*/
 }
 
 // draws all the cubelets in the cube

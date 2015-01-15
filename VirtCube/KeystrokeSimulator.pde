@@ -8,7 +8,7 @@ public class KeystrokeSimulator {
     try {
       robot = new Robot();
     }
-    catch(AWTexception e) {
+    catch(AWTException e) {
       println(e);
     }
   }
