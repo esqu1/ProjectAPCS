@@ -508,3 +508,15 @@ void ZRot(int dir) {
   }
 }
 
+void randMove() {
+  Random r = new Random();
+  int m = r.nextInt(12);
+  switch(m){
+    case 0: UTurn(1 * (2*r.nextInt(2) - 1)); break;
+    case 1: DTurn(1 * (2*r.nextInt(2) - 1)); break;
+    case 2: LTurn(1 * (2*r.nextInt(2) - 1)); break;
+    case 3: RTurn(1 * (2*r.nextInt(2) - 1)); break;
+    case 4: FTurn(1 * (2*r.nextInt(2) - 1)); break;
+    case 5: BTurn(1 * (2*r.nextInt(2) - 1)); break;
+  }
+}
