@@ -10,6 +10,7 @@
 import java.util.*;
 int angle = 0;
 boolean stable = true, checkSolve = false;
+ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
 
 // Array for all cubes
@@ -517,20 +518,33 @@ void ZRot(int dir) {
 }
 
 void randMove() {
-  int m = int(random(6));
+  int m = int(random(12));
   switch(m){
-    case 0: UTurn(2*int(random(2)) - 1); break;
-    case 1: DTurn(2*int(random(2)) - 1); break;
-    case 2: LTurn(2*int(random(2)) - 1); break;
-    case 3: RTurn(2*int(random(2)) - 1); break;
-    case 4: FTurn(2*int(random(2)) - 1); break;
-    case 5: BTurn(2*int(random(2)) - 1); break;
+    case 0: scramble.add('u'); break;
+    case 1: scramble.add('U'); break;
+    case 2: scramble.add('d'); break;
+    case 3: scramble.add('D'); break;
+    case 4: scramble.add('l'); break;
+    case 5: scramble.add('L'); break;
+    case 6: scramble.add('r'); break;
+    case 7: scramble.add('R'); break;
+    case 8: scramble.add('f'); break;
+    case 9: scramble.add('F'); break;
+    case 10: scramble.add('b'); break;
+    case 11: scramble.add('B'); break;
   }
 }
 
 void scramble(int length){
+  scramble.clear();
   for(int i = 0; i < length; i++){
     randMove();
   }
+  for(char c : scramble){
+    if(c == 'u'){
+      UTurn(1);
+    }
+  }
+  F = '~';
   stable = true;
 }
