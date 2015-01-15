@@ -7,9 +7,8 @@
  */
 
 // Used for oveall rotation
-int angle;
+int angle = 0;
 boolean stable = true, checkSolve = false;
-int asdf = 0;
 char F;
 
 // Array for all cubes
@@ -42,7 +41,9 @@ int[][] colors = {
   }
 };
 
-public static void pause(int n) {
+
+// Pauses the animation
+static void pause(int n) {
   try {
     Thread.sleep(1000 * n);
   }
@@ -51,20 +52,16 @@ public static void pause(int n) {
   }
 }
 
-
+// Sets up the cube 
 void setup() {
   size(800, 400, P3D);
   background(255); 
-  //noStroke();
-  strokeWeight(10);
-  angle = 0;
+  strokeWeight(10); //give the cube its black border
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-/*
   
-  */
-  
+  // boolean arrays to choose to color the face of a cubelet or not
   boolean[] WBO = {true, false, true, false, true, false};
   boolean[] WB = {true, false, false, false, true, false};
   boolean[] WBR = {true, false, false, true, true, false};
@@ -106,6 +103,7 @@ void setup() {
   drawAllCubes();
 }
 
+// main draw method
 void draw() {
   background(157, 157, 157);
   fill(200);
@@ -113,9 +111,10 @@ void draw() {
   rotateX(radians(-40));
   rotateY(radians(-40));
   drawAllCubes();
-  turn();
+  turn(); // draw the cubes, then check to see if we can continue turning the cubelets
 }
 
+// draws all the cubelets in the cube
 void drawAllCubes() {
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
@@ -126,6 +125,7 @@ void drawAllCubes() {
   }
 }
 
+// Performs the designated move based on key press
 void turn() {
   switch(F) {
   case 'r': 
@@ -185,6 +185,7 @@ void turn() {
   }
 }
 
+// translates key pressed into face turn
 void keyPressed() {
   if (stable) {
     if (key == 'i') {
@@ -245,6 +246,7 @@ void keyPressed() {
   }
 }
 
+// swaps the cubelets in "cubes" to be rotated
 void swapFace(int[] l) {
   Cube temp = cubes[l[0]][l[1]][l[2]];
   cubes[l[0]][l[1]][l[2]] = cubes[l[3]][l[4]][l[5]];
@@ -258,6 +260,7 @@ void swapFace(int[] l) {
   cubes[l[21]][l[22]][l[23]] = temp2;
 }
 
+// will do the actual rotating; change the position of each cube
 void move(char var, int face, int dir) {
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
@@ -295,7 +298,7 @@ void move(char var, int face, int dir) {
   }
 }
 
-
+// Right face
 void RTurn(int dir) {
   if (angle < 15 && !stable) {
     move('k', 2, dir);
@@ -317,6 +320,7 @@ void RTurn(int dir) {
   }
 }
 
+// Up face
 void UTurn(int dir) {
   if (angle < 15 && !stable) {
     move('i', 0, -dir);
@@ -338,6 +342,7 @@ void UTurn(int dir) {
   }
 }
 
+// Down face
 void FTurn(int dir) {
   if (angle < 15 && !stable) {
     move('j', 2, -dir);
@@ -359,6 +364,7 @@ void FTurn(int dir) {
   }
 }
 
+// Left face
 void LTurn(int dir) {
   if (angle < 15 && !stable) {
     move('k', 0, dir);
@@ -380,6 +386,7 @@ void LTurn(int dir) {
   }
 }
 
+// Down face
 void DTurn(int dir) {
   if (angle < 15 && !stable) {
     move('i', 2, -dir);
@@ -401,6 +408,7 @@ void DTurn(int dir) {
   }
 }
 
+// Back face
 void BTurn(int dir) {
   if (angle < 15 && !stable) {
     move('j', 0, -dir);
@@ -422,6 +430,7 @@ void BTurn(int dir) {
   }
 }
 
+// X Rotation (rotation along left and right faces)
 void XRot(int dir) {
   if (angle < 15 && !stable) {
     for (int i = 0; i < 3; i++) {
@@ -447,6 +456,7 @@ void XRot(int dir) {
   }
 }
 
+// Y Rotation (rotation along up and down faces)
 void YRot(int dir) {
   if (angle < 15 && !stable) {
     for (int i = 0; i < 3; i++) {
@@ -472,7 +482,7 @@ void YRot(int dir) {
   }
 }
 
-
+// Z Rotation (rotation along front and back faces)
 void ZRot(int dir) {
   if (angle < 15 && !stable) {
     for (int i = 0; i < 3; i++) {
