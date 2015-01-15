@@ -1,10 +1,9 @@
 FINAL PROJECT FOR APCS
 ====
-
-==
 By Peter Strbik and Brandon Lin
 
 ==
+
 Update Log
 
 2014-12-31
@@ -46,39 +45,5 @@ Update Log
 - All cube turns and cube rotations are now fully functional.
 - Fixed a bug in which the nonvisible parts of the parts were also showing colors.
 
-OUR PLAN
 
-We plan to make a virtual Rubik's Cube controlled by the keyboard.
 
-The basic mechanism behind this:
-We have 2 arrays.
-- The first array is a linear array of size 26 that contains the different cubelets. This will allow us to see which cubelets will be rotated upon a turn.
-- The second array is a 2-dimensional array (int[6][9]) that contains the various colors of each face. This will allow us to see if the puzzle is solved or not.
-
-In our examples, the following key will be used:
-White - 1
-Yellow - 2
-Orange - 3
-Red - 4
-Green - 5
-Blue - 6
-
-For example, using the scramble
-
-R F' B2 D' B U2 F' L' D B' U2 F2 D2 F' R2 B R2 F' U2 R2
-
-the following 2D Array is generated (columns represent the sticker position according to VisualCube's position, rows represent the face value according to the order specified by Kociemba's Algorithm):
-
-  0 1 2 3 4 5 6 7 8
-U 5 4 1 6 1 4 4 2 1
-D 2 6 3 1 2 1 1 1 5
-L 2 3 1 2 3 5 6 5 4
-R 5 1 4 4 4 6 6 3 4
-F 5 3 3 3 5 2 6 2 2
-B 6 5 3 4 6 5 2 6 3
-
-Every cubelet is assigned an integer value from 1 to 26. Each turn and rotation, corresponding to a matching key on the keyboard, will switch the corresponding cubelets in the linear array and the corresponding colors in the 2D Array.
-
-Now for the graphics aspect. Each cubelet will be derived from an abstract class Cubelet, which has the subclasses Corner, Edge, and Center. These cubelets will be exactly the same, except for how they are oriented on the cube and which stickers are colored.
-
-Our only problem now is to figure out how to animate the turning of the cubelets simultaneously to make it look like an actually turning Rubik's Cube.
