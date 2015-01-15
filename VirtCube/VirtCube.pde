@@ -7,6 +7,7 @@
  */
 
 // Used for oveall rotation
+import java.util.*;
 int angle = 0;
 boolean stable = true, checkSolve = false;
 char F;
@@ -518,5 +519,11 @@ void randMove() {
     case 3: RTurn(1 * (2*r.nextInt(2) - 1)); break;
     case 4: FTurn(1 * (2*r.nextInt(2) - 1)); break;
     case 5: BTurn(1 * (2*r.nextInt(2) - 1)); break;
+  }
+}
+
+void scramble(int length){
+  for(int i = 0; i < length; i++){
+    randMove();
   }
 }
