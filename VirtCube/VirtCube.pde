@@ -12,6 +12,7 @@ int angle = 0;
 boolean stable = true, checkSolve = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
+KeystrokeSimulator keysim;
 
 // Array for all cubes
 Cube[][][] cubes = new Cube[3][3][3];
@@ -62,41 +63,99 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-  
+  keysim = new KeystrokeSimulator();
+
+
   // boolean arrays to choose to color the face of a cubelet or not
-  boolean[] WBO = {true, false, true, false, true, false};
-  boolean[] WB = {true, false, false, false, true, false};
-  boolean[] WBR = {true, false, false, true, true, false};
-  boolean[] WO = {false, false, true, false, true, false};
-  boolean[] WC = {false, false, false, false, true, false};
-  boolean[] WR = {false, false, false, true, true, false};
-  boolean[] WGO = {false, true, true, false, true, false};
-  boolean[] WG = {false, true, false, false, true, false};
-  boolean[] WGR = {false, true, false, true, true, false};
-  boolean[] BO = {true, false, true, false, false, false};
-  boolean[] BC = {true, false, false, false, false, false};
-  boolean[] BR = {true, false, false, true, false, false};
-  boolean[] OC = {false, false, true, false, false, false};
-  boolean[] CORE = {false, false, false, false, false, false};
-  boolean[] RC = {false, false, false, true, false, false};
-  boolean[] GO = {false, true, true, false, false, false};
-  boolean[] GC = {false, true, false, false, false, false};
-  boolean[] GR = {false, true, false, true, false, false};
-  boolean[] YBO = {true, false, true, false, false, true};
-  boolean[] YB = {true, false, false, false, false, true};
-  boolean[] YBR = {true, false, false, true, false, true};
-  boolean[] YO = {false, false, true, false, false, true};
-  boolean[] YC = {false, false, false, false, false, true};
-  boolean[] YR = {false, false, false, true, false, true};
-  boolean[] YGO = {false, true, true, false, false, true};
-  boolean[] YG = {false, true, false, false, false, true};
-  boolean[] YGR = {false, true, false, true, false, true};
-  boolean[][] lister = { WBO, WB, WBR, WO, WC, WR, WGO, WG, WGR, BO, BC, BR, OC, CORE, RC, GO, GC, GR, YBO, YB, YBR, YO, YC, YR, YGO, YG, YGR };
+  boolean[] WBO = {
+    true, false, true, false, true, false
+  };
+  boolean[] WB = {
+    true, false, false, false, true, false
+  };
+  boolean[] WBR = {
+    true, false, false, true, true, false
+  };
+  boolean[] WO = {
+    false, false, true, false, true, false
+  };
+  boolean[] WC = {
+    false, false, false, false, true, false
+  };
+  boolean[] WR = {
+    false, false, false, true, true, false
+  };
+  boolean[] WGO = {
+    false, true, true, false, true, false
+  };
+  boolean[] WG = {
+    false, true, false, false, true, false
+  };
+  boolean[] WGR = {
+    false, true, false, true, true, false
+  };
+  boolean[] BO = {
+    true, false, true, false, false, false
+  };
+  boolean[] BC = {
+    true, false, false, false, false, false
+  };
+  boolean[] BR = {
+    true, false, false, true, false, false
+  };
+  boolean[] OC = {
+    false, false, true, false, false, false
+  };
+  boolean[] CORE = {
+    false, false, false, false, false, false
+  };
+  boolean[] RC = {
+    false, false, false, true, false, false
+  };
+  boolean[] GO = {
+    false, true, true, false, false, false
+  };
+  boolean[] GC = {
+    false, true, false, false, false, false
+  };
+  boolean[] GR = {
+    false, true, false, true, false, false
+  };
+  boolean[] YBO = {
+    true, false, true, false, false, true
+  };
+  boolean[] YB = {
+    true, false, false, false, false, true
+  };
+  boolean[] YBR = {
+    true, false, false, true, false, true
+  };
+  boolean[] YO = {
+    false, false, true, false, false, true
+  };
+  boolean[] YC = {
+    false, false, false, false, false, true
+  };
+  boolean[] YR = {
+    false, false, false, true, false, true
+  };
+  boolean[] YGO = {
+    false, true, true, false, false, true
+  };
+  boolean[] YG = {
+    false, true, false, false, false, true
+  };
+  boolean[] YGR = {
+    false, true, false, true, false, true
+  };
+  boolean[][] lister = { 
+    WBO, WB, WBR, WO, WC, WR, WGO, WG, WGR, BO, BC, BR, OC, CORE, RC, GO, GC, GR, YBO, YB, YBR, YO, YC, YR, YGO, YG, YGR
+  };
   int m = 0;
-  
-  for(int j = -1; j < 2; j++){
-    for(int k = -1; k < 2; k++){
-      for(int i = -1; i < 2; i++){
+
+  for (int j = -1; j < 2; j++) {
+    for (int k = -1; k < 2; k++) {
+      for (int i = -1; i < 2; i++) {
         cubes[j+1][k+1][i+1] = new Cube(30, (45 * i) - 7.5, (45 * j) - 7.5, (45 * k) - 7.5, lister[m]);
         m++;
       }
@@ -114,6 +173,13 @@ void draw() {
   rotateY(radians(-40));
   drawAllCubes();
   turn(); // draw the cubes, then check to see if we can continue turning the cubelets
+
+  try {
+    keyim.simulate('C');
+  }
+  catch(AWTException e) {
+    println(e);
+  }
 }
 
 // draws all the cubelets in the cube
@@ -247,11 +313,10 @@ void keyPressed() {
     } else if (key == 'q') {
       stable = false;
       F = 'Z';
-    } else if (key == ' '){
+    } else if (key == ' ') {
       stable = false;
       F = '$';
     }
-    
   }
 }
 
@@ -519,32 +584,57 @@ void ZRot(int dir) {
 
 void randMove() {
   int m = int(random(12));
-  switch(m){
-    case 0: scramble.add('u'); break;
-    case 1: scramble.add('U'); break;
-    case 2: scramble.add('d'); break;
-    case 3: scramble.add('D'); break;
-    case 4: scramble.add('l'); break;
-    case 5: scramble.add('L'); break;
-    case 6: scramble.add('r'); break;
-    case 7: scramble.add('R'); break;
-    case 8: scramble.add('f'); break;
-    case 9: scramble.add('F'); break;
-    case 10: scramble.add('b'); break;
-    case 11: scramble.add('B'); break;
+  switch(m) {
+  case 0: 
+    scramble.add('u'); 
+    break;
+  case 1: 
+    scramble.add('U'); 
+    break;
+  case 2: 
+    scramble.add('d'); 
+    break;
+  case 3: 
+    scramble.add('D'); 
+    break;
+  case 4: 
+    scramble.add('l'); 
+    break;
+  case 5: 
+    scramble.add('L'); 
+    break;
+  case 6: 
+    scramble.add('r'); 
+    break;
+  case 7: 
+    scramble.add('R'); 
+    break;
+  case 8: 
+    scramble.add('f'); 
+    break;
+  case 9: 
+    scramble.add('F'); 
+    break;
+  case 10: 
+    scramble.add('b'); 
+    break;
+  case 11: 
+    scramble.add('B'); 
+    break;
   }
 }
 
-void scramble(int length){
+void scramble(int length) {
   scramble.clear();
-  for(int i = 0; i < length; i++){
+  for (int i = 0; i < length; i++) {
     randMove();
   }
-  for(char c : scramble){
-    if(c == 'u'){
+  for (char c : scramble) {
+    if (c == 'u') {
       UTurn(1);
     }
   }
   F = '~';
   stable = true;
 }
+
