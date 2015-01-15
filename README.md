@@ -35,11 +35,10 @@ Update Log
 
 2015-01-13
 - A right face turn was implemented.
-- Center realigned to actual center; simulaneous turns and multiple turns taken care of.
+- Center realigned to actual center; simultaneous turns and multiple turns taken care of.
 
 2015-01-14
 - Created a function that will swap the cubies correspondingly.
-- F Turn created.
 - All turns implemented, X rotation working.
 - Black outline for cube working.
 - All cube turns and cube rotations are now fully functional.
