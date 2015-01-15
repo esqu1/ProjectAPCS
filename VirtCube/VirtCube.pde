@@ -183,6 +183,9 @@ void turn() {
   case 'Z':
     ZRot(1);
     break;
+  case '$':
+    scramble(25);
+    break;
   }
 }
 
@@ -243,7 +246,11 @@ void keyPressed() {
     } else if (key == 'q') {
       stable = false;
       F = 'Z';
+    } else if (key == ' '){
+      stable = false;
+      F = '$';
     }
+    
   }
 }
 
@@ -510,15 +517,14 @@ void ZRot(int dir) {
 }
 
 void randMove() {
-  Random r = new Random();
-  int m = r.nextInt(12);
+  int m = int(random(6));
   switch(m){
-    case 0: UTurn(1 * (2*r.nextInt(2) - 1)); break;
-    case 1: DTurn(1 * (2*r.nextInt(2) - 1)); break;
-    case 2: LTurn(1 * (2*r.nextInt(2) - 1)); break;
-    case 3: RTurn(1 * (2*r.nextInt(2) - 1)); break;
-    case 4: FTurn(1 * (2*r.nextInt(2) - 1)); break;
-    case 5: BTurn(1 * (2*r.nextInt(2) - 1)); break;
+    case 0: UTurn(2*int(random(2)) - 1); break;
+    case 1: DTurn(2*int(random(2)) - 1); break;
+    case 2: LTurn(2*int(random(2)) - 1); break;
+    case 3: RTurn(2*int(random(2)) - 1); break;
+    case 4: FTurn(2*int(random(2)) - 1); break;
+    case 5: BTurn(2*int(random(2)) - 1); break;
   }
 }
 
@@ -526,4 +532,5 @@ void scramble(int length){
   for(int i = 0; i < length; i++){
     randMove();
   }
+  stable = true;
 }
