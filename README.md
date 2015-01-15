@@ -43,6 +43,8 @@ Update Log
 - F Turn created.
 - All turns implemented, X rotation working.
 - Black outline for cube working.
+- All cube turns and cube rotations are now fully functional.
+
 OUR PLAN
 
 We plan to make a virtual Rubik's Cube controlled by the keyboard.

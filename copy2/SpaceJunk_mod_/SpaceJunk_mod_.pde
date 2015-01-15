@@ -62,43 +62,14 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-  /*
-  for (int i = -1; i < 2; i++) {
-   for (int j = -1; j < 2; j++) {
-   for (int k = -1; k < 2; k++) {
-   cubes[i+1][j+1][k+1] = new Cube(30, 45*i, 45*j, 45*k);
-   }
-   }
-   }
-   */
-  cubes[0][0][0] = new Cube(30, -52.5, -52.5, -52.5);
-  cubes[0][0][1] = new Cube(30, -7.5, -52.5, -52.5);
-  cubes[0][0][2] = new Cube(30, 37.5, -52.5, -52.5);
-  cubes[0][1][0] = new Cube(30, -52.5, -52.5, -7.5);
-  cubes[0][1][1] = new Cube(30, -7.5, -52.5, -7.5);
-  cubes[0][1][2] = new Cube(30, 37.5, -52.5, -7.5);
-  cubes[0][2][0] = new Cube(30, -52.5, -52.5, 37.5);
-  cubes[0][2][1] = new Cube(30, -7.5, -52.5, 37.5);
-  cubes[0][2][2] = new Cube(30, 37.5, -52.5, 37.5);
-  cubes[1][0][0] = new Cube(30, -52.5, -7.5, -52.5);
-  cubes[1][0][1] = new Cube(30, -7.5, -7.5, -52.5);
-  cubes[1][0][2] = new Cube(30, 37.5, -7.5, -52.5);
-  cubes[1][1][0] = new Cube(30, -52.5, -7.5, -7.5);
-  cubes[1][1][1] = new Cube(30, -7.5, -7.5, -7.5);
-  cubes[1][1][2] = new Cube(30, 37.5, -7.5, -7.5);
-  cubes[1][2][0] = new Cube(30, -52.5, -7.5, 37.5);
-  cubes[1][2][1] = new Cube(30, -7.5, -7.5, 37.5);
-  cubes[1][2][2] = new Cube(30, 37.5, -7.5, 37.5);
-  cubes[2][0][0] = new Cube(30, -52.5, 37.5, -52.5);
-  cubes[2][0][1] = new Cube(30, -7.5, 37.5, -52.5);
-  cubes[2][0][2] = new Cube(30, 37.5, 37.5, -52.5);
-  cubes[2][1][0] = new Cube(30, -52.5, 37.5, -7.5);
-  cubes[2][1][1] = new Cube(30, -7.5, 37.5, -7.5);
-  cubes[2][1][2] = new Cube(30, 37.5, 37.5, -7.5);
-  cubes[2][2][0] = new Cube(30, -52.5, 37.5, 37.5);
-  cubes[2][2][1] = new Cube(30, -7.5, 37.5, 37.5);
-  cubes[2][2][2] = new Cube(30, 37.5, 37.5, 37.5);
 
+  for(int i = -1; i < 2; i++){
+    for(int j = -1; j < 2; j++){
+      for(int k = -1; k < 2; k++){
+        cubes[j+1][k+1][i+1] = new Cube(30, (45 * i) - 7.5, (45 * j) - 7.5, (45 * k) - 7.5);
+      }
+    }
+  }
   drawAllCubes();
 }
 
@@ -168,7 +139,18 @@ void turn() {
   case 'X':
     XRot(-1);
     break;
-    
+  case 'y':
+    YRot(1);
+    break;
+  case 'Y':
+    YRot(-1);
+    break;
+  case 'z':
+    ZRot(-1);
+    break;
+  case 'Z':
+    ZRot(1);
+    break;
   }
 }
 
@@ -216,6 +198,18 @@ void keyPressed() {
     } else if (key == 'b' || key == 'n') {
       stable = false;
       F = 'X';
+    } else if (key == ';') {
+      stable = false;
+      F = 'y';
+    } else if (key == 'a') {
+      stable = false;
+      F = 'Y';
+    } else if (key == 'p') {
+      stable = false;
+      F = 'z';
+    } else if (key == 'q') {
+      stable = false;
+      F = 'Z';
     }
   }
 }
@@ -240,28 +234,28 @@ void move(char var, int face, int dir) {
         if (var == 'i' && i == face) {
           switch(dir) {
           case -1: 
-            cubes[i][j][k].rotCubie(1, -3); 
+            cubes[i][j][k].rotCubie(1, -6); 
             break;
           case 1: 
-            cubes[i][j][k].rotCubie(1, 3); 
+            cubes[i][j][k].rotCubie(1, 6); 
             break;
           }
         } else if (var == 'j' && j == face) {
           switch(dir) {
           case -1: 
-            cubes[i][j][k].rotCubie(2, 3); 
+            cubes[i][j][k].rotCubie(2, 6); 
             break;
           case 1: 
-            cubes[i][j][k].rotCubie(2, -3); 
+            cubes[i][j][k].rotCubie(2, -6); 
             break;
           }
         } else if (var == 'k' && k == face) {
           switch(dir) {
           case -1: 
-            cubes[i][j][k].rotCubie(0, -3); 
+            cubes[i][j][k].rotCubie(0, -6); 
             break;
           case 1: 
-            cubes[i][j][k].rotCubie(0, 3); 
+            cubes[i][j][k].rotCubie(0, 6); 
             break;
           }
         }
@@ -272,7 +266,7 @@ void move(char var, int face, int dir) {
 
 
 void RTurn(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     move('k', 2, dir);
     angle++;
   } else {
@@ -293,7 +287,7 @@ void RTurn(int dir) {
 }
 
 void UTurn(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     move('i', 0, -dir);
     angle++;
   } else {
@@ -314,7 +308,7 @@ void UTurn(int dir) {
 }
 
 void FTurn(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     move('j', 2, -dir);
     angle++;
   } else {
@@ -335,7 +329,7 @@ void FTurn(int dir) {
 }
 
 void LTurn(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     move('k', 0, dir);
     angle++;
   } else {
@@ -357,7 +351,7 @@ void LTurn(int dir) {
 
 //broken
 void DTurn(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     move('i', 2, -dir);
     angle++;
   } else {
@@ -377,9 +371,8 @@ void DTurn(int dir) {
   }
 }
 
-//broken
 void BTurn(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     move('j', 0, -dir);
     angle++;
   } else {
@@ -400,7 +393,7 @@ void BTurn(int dir) {
 }
 
 void XRot(int dir) {
-  if (angle < 30 && !stable) {
+  if (angle < 15 && !stable) {
     for (int i = 0; i < 3; i++) {
       move('k', i, dir);
     }
@@ -413,6 +406,57 @@ void XRot(int dir) {
       if (dir == -1) {
         int[] swap = {
           0, 2, i, 0, 0, i, 2, 0, i, 2, 2, i, 1, 0, i, 2, 1, i, 1, 2, i, 0, 1, i
+        };
+        mat = swap;
+      }
+      swapFace(mat);
+    }
+    angle = 0;
+    F = '~';
+    stable = true;
+  }
+}
+
+void YRot(int dir) {
+  if (angle < 15 && !stable) {
+    for (int i = 0; i < 3; i++) {
+      move('i', i, dir);
+    }
+    angle++;
+  } else {
+    for (int i = 0; i < 3; i++) {
+      int[] mat = { 
+        i, 0, 2, i, 2, 2, i, 2, 0, i, 0, 0, i, 0, 1, i, 1, 2, i, 2, 1, i, 1, 0
+      };
+      if (dir == -1) {
+        int[] swap = {
+          i, 0, 0, i, 2, 0, i, 2, 2, i, 0, 2, i, 1, 0, i, 2, 1, i, 1, 2, i, 0, 1
+        };
+        mat = swap;
+      }
+      swapFace(mat);
+    }
+    angle = 0;
+    F = '~';
+    stable = true;
+  }
+}
+
+
+void ZRot(int dir) {
+  if (angle < 15 && !stable) {
+    for (int i = 0; i < 3; i++) {
+      move('j', i, dir);
+    }
+    angle++;
+  } else {
+    for (int i = 0; i < 3; i++) {
+      int[] mat = { 
+        0, i, 2, 2, i, 2, 2, i, 0, 0, i, 0, 1, i, 2, 2, i, 1, 1, i, 0, 0, i, 1
+      };
+      if (dir == -1) {
+        int[] swap = {
+          0, i, 0, 2, i, 0, 2, i, 2, 0, i, 2, 0, i, 1, 1, i, 0, 2, i, 1, 1, i, 2
         };
         mat = swap;
       }
