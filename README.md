@@ -44,6 +44,7 @@ Update Log
 - All turns implemented, X rotation working.
 - Black outline for cube working.
 - All cube turns and cube rotations are now fully functional.
+- Fixed a bug in which the nonvisible parts of the parts were also showing colors.
 
 OUR PLAN
 

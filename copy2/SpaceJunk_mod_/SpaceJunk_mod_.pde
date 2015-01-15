@@ -62,14 +62,76 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-
-  for(int i = -1; i < 2; i++){
-    for(int j = -1; j < 2; j++){
-      for(int k = -1; k < 2; k++){
-        cubes[j+1][k+1][i+1] = new Cube(30, (45 * i) - 7.5, (45 * j) - 7.5, (45 * k) - 7.5);
+/*
+  
+  */
+  
+  boolean[] WBO = {true, false, true, false, true, false};
+  boolean[] WB = {true, false, false, false, true, false};
+  boolean[] WBR = {true, false, false, true, true, false};
+  boolean[] WO = {false, false, true, false, true, false};
+  boolean[] WC = {false, false, false, false, true, false};
+  boolean[] WR = {false, false, false, true, true, false};
+  boolean[] WGO = {false, true, true, false, true, false};
+  boolean[] WG = {false, true, false, false, true, false};
+  boolean[] WGR = {false, true, false, true, true, false};
+  boolean[] BO = {true, false, true, false, false, false};
+  boolean[] BC = {true, false, false, false, false, false};
+  boolean[] BR = {true, false, false, true, false, false};
+  boolean[] OC = {false, false, true, false, false, false};
+  boolean[] CORE = {false, false, false, false, false, false};
+  boolean[] RC = {false, false, false, true, false, false};
+  boolean[] GO = {false, true, true, false, false, false};
+  boolean[] GC = {false, true, false, false, false, false};
+  boolean[] GR = {false, true, false, true, false, false};
+  boolean[] YBO = {true, false, true, false, false, true};
+  boolean[] YB = {true, false, false, false, false, true};
+  boolean[] YBR = {true, false, false, true, false, true};
+  boolean[] YO = {false, false, true, false, false, true};
+  boolean[] YC = {false, false, false, false, false, true};
+  boolean[] YR = {false, false, false, true, false, true};
+  boolean[] YGO = {false, true, true, false, false, true};
+  boolean[] YG = {false, true, false, false, false, true};
+  boolean[] YGR = {false, true, false, true, false, true};
+  boolean[][] lister = { WBO, WB, WBR, WO, WC, WR, WGO, WG, WGR, BO, BC, BR, OC, CORE, RC, GO, GC, GR, YBO, YB, YBR, YO, YC, YR, YGO, YG, YGR };
+  int m = 0;
+  
+  for(int j = -1; j < 2; j++){
+    for(int k = -1; k < 2; k++){
+      for(int i = -1; i < 2; i++){
+        cubes[j+1][k+1][i+1] = new Cube(30, (45 * i) - 7.5, (45 * j) - 7.5, (45 * k) - 7.5, lister[m]);
+        m++;
       }
     }
   }
+  /*
+  cubes[0][0][0] = new Cube(30, -52.5, -52.5, -52.5, WBO);
+  cubes[0][0][1] = new Cube(30, -7.5, -52.5, -52.5, WB);
+  cubes[0][0][2] = new Cube(30, 37.5, -52.5, -52.5, WBR);
+  cubes[0][1][0] = new Cube(30, -52.5, -52.5, -7.5, WO);
+  cubes[0][1][1] = new Cube(30, -7.5, -52.5, -7.5, WC);
+  cubes[0][1][2] = new Cube(30, 37.5, -52.5, -7.5, WR);
+  cubes[0][2][0] = new Cube(30, -52.5, -52.5, 37.5, WGO);
+  cubes[0][2][1] = new Cube(30, -7.5, -52.5, 37.5, WG);
+  cubes[0][2][2] = new Cube(30, 37.5, -52.5, 37.5, WGR);
+  cubes[1][0][0] = new Cube(30, -52.5, -7.5, -52.5, BO);
+  cubes[1][0][1] = new Cube(30, -7.5, -7.5, -52.5, BC);
+  cubes[1][0][2] = new Cube(30, 37.5, -7.5, -52.5, BR);
+  cubes[1][1][0] = new Cube(30, -52.5, -7.5, -7.5, OC);
+  cubes[1][1][1] = new Cube(30, -7.5, -7.5, -7.5, CORE);
+  cubes[1][1][2] = new Cube(30, 37.5, -7.5, -7.5, RC);
+  cubes[1][2][0] = new Cube(30, -52.5, -7.5, 37.5, GO);
+  cubes[1][2][1] = new Cube(30, -7.5, -7.5, 37.5, GC);
+  cubes[1][2][2] = new Cube(30, 37.5, -7.5, 37.5, GR);
+  cubes[2][0][0] = new Cube(30, -52.5, 37.5, -52.5, YBO);
+  cubes[2][0][1] = new Cube(30, -7.5, 37.5, -52.5, YB);
+  cubes[2][0][2] = new Cube(30, 37.5, 37.5, -52.5, YBR);
+  cubes[2][1][0] = new Cube(30, -52.5, 37.5, -7.5, YO);
+  cubes[2][1][1] = new Cube(30, -7.5, 37.5, -7.5, YC);
+  cubes[2][1][2] = new Cube(30, 37.5, 37.5, -7.5, YR);
+  cubes[2][2][0] = new Cube(30, -52.5, 37.5, 37.5, YGO);
+  cubes[2][2][1] = new Cube(30, -7.5, 37.5, 37.5, YG);
+  cubes[2][2][2] = new Cube(30, 37.5, 37.5, 37.5, YGR);*/
   drawAllCubes();
 }
 
@@ -140,10 +202,10 @@ void turn() {
     XRot(-1);
     break;
   case 'y':
-    YRot(1);
+    YRot(-1);
     break;
   case 'Y':
-    YRot(-1);
+    YRot(1);
     break;
   case 'z':
     ZRot(-1);

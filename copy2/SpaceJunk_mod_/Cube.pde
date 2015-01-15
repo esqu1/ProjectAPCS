@@ -17,14 +17,21 @@ public class Cube {
   float[] vertex6 = new float[3];
   float[] vertex7 = new float[3];
   float[] vertex8 = new float[3];
+  boolean stickerBlue, stickerGreen, stickerOrange, stickerRed, stickerWhite, stickerYellow;
 
   
   
 
-  Cube(int sideLength, float shiftX, float shiftY, float shiftZ) {
+  Cube(int sideLength, float shiftX, float shiftY, float shiftZ, boolean[] stickers) {
     this.sideLength = sideLength;
     this.p = new PVector(shiftX, shiftY, shiftZ);
     updatePos(p);
+    this.stickerBlue = stickers[0];
+    this.stickerGreen = stickers[1];
+    this.stickerOrange = stickers[2];
+    this.stickerRed = stickers[3];
+    this.stickerWhite = stickers[4];
+    this.stickerYellow = stickers[5];
   }
   
   void updatePos(PVector lol){
@@ -41,83 +48,101 @@ public class Cube {
   void drawCube() {
     beginShape(QUADS);
     //Back 
-    fill(blue);
-    vertex(vertex1[0],vertex1[1],vertex1[2]);
-    vertex(vertex2[0],vertex2[1],vertex2[2]);
-    vertex(vertex6[0],vertex6[1],vertex6[2]);
-    vertex(vertex5[0],vertex5[1],vertex5[2]);
-
-    //fill(blue);
-    //vertex(-sideLength/2 + p.x + (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
-    //vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z - .01);
-    //vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
-    //vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z - .01);
-
+    if (stickerBlue){
+      fill(blue);
+      vertex(vertex1[0],vertex1[1],vertex1[2]);
+      vertex(vertex2[0],vertex2[1],vertex2[2]);
+      vertex(vertex6[0],vertex6[1],vertex6[2]);
+      vertex(vertex5[0],vertex5[1],vertex5[2]);
+    }
+    else{
+      fill(black);
+      vertex(vertex1[0],vertex1[1],vertex1[2]);
+      vertex(vertex2[0],vertex2[1],vertex2[2]);
+      vertex(vertex6[0],vertex6[1],vertex6[2]);
+      vertex(vertex5[0],vertex5[1],vertex5[2]);
+    }
+    
     //Front 
-    fill(green);
-    vertex(vertex4[0],vertex4[1],vertex4[2]);
-    vertex(vertex3[0],vertex3[1],vertex3[2]);
-    vertex(vertex7[0],vertex7[1],vertex7[2]);
-    vertex(vertex8[0],vertex8[1],vertex8[2]);
-
-    //fill(green);
-    //vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y  + (0.1 * sideLength), sideLength + p.z + .01);
-    //vertex(sideLength + p.x  - (0.1 * sideLength), -sideLength/2 + p.y  + (0.1 * sideLength), sideLength + p.z + .01);
-    //vertex(sideLength + p.x  - (0.1 * sideLength), sideLength + p.y  - (0.1 * sideLength), sideLength + p.z + .01);
-    //vertex(-sideLength/2 + p.x  + (0.1 * sideLength), sideLength + p.y  - (0.1 * sideLength), sideLength + p.z + .01);
-
+    if (stickerGreen){
+      fill(green);
+      vertex(vertex4[0],vertex4[1],vertex4[2]);
+      vertex(vertex3[0],vertex3[1],vertex3[2]);
+      vertex(vertex7[0],vertex7[1],vertex7[2]);
+      vertex(vertex8[0],vertex8[1],vertex8[2]);
+    }
+    else{
+      fill(black);
+      vertex(vertex4[0],vertex4[1],vertex4[2]);
+      vertex(vertex3[0],vertex3[1],vertex3[2]);
+      vertex(vertex7[0],vertex7[1],vertex7[2]);
+      vertex(vertex8[0],vertex8[1],vertex8[2]);
+    }
+    
     //Left
-    fill(orange);
-    vertex(vertex1[0],vertex1[1],vertex1[2]);
-    vertex(vertex4[0],vertex4[1],vertex4[2]);
-    vertex(vertex8[0],vertex8[1],vertex8[2]);
-    vertex(vertex5[0],vertex5[1],vertex5[2]);
-
-    //fill(orange);
-    //vertex(-sideLength/2 + p.x - .01, -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
-    //vertex(-sideLength/2 + p.x - .01, -sideLength/2 + p.y + (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
-    //vertex(-sideLength/2 + p.x - .01, sideLength + p.y - (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
-    //vertex(-sideLength/2 + p.x - .01, sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
+    if (stickerOrange){
+      fill(orange);
+      vertex(vertex1[0],vertex1[1],vertex1[2]);
+      vertex(vertex4[0],vertex4[1],vertex4[2]);
+      vertex(vertex8[0],vertex8[1],vertex8[2]);
+      vertex(vertex5[0],vertex5[1],vertex5[2]);
+    }
+    else{
+      fill(black);
+      vertex(vertex1[0],vertex1[1],vertex1[2]);
+      vertex(vertex4[0],vertex4[1],vertex4[2]);
+      vertex(vertex8[0],vertex8[1],vertex8[2]);
+      vertex(vertex5[0],vertex5[1],vertex5[2]);
+    }
 
     //Right
-    fill(red);
-    vertex(vertex2[0],vertex2[1],vertex2[2]);
-    vertex(vertex3[0],vertex3[1],vertex3[2]);
-    vertex(vertex7[0],vertex7[1],vertex7[2]);
-    vertex(vertex6[0],vertex6[1],vertex6[2]);
-
-    //fill(red);
-    //vertex(sideLength + p.x + .01, -sideLength/2 + p.y + (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
-    //vertex(sideLength + p.x + .01, -sideLength/2 + p.y + (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
-    //vertex(sideLength + p.x + .01, sideLength + p.y - (0.1 * sideLength), sideLength + p.z - (0.1 * sideLength));
-    //vertex(sideLength + p.x + .01, sideLength + p.y - (0.1 * sideLength), -sideLength/2 + p.z + (0.1 * sideLength));
-
+    if (stickerRed){
+      fill(red);
+      vertex(vertex2[0],vertex2[1],vertex2[2]);
+      vertex(vertex3[0],vertex3[1],vertex3[2]);
+      vertex(vertex7[0],vertex7[1],vertex7[2]);
+      vertex(vertex6[0],vertex6[1],vertex6[2]);
+    }
+    else{
+      fill(black);
+      vertex(vertex2[0],vertex2[1],vertex2[2]);
+      vertex(vertex3[0],vertex3[1],vertex3[2]);
+      vertex(vertex7[0],vertex7[1],vertex7[2]);
+      vertex(vertex6[0],vertex6[1],vertex6[2]);
+    }
+    
     //Top
-    fill(white);
-    vertex(vertex1[0],vertex1[1],vertex1[2]);
-    vertex(vertex2[0],vertex2[1],vertex2[2]);
-    vertex(vertex3[0],vertex3[1],vertex3[2]);
-    vertex(vertex4[0],vertex4[1],vertex4[2]);
-
-    //fill(white);
-    //vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y - .01, -sideLength/2 + p.z  + (0.1 * sideLength));
-    //vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y - .01, -sideLength/2 + p.z  + (0.1 * sideLength));
-    //vertex(sideLength + p.x - (0.1 * sideLength), -sideLength/2 + p.y - .01, sideLength + p.z - (0.1 * sideLength));
-    //vertex(-sideLength/2 + p.x  + (0.1 * sideLength), -sideLength/2 + p.y - .01, sideLength + p.z - (0.1 * sideLength));
-
+    if (stickerWhite){
+      fill(white);
+      vertex(vertex1[0],vertex1[1],vertex1[2]);
+      vertex(vertex2[0],vertex2[1],vertex2[2]);
+      vertex(vertex3[0],vertex3[1],vertex3[2]);
+      vertex(vertex4[0],vertex4[1],vertex4[2]);
+    }
+    else{
+      fill(black);
+      vertex(vertex1[0],vertex1[1],vertex1[2]);
+      vertex(vertex2[0],vertex2[1],vertex2[2]);
+      vertex(vertex3[0],vertex3[1],vertex3[2]);
+      vertex(vertex4[0],vertex4[1],vertex4[2]);
+    }
+    
     //Bottom
-    fill(yellow);
-    vertex(vertex5[0],vertex5[1],vertex5[2]);
-    vertex(vertex6[0],vertex6[1],vertex6[2]);
-    vertex(vertex7[0],vertex7[1],vertex7[2]);
-    vertex(vertex8[0],vertex8[1],vertex8[2]);
-
-    //fill(yellow);
-    //vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
-    //vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, -sideLength/2 + p.z + (0.1 * sideLength));
-    //vertex(sideLength + p.x - (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
-    //vertex(-sideLength/2 + p.x + (0.1 * sideLength), sideLength + p.y + .01, sideLength + p.z - (0.1 * sideLength));
-
+    if (stickerYellow){
+      fill(yellow);
+      vertex(vertex5[0],vertex5[1],vertex5[2]);
+      vertex(vertex6[0],vertex6[1],vertex6[2]);
+      vertex(vertex7[0],vertex7[1],vertex7[2]);
+      vertex(vertex8[0],vertex8[1],vertex8[2]);
+    }
+    else{
+      fill(black);
+      vertex(vertex5[0],vertex5[1],vertex5[2]);
+      vertex(vertex6[0],vertex6[1],vertex6[2]);
+      vertex(vertex7[0],vertex7[1],vertex7[2]);
+      vertex(vertex8[0],vertex8[1],vertex8[2]);
+    }
+    
     endShape();
   }
 
