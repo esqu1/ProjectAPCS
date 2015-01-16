@@ -192,6 +192,7 @@ void draw() {
     fill(255,255,255);
     textSize(16);
     text(CONTROLS,650,100);
+    strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
     rotateY(radians(-40));
