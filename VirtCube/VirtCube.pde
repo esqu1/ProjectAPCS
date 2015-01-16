@@ -190,15 +190,11 @@ void draw() {
     drawAllCubes();
     turn();
   } // draw the cubes, then check to see if we can continue turning the cubelets
-
- /* try {
-    keysim.simulate('C');
-  }
-  catch(AWTException e) {
-    println(e);
-  }*/
 }
 
+void mouseClicked(){
+  //if(mouseX <= 390 && mouseX >= 10 &&
+}
 // draws all the cubelets in the cube
 void drawAllCubes() {
   for (int i = 0; i < 3; i++) {
