@@ -49,3 +49,4 @@ Update Log
 2015-01-16
 - Scramble generator fixed, fully works now.
 - Implemented start screen with buttons for different scramble types.
+- Control instructions added.

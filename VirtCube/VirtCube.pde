@@ -14,6 +14,9 @@ char F;
 //PFont font = createFont("NEW ACADEMY.ttf",20);
 KeystrokeSimulator keysim;
 
+String CONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
+
+
 // Array for all cubes
 Cube[][][] cubes = new Cube[3][3][3];
 
@@ -186,10 +189,14 @@ void draw() {
     text("Mr. K's Scramble",600,300);
   }
   if(stage == 1){
+    fill(255,255,255);
+    textSize(16);
+    text(CONTROLS,650,100);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
     rotateY(radians(-40));
     drawAllCubes();
+
     turn();
   } // draw the cubes, then check to see if we can continue turning the cubelets
 }
