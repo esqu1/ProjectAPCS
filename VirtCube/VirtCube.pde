@@ -6,9 +6,8 @@
  * us to create the cubelets.
  */
 
-// Used for oveall rotation
-import java.util.*;
-int angle = 0;
+// Used for overall rotation
+int angle = 0, stage = 0;
 boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
@@ -168,11 +167,29 @@ void setup() {
 void draw() {
   background(157, 157, 157);
   fill(200);
-  translate(width/2, height/2, 100);
-  rotateX(radians(-40));
-  rotateY(radians(-40));
-  drawAllCubes();
-  turn(); // draw the cubes, then check to see if we can continue turning the cubelets
+  if(stage == 0){
+    textAlign(CENTER);
+    textSize(32);
+    text("Choose your mode", 400,50);
+    strokeWeight(5);
+
+    rect(10,100,380,120);
+    rect(10,250,380,120);
+    rect(400,100,380,120);
+    rect(400,250,380,120);
+    fill(0,102,153);
+    text("Solved Cube", 200,150);
+    text("Easy Scramble",200,300);
+    text("Hard Scramble",600,150);
+    text("Mr. K's Scramble",600,300);
+  }
+  if(stage == 1){
+    translate(width/2, height/2, 100);
+    rotateX(radians(-40));
+    rotateY(radians(-40));
+    drawAllCubes();
+    turn();
+  } // draw the cubes, then check to see if we can continue turning the cubelets
 
  /* try {
     keysim.simulate('C');
