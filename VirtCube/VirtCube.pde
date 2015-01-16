@@ -11,6 +11,7 @@ int angle = 0, stage = 0;
 boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
+PFont font = createFont("NEW ACADEMY.ttf",20);
 KeystrokeSimulator keysim;
 
 // Array for all cubes
@@ -171,6 +172,7 @@ void draw() {
     textAlign(CENTER);
     textSize(32);
     text("Choose your mode", 400,50);
+    textFont(font);
     strokeWeight(5);
 
     rect(10,100,380,120);
