@@ -165,7 +165,7 @@ void setup() {
       }
     }
   }
-  drawAllCubes();
+  //drawAllCubes();
 }
 
 // main draw method
