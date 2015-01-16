@@ -9,7 +9,7 @@
 // Used for oveall rotation
 import java.util.*;
 int angle = 0;
-boolean stable = true, checkSolve = false;
+boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
 KeystrokeSimulator keysim;
@@ -641,15 +641,16 @@ void scrambleAssist(char c){
       case 'B': stable = false; BTurn(1); break;
     }
   }
+  stable = false;
 }
 
 // this part is almost working, can this be fixed?
 void scramble(int length) {
+  scrambling = true;
   scramble.clear();
   for (int i = 0; i < length; i++) {
     randMove();
   }
-  println(scramble);
   for (char c : scramble) {
     scrambleAssist(c);
   }
@@ -657,3 +658,14 @@ void scramble(int length) {
   stable = true;
 }
 
+void scrambleEasy(){
+  scramble(6);
+}
+
+void scrambleNormal(){
+  scramble(50);
+}
+
+void scrambleMrK(){
+  scramble(2);
+}

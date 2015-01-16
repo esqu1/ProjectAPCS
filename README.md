@@ -46,4 +46,5 @@ Update Log
  2015-01-15
  - Function created to generate a random move sequence. The actual graphical scrambling is bugged, however.
 
-
+2015-01-16
+- Scramble generator fixed, fully works now.
