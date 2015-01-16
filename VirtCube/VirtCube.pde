@@ -12,10 +12,11 @@ boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
 //PFont font = createFont("NEW ACADEMY.ttf",20);
-KeystrokeSimulator keysim;
+
 
 String CONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
-
+char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
+//char[] controlrealman = 
 
 // Array for all cubes
 Cube[][][] cubes = new Cube[3][3][3];
@@ -66,7 +67,7 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-  keysim = new KeystrokeSimulator();
+  //keysim = new KeystrokeSimulator();
 
 
   // boolean arrays to choose to color the face of a cubelet or not
@@ -202,6 +203,22 @@ void draw() {
   } // draw the cubes, then check to see if we can continue turning the cubelets
 }
 
+void colorSwapperHelper(int start, int end, int[] m){
+  int temp = colors[m[start]][m[start+1]];
+  for(int i = start; i < end-2; i+= 2){
+    colors[m[i]][m[i+1]] = colors[m[i+2]][m[i+3]];
+  }
+  colors[m[end-2]][m[end-1]] = temp;
+}
+
+void colorSwapper(int[] m){
+  for(int i = 0; i < 40; i+= 8){
+    colorSwapperHelper(i,i+8,m);
+  }
+}
+  
+  
+
 void mouseClicked(){
   if (stage == 0){
     if(mouseX <= 390 && mouseX >= 10 && mouseY <= 240 && mouseY >= 100){
@@ -210,14 +227,17 @@ void mouseClicked(){
     else if (mouseX <= 390 && mouseX >= 10 && mouseY <= 370 && mouseY >= 250){
       scrambleEasy();
       stage = 1;
+      checkSolve = true;
     }
     else if (mouseX <= 780 && mouseX >= 400 && mouseY <= 240 && mouseY >= 100){
       scrambleNormal();
       stage = 1;
+      checkSolve = true;
     }
     else if (mouseX <= 780 && mouseX >= 400 && mouseY <= 370 && mouseY >= 250){
       scrambleMrK();
       stage = 1;
+      checkSolve = true;
     }
   }  
 }
@@ -297,7 +317,7 @@ void turn() {
 
 // translates key pressed into face turn
 void keyPressed() {
-  if (stable) {
+  if (stable && stage == 1) {
     if (key == 'i') {
       stable = false;
       F = 'r';
