@@ -624,14 +624,19 @@ void randMove() {
   }
 }
 
+// this part is almost working, can this be fixed?
 void scramble(int length) {
   scramble.clear();
   for (int i = 0; i < length; i++) {
     randMove();
   }
+  println(scramble);
   for (char c : scramble) {
     if (c == 'u') {
-      UTurn(1);
+      while(!stable){
+        UTurn(1); 
+      } 
+      stable = false;
     }
   }
   F = '~';

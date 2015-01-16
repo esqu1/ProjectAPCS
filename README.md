@@ -43,6 +43,7 @@ Update Log
 - Black outline for cube working.
 - All cube turns and cube rotations are now fully functional.
 - Fixed a bug in which the nonvisible parts of the parts were also showing colors.
-
+ 2015-01-15
+ - Function created to generate a random move sequence. The actual graphical scrambling is bugged, however.
 
 
