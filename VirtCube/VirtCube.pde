@@ -309,9 +309,6 @@ void turn() {
   case 'Z':
     ZRot(1);
     break;
-  case '$':
-    scramble(25);
-    break;
   }
 }
 
