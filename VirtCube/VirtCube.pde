@@ -624,6 +624,25 @@ void randMove() {
   }
 }
 
+void scrambleAssist(char c){
+  while(!stable){
+    switch(c){
+      case 'r': stable = false; RTurn(1); break;
+      case 'R': stable = false; RTurn(-1); break;
+      case 'u': stable = false; UTurn(1); break;
+      case 'U': stable = false; UTurn(-1); break;
+      case 'f': stable = false; FTurn(1); break;
+      case 'F': stable = false; FTurn(-1); break;
+      case 'l': stable = false; LTurn(-1); break;
+      case 'L': stable = false; LTurn(1); break;
+      case 'd': stable = false; DTurn(-1); break;
+      case 'D': stable = false; DTurn(1); break;
+      case 'b': stable = false; BTurn(-1); break;
+      case 'B': stable = false; BTurn(1); break;
+    }
+  }
+}
+
 // this part is almost working, can this be fixed?
 void scramble(int length) {
   scramble.clear();
@@ -632,12 +651,7 @@ void scramble(int length) {
   }
   println(scramble);
   for (char c : scramble) {
-    if (c == 'u') {
-      while(!stable){
-        UTurn(1); 
-      } 
-      stable = false;
-    }
+    scrambleAssist(c);
   }
   F = '~';
   stable = true;
