@@ -11,7 +11,7 @@ int angle = 0, stage = 0;
 boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
-PFont font = createFont("NEW ACADEMY.ttf",20);
+//PFont font = createFont("NEW ACADEMY.ttf",20);
 KeystrokeSimulator keysim;
 
 // Array for all cubes
@@ -172,13 +172,13 @@ void draw() {
     textAlign(CENTER);
     textSize(32);
     text("Choose your mode", 400,50);
-    textFont(font);
+    //textFont(font);
     strokeWeight(5);
 
-    rect(10,100,380,120);
-    rect(10,250,380,120);
-    rect(400,100,380,120);
-    rect(400,250,380,120);
+    rect(10,100,380,120); //Solved
+    rect(10,250,380,120); //Easy
+    rect(400,100,380,120); //Hard
+    rect(400,250,380,120); //Mr.K
     fill(0,102,153);
     text("Solved Cube", 200,150);
     text("Easy Scramble",200,300);
@@ -195,7 +195,23 @@ void draw() {
 }
 
 void mouseClicked(){
-  //if(mouseX <= 390 && mouseX >= 10 &&
+  if (stage == 0){
+    if(mouseX <= 390 && mouseX >= 10 && mouseY <= 240 && mouseY >= 100){
+      stage = 1;
+    }
+    else if (mouseX <= 390 && mouseX >= 10 && mouseY <= 370 && mouseY >= 250){
+      scrambleEasy();
+      stage = 1;
+    }
+    else if (mouseX <= 780 && mouseX >= 400 && mouseY <= 240 && mouseY >= 100){
+      scrambleNormal();
+      stage = 1;
+    }
+    else if (mouseX <= 780 && mouseX >= 400 && mouseY <= 370 && mouseY >= 250){
+      scrambleMrK();
+      stage = 1;
+    }
+  }  
 }
 // draws all the cubelets in the cube
 void drawAllCubes() {
