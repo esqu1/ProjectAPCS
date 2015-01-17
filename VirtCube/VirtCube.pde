@@ -443,6 +443,7 @@ void RTurn(int dir) {
       };
       mat = swap;
     } 
+    //int[] mat2 = { 0,1,0,3,0,6,0,8,0,1,0,3,0,5,0,7,4,0,2,0,5,0,3,0,
     swapFace(mat);
     angle = 0;
     F = '~';
