@@ -67,7 +67,6 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-  //keysim = new KeystrokeSimulator();
 
 
   // boolean arrays to choose to color the face of a cubelet or not
@@ -193,6 +192,10 @@ void draw() {
     fill(255,255,255);
     textSize(16);
     text(CONTROLS,650,100);
+    strokeWeight(5);
+    rect(10, 290, 200, 100);
+    fill(0, 102, 153);
+    text("Return to Menu", 105, 345);
     strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
@@ -238,6 +241,13 @@ void mouseClicked(){
       scrambleMrK();
       stage = 1;
       checkSolve = true;
+    }
+  }
+  else if (stage == 1){
+    if (mouseX <= 210 && mouseX >= 10 && mouseY <= 390 && mouseY >= 290){
+      stage = 0;
+      resetCube();
+      checkSolve = false;
     }
   }  
 }
@@ -726,3 +736,8 @@ void scrambleNormal(){
 void scrambleMrK(){
   scramble(2);
 }
+
+void resetCube(){
+  setup();
+}
+  
