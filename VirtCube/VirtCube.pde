@@ -12,9 +12,6 @@ int angle = 0, stage = 0;
 boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
-//PFont font = createFont("NEW ACADEMY.ttf",20);
-
-
 String CONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
 //char[] controlrealman = 
@@ -99,9 +96,7 @@ void draw() {
     textAlign(CENTER);
     textSize(32);
     text("Choose your mode", 400,50);
-    //textFont(font);
     strokeWeight(5);
-
     rect(10,100,380,120); //Solved
     rect(10,250,380,120); //Easy
     rect(400,100,380,120); //Hard
@@ -597,6 +592,11 @@ void YRot(int dir) {
         mat = swap;
       }
       swapFace(mat);
+    }
+    if(dir == 1){
+      colorSwapper(new int[] {0,2,0,0,0,6,0,8,0,7,0,5,0,1,0,3,3,0,5,0,2,0,4,0,3,2,5,2,2,2,4,2,3,1,5,1,2,1,4,1});
+      colorSwapper(new int[] {1,8,1,6,1,0,1,2,1,3,1,1,1,5,1,7,3,7,5,7,2,7,4,7,3,6,5,6,2,6,4,6,3,8,5,8,2,8,4,8});
+      //colorSwapper(new int[] 
     }
     angle = 0;
     F = '~';
