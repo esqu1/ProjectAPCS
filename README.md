@@ -53,3 +53,4 @@ Update Log
 2015-01-17
 - Return to menu button created.
 - The 12 cube turns now change the colors array that will check for a solved position.
+- Function to check for solved state added.

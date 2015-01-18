@@ -125,8 +125,10 @@ void draw() {
     rotateX(radians(-40));
     rotateY(radians(-40));
     drawAllCubes();
-
     turn();
+    if(checkSolve && checkSolved()){
+      println("You solved it!");
+    }
   } // draw the cubes, then check to see if we can continue turning the cubelets
 }
 
@@ -707,4 +709,14 @@ void scrambleMrK(){
 void resetCube(){
   setup();
 }
-  
+
+boolean checkSolved(){
+  for(int i = 0; i < colors.length; i++){
+    for(int j = 0; j < colors[i].length - 1; j++){
+      if(colors[i][j] != colors[i][j+1]){
+        return false;
+      }
+    }
+  }
+  return true;
+}
