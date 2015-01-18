@@ -2,6 +2,16 @@ FINAL PROJECT FOR APCS
 ====
 By Peter Strbik and Brandon Lin
 
+Our project is *VirtCube*, a virtual Rubik's Cube simulator.
+
+Features:
+- Controls allow you to maneuver the cube's 6 faces and rotate it along its 3 axes
+- 4 different modes to choose from:
+-- Solved cube so you can experiment with the cube
+-- Easy scramble for those just getting started
+-- Hard scramble for those with experience
+-- Mr. K's scramble for Mr. Konstantinovich himself :)
+
 
 Update Log
 
