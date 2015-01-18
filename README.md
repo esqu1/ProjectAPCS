@@ -2,7 +2,6 @@ FINAL PROJECT FOR APCS
 ====
 By Peter Strbik and Brandon Lin
 
-==
 
 Update Log
 
@@ -50,3 +49,7 @@ Update Log
 - Scramble generator fixed, fully works now.
 - Implemented start screen with buttons for different scramble types.
 - Control instructions added.
+
+2015-01-17
+- Return to menu button created.
+- The 12 cube turns now change the colors array that will check for a solved position.

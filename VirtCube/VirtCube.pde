@@ -7,6 +7,7 @@
  */
 
 // Used for overall rotation
+import java.util.*;
 int angle = 0, stage = 0;
 boolean stable = true, checkSolve = false, scrambling = false;
 ArrayList<Character> scramble = new ArrayList<Character>();
@@ -22,31 +23,7 @@ char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8'
 Cube[][][] cubes = new Cube[3][3][3];
 
 // Array for colors
-int[][] colors = {
-  { 
-    1, 1, 1, 1, 1, 1, 1, 1, 1
-  }
-  , 
-  { 
-    2, 2, 2, 2, 2, 2, 2, 2, 2
-  }
-  , 
-  { 
-    3, 3, 3, 3, 3, 3, 3, 3, 3
-  }
-  , 
-  { 
-    4, 4, 4, 4, 4, 4, 4, 4, 4
-  }
-  , 
-  { 
-    5, 5, 5, 5, 5, 5, 5, 5, 5
-  }
-  , 
-  { 
-    6, 6, 6, 6, 6, 6, 6, 6, 6
-  }
-};
+int[][] colors;
 
 
 // Pauses the animation
@@ -70,87 +47,33 @@ void setup() {
 
 
   // boolean arrays to choose to color the face of a cubelet or not
-  boolean[] WBO = {
-    true, false, true, false, true, false
-  };
-  boolean[] WB = {
-    true, false, false, false, true, false
-  };
-  boolean[] WBR = {
-    true, false, false, true, true, false
-  };
-  boolean[] WO = {
-    false, false, true, false, true, false
-  };
-  boolean[] WC = {
-    false, false, false, false, true, false
-  };
-  boolean[] WR = {
-    false, false, false, true, true, false
-  };
-  boolean[] WGO = {
-    false, true, true, false, true, false
-  };
-  boolean[] WG = {
-    false, true, false, false, true, false
-  };
-  boolean[] WGR = {
-    false, true, false, true, true, false
-  };
-  boolean[] BO = {
-    true, false, true, false, false, false
-  };
-  boolean[] BC = {
-    true, false, false, false, false, false
-  };
-  boolean[] BR = {
-    true, false, false, true, false, false
-  };
-  boolean[] OC = {
-    false, false, true, false, false, false
-  };
-  boolean[] CORE = {
-    false, false, false, false, false, false
-  };
-  boolean[] RC = {
-    false, false, false, true, false, false
-  };
-  boolean[] GO = {
-    false, true, true, false, false, false
-  };
-  boolean[] GC = {
-    false, true, false, false, false, false
-  };
-  boolean[] GR = {
-    false, true, false, true, false, false
-  };
-  boolean[] YBO = {
-    true, false, true, false, false, true
-  };
-  boolean[] YB = {
-    true, false, false, false, false, true
-  };
-  boolean[] YBR = {
-    true, false, false, true, false, true
-  };
-  boolean[] YO = {
-    false, false, true, false, false, true
-  };
-  boolean[] YC = {
-    false, false, false, false, false, true
-  };
-  boolean[] YR = {
-    false, false, false, true, false, true
-  };
-  boolean[] YGO = {
-    false, true, true, false, false, true
-  };
-  boolean[] YG = {
-    false, true, false, false, false, true
-  };
-  boolean[] YGR = {
-    false, true, false, true, false, true
-  };
+  boolean[] WBO = {true, false, true, false, true, false};
+  boolean[] WB = {true, false, false, false, true, false};
+  boolean[] WBR = {true, false, false, true, true, false};
+  boolean[] WO = {false, false, true, false, true, false};
+  boolean[] WC = {false, false, false, false, true, false};
+  boolean[] WR = {false, false, false, true, true, false};
+  boolean[] WGO = {false, true, true, false, true, false};
+  boolean[] WG = {false, true, false, false, true, false};
+  boolean[] WGR = {false, true, false, true, true, false};
+  boolean[] BO = {true, false, true, false, false, false};
+  boolean[] BC = {true, false, false, false, false, false};
+  boolean[] BR = {true, false, false, true, false, false};
+  boolean[] OC = {false, false, true, false, false, false};
+  boolean[] CORE = {false, false, false, false, false, false};
+  boolean[] RC = {false, false, false, true, false, false};
+  boolean[] GO = {false, true, true, false, false, false};
+  boolean[] GC = {false, true, false, false, false, false};
+  boolean[] GR = {false, true, false, true, false, false};
+  boolean[] YBO = {true, false, true, false, false, true};
+  boolean[] YB = {true, false, false, false, false, true};
+  boolean[] YBR = {true, false, false, true, false, true};
+  boolean[] YO = {false, false, true, false, false, true};
+  boolean[] YC = {false, false, false, false, false, true};
+  boolean[] YR = {false, false, false, true, false, true};
+  boolean[] YGO = {false, true, true, false, false, true};
+  boolean[] YG = {false, true, false, false, false, true};
+  boolean[] YGR = {false, true, false, true, false, true};
   boolean[][] lister = { 
     WBO, WB, WBR, WO, WC, WR, WGO, WG, WGR, BO, BC, BR, OC, CORE, RC, GO, GC, GR, YBO, YB, YBR, YO, YC, YR, YGO, YG, YGR
   };
@@ -164,7 +87,8 @@ void setup() {
       }
     }
   }
-  //drawAllCubes();
+  
+  colors = new int[][] {{0,0,0,0,0,0,0,0,0},{1,1,1,1,1,1,1,1,1},{2,2,2,2,2,2,2,2,2},{3,3,3,3,3,3,3,3,3},{4,4,4,4,4,4,4,4,4},{5,5,5,5,5,5,5,5,5}};
 }
 
 // main draw method
@@ -447,17 +371,23 @@ void RTurn(int dir) {
     int[] mat = { 
       2, 2, 2, 2, 0, 2, 0, 0, 2, 0, 2, 2, 0, 1, 2, 1, 2, 2, 2, 1, 2, 1, 0, 2
     };
+    int[] mat2 = {3,2,3,0,3,6,3,8,3,7,3,5,3,1,3,3,0,8,4,8,1,8,5,0,0,5,4,5,1,5,5,3,0,2,4,2,1,2,5,6};
     if (dir == -1) {
       int[] swap = {
         0, 2, 2, 0, 0, 2, 2, 0, 2, 2, 2, 2, 1, 0, 2, 2, 1, 2, 1, 2, 2, 0, 1, 2
       };
       mat = swap;
+      int[] swap2 = {3,8,3,6,3,0,3,2,3,3,3,1,3,5,3,7,5,0,1,8,4,8,0,8,5,3,1,5,4,5,0,5,5,6,1,2,4,2,0,2};
+      mat2 = swap2;
     } 
-    //int[] mat2 = { 0,1,0,3,0,6,0,8,0,1,0,3,0,5,0,7,4,0,2,0,5,0,3,0,
     swapFace(mat);
+    colorSwapper(mat2);
     angle = 0;
     F = '~';
     stable = true;
+    for(int[] i : colors){
+      println(Arrays.toString(i));
+    }
   }
 }
 
@@ -470,16 +400,24 @@ void UTurn(int dir) {
     int[] mat = {
       0, 0, 0, 0, 2, 0, 0, 2, 2, 0, 0, 2, 0, 1, 0, 0, 2, 1, 0, 1, 2, 0, 0, 1
     };
+    int[] mat2 = {0,2,0,0,0,6,0,8,0,7,0,5,0,1,0,3,3,0,5,0,2,0,4,0,3,2,5,2,2,2,4,2,3,1,5,1,2,1,4,1};
     if (dir == -1) {
       int[] swap = { 
         0, 0, 2, 0, 2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 2, 1, 0, 1, 0
       };
       mat = swap;
+      int[] swap2 = {0,8,0,6,0,0,0,2,0,3,0,1,0,5,0,7,4,0,2,0,5,0,3,0,4,2,2,2,5,2,3,2,4,1,2,1,5,1,3,1};
+      mat2 = swap2;
     }
     swapFace(mat);
+    colorSwapper(mat2);
+    
     angle = 0;
     F = '~';
     stable = true;
+    for(int[] i : colors){
+      println(Arrays.toString(i));
+    }
   }
 }
 
@@ -492,17 +430,25 @@ void FTurn(int dir) {
     int[] mat = {
       0, 2, 0, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0, 2, 1, 1, 2, 0, 2, 2, 1, 1, 2, 2
     };
+    int[] mat2 = {4,2,4,0,4,6,4,8,4,7,4,5,4,1,4,3,0,6,2,8,1,2,3,0,2,2,1,0,3,6,0,8,2,5,1,1,3,3,0,7};
     if (dir == -1) {
       int[] swap = { 
         0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 0, 1, 2, 2, 2, 2, 1, 1, 2, 0, 0, 2, 1
       };
       mat = swap;
+      int[] swap2 = {4,8,4,6,4,0,4,2,4,3,4,1,4,5,4,7,3,0,1,2,2,8,0,6,0,8,3,6,1,0,2,2,0,7,3,3,1,1,2,5};
+      mat2 = swap2;
     }
     swapFace(mat);
+    colorSwapper(mat2);
     angle = 0;
     F = '~';
     stable = true;
+    for(int[] i : colors){
+      println(Arrays.toString(i));
+    }
   }
+  
 }
 
 // Left face
@@ -514,16 +460,23 @@ void LTurn(int dir) {
     int[] mat = { 
       2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 1, 2, 0, 2, 1, 0, 1, 0, 0
     };
+    int[] mat2 = {2,8,2,6,2,0,2,2,2,3,2,1,2,5,2,7,0,6,4,6,1,6,5,2,0,0,4,0,1,0,5,8,0,3,4,3,1,3,5,5};
     if (dir == -1) {
       int[] swap = {
         0, 2, 0, 0, 0, 0, 2, 0, 0, 2, 2, 0, 1, 0, 0, 2, 1, 0, 1, 2, 0, 0, 1, 0
       };
       mat = swap;
+      int[] swap2 = {2,2,2,0,2,6,2,8,2,7,2,5,2,1,2,3,5,2,1,6,4,6,0,6,5,8,1,0,4,0,0,0,5,5,1,3,4,3,0,3};
+      mat2 = swap2;
     } 
     swapFace(mat);
+    colorSwapper(mat2);
     angle = 0;
     F = '~';
     stable = true;
+    for(int[] i : colors){
+      println(Arrays.toString(i));
+    }
   }
 }
 
@@ -536,16 +489,23 @@ void DTurn(int dir) {
     int[] mat = {
       2, 0, 0, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 1, 0, 2, 2, 1, 2, 1, 2, 2, 0, 1
     };
+    int[] mat2 = {1,8,1,6,1,0,1,2,1,3,1,1,1,5,1,7,3,7,5,7,2,7,4,7,3,6,5,6,2,6,4,6,3,8,5,8,2,8,4,8};
     if (dir == -1) {
       int[] swap = { 
         2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 0, 0, 2, 0, 1, 2, 1, 2, 2, 2, 1, 2, 1, 0
       };
       mat = swap;
+      int[] swap2 = {1,2,1,0,1,6,1,8,1,7,1,5,1,1,1,3,4,7,2,7,5,7,3,7,4,6,2,6,5,6,3,6,4,8,2,8,5,8,3,8};
+      mat2 = swap2;
     }
     swapFace(mat);
+    colorSwapper(mat2);
     angle = 0;
     F = '~';
     stable = true;
+    for(int[] i : colors){
+      println(Arrays.toString(i));
+    }
   }
 }
 
@@ -558,16 +518,23 @@ void BTurn(int dir) {
     int[] mat = {
       0, 0, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 0, 0, 1, 1, 0, 0, 2, 0, 1, 1, 0, 2
     };
+    int[] mat2 = {5,8,5,6,5,0,5,2,5,3,5,1,5,5,5,7,0,2,2,0,1,6,3,8,3,2,0,0,2,6,1,8,0,1,2,3,1,7,3,5};
     if (dir == -1) {
       int[] swap = { 
         0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0, 0, 1, 0, 2, 2, 0, 1, 1, 0, 0, 0, 0, 1
       };
       mat = swap;
+      int[] swap2 = {5,2,5,0,5,6,5,8,5,7,5,5,5,1,5,3,3,8,1,6,2,0,0,2,1,8,2,6,0,0,3,2,3,5,1,7,2,3,0,1};
+      mat2 = swap2;
     }
     swapFace(mat);
+    colorSwapper(mat2);
     angle = 0;
     F = '~';
     stable = true;
+    for(int[] i : colors){
+      println(Arrays.toString(i));
+    }
   }
 }
 
