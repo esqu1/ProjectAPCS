@@ -64,3 +64,9 @@ Update Log
 - Return to menu button created.
 - The 12 cube turns now change the colors array that will check for a solved position.
 - Function to check for solved state added.
+
+2015-01-18
+- The program can now check if the cube is solved or not based up the moves done.
+
+2015-01-19
+- A congratulations message appears when the cube is solved.

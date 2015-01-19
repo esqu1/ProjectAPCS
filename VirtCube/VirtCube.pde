@@ -113,7 +113,8 @@ void draw() {
     strokeWeight(5);
     rect(10, 290, 200, 100);
     fill(0, 102, 153);
-    text("Return to Menu", 105, 345);
+    textSize(20);
+    text("Return to \nMenu", 105, 330);
     strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
@@ -126,11 +127,13 @@ void draw() {
     }
   } else if(stage == 2) {
     fill(255,255,255);
-    textSize(16);
     strokeWeight(5);
     rect(10, 290, 200, 100);
     fill(0, 102, 153);
-    text("Return to Menu", 105, 345);
+    textSize(20);
+    text("Return to \nMenu", 105, 330);
+    textSize(48);
+    text("You\nsolved\nit!", 675,200);
     strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
@@ -176,7 +179,7 @@ void mouseClicked(){
       checkSolve = true;
     }
   }
-  else if (stage == 1){
+  else if (stage >= 1){
     if (mouseX <= 210 && mouseX >= 10 && mouseY <= 390 && mouseY >= 290){
       stage = 0;
       resetCube();
