@@ -11,6 +11,7 @@ Features:
  - Easy scramble for those just getting started
  - Hard scramble for those with experience
  - Mr. K's scramble for Mr. Konstantinovich himself :)
+- Timer to see how fast your solves are.
 
 
 Update Log
@@ -70,3 +71,4 @@ Update Log
 
 2015-01-19
 - A congratulations message appears when the cube is solved.
+- Stopwatch added for timing solves.

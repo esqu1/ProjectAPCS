@@ -87,6 +87,7 @@ void setup() {
   }
   
   colors = new int[][] {{0,0,0,0,0,0,0,0,0},{1,1,1,1,1,1,1,1,1},{2,2,2,2,2,2,2,2,2},{3,3,3,3,3,3,3,3,3},{4,4,4,4,4,4,4,4,4},{5,5,5,5,5,5,5,5,5}};
+  started = false;
 }
 
 // main draw method
@@ -135,7 +136,7 @@ void draw() {
     textSize(20);
     text("Return to \nMenu", 105, 330);
     textSize(48);
-    text("You\nsolved\nit\n in " + (endTime - startTime) + " \nmilliseconds!", 675,50);
+    text("You\nsolved\nit\n in " + ((float)(endTime - startTime) / 1000) + " \nseconds!", 675,50);
     strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
@@ -382,6 +383,7 @@ void RTurn(int dir) {
     move('k', 2, dir);
     angle++;
     if(!started){
+      started = true;
       startTime = millis();
     }
   } else {
@@ -411,6 +413,7 @@ void UTurn(int dir) {
     move('i', 0, -dir);
     angle++;
     if(!started){
+      started = true;
       startTime = millis();
     }
   } else {
@@ -441,6 +444,7 @@ void FTurn(int dir) {
     move('j', 2, -dir);
     angle++;
     if(!started){
+      started = true;
       startTime = millis();
     }
   } else {
@@ -471,6 +475,7 @@ void LTurn(int dir) {
     move('k', 0, dir);
     angle++;
     if(!started){
+      started = true;
       startTime = millis();
     }
   } else {
@@ -500,6 +505,7 @@ void DTurn(int dir) {
     move('i', 2, -dir);
     angle++;
     if(!started){
+      started = true;
       startTime = millis();
     }
   } else {
@@ -529,6 +535,7 @@ void BTurn(int dir) {
     move('j', 0, -dir);
     angle++;
     if(!started){
+      started = true;
       startTime = millis();
     }
   } else {
