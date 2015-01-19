@@ -9,9 +9,10 @@
 // Used for overall rotation
 import java.util.*;
 int angle = 0, stage = 0;
-boolean stable = true, checkSolve = false, scrambling = false;
+boolean stable = true, checkSolve = false, scrambling = false, started = false;;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
+int startTime, endTime;
 String CONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
 //char[] controlrealman = 
@@ -123,6 +124,7 @@ void draw() {
     turn();
     if(checkSolve && checkSolved()){
       println("You solved it!");
+      endTime = millis();
       stage = 2;
     }
   } else if(stage == 2) {
@@ -133,7 +135,7 @@ void draw() {
     textSize(20);
     text("Return to \nMenu", 105, 330);
     textSize(48);
-    text("You\nsolved\nit!", 675,200);
+    text("You\nsolved\nit\n in " + (endTime - startTime) + " \nmilliseconds!", 675,50);
     strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
@@ -379,6 +381,9 @@ void RTurn(int dir) {
   if (angle < 15 && !stable) {
     move('k', 2, dir);
     angle++;
+    if(!started){
+      startTime = millis();
+    }
   } else {
     int[] mat = { 
       2, 2, 2, 2, 0, 2, 0, 0, 2, 0, 2, 2, 0, 1, 2, 1, 2, 2, 2, 1, 2, 1, 0, 2
@@ -405,6 +410,9 @@ void UTurn(int dir) {
   if (angle < 15 && !stable) {
     move('i', 0, -dir);
     angle++;
+    if(!started){
+      startTime = millis();
+    }
   } else {
     int[] mat = {
       0, 0, 0, 0, 2, 0, 0, 2, 2, 0, 0, 2, 0, 1, 0, 0, 2, 1, 0, 1, 2, 0, 0, 1
@@ -432,6 +440,9 @@ void FTurn(int dir) {
   if (angle < 15 && !stable) {
     move('j', 2, -dir);
     angle++;
+    if(!started){
+      startTime = millis();
+    }
   } else {
     int[] mat = {
       0, 2, 0, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0, 2, 1, 1, 2, 0, 2, 2, 1, 1, 2, 2
@@ -459,6 +470,9 @@ void LTurn(int dir) {
   if (angle < 15 && !stable) {
     move('k', 0, dir);
     angle++;
+    if(!started){
+      startTime = millis();
+    }
   } else {
     int[] mat = { 
       2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 1, 2, 0, 2, 1, 0, 1, 0, 0
@@ -485,6 +499,9 @@ void DTurn(int dir) {
   if (angle < 15 && !stable) {
     move('i', 2, -dir);
     angle++;
+    if(!started){
+      startTime = millis();
+    }
   } else {
     int[] mat = {
       2, 0, 0, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 1, 0, 2, 2, 1, 2, 1, 2, 2, 0, 1
@@ -511,6 +528,9 @@ void BTurn(int dir) {
   if (angle < 15 && !stable) {
     move('j', 0, -dir);
     angle++;
+    if(!started){
+      startTime = millis();
+    }
   } else {
     int[] mat = {
       0, 0, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 0, 0, 1, 1, 0, 0, 2, 0, 1, 1, 0, 2
