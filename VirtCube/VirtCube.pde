@@ -106,8 +106,7 @@ void draw() {
     text("Easy Scramble",200,300);
     text("Hard Scramble",600,150);
     text("Mr. K's Scramble",600,300);
-  }
-  if(stage == 1){
+  }else if(stage == 1){
     fill(255,255,255);
     textSize(16);
     text(CONTROLS,650,100);
@@ -123,8 +122,21 @@ void draw() {
     turn();
     if(checkSolve && checkSolved()){
       println("You solved it!");
+      stage = 2;
     }
-  } // draw the cubes, then check to see if we can continue turning the cubelets
+  } else if(stage == 2) {
+    fill(255,255,255);
+    textSize(16);
+    strokeWeight(5);
+    rect(10, 290, 200, 100);
+    fill(0, 102, 153);
+    text("Return to Menu", 105, 345);
+    strokeWeight(10);
+    translate(width/2, height/2, 100);
+    rotateX(radians(-40));
+    rotateY(radians(-40));
+    drawAllCubes();
+  }
 }
 
 void colorSwapperHelper(int start, int end, int[] m){
@@ -382,9 +394,6 @@ void RTurn(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -412,9 +421,6 @@ void UTurn(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -441,9 +447,6 @@ void FTurn(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
   
 }
@@ -471,9 +474,6 @@ void LTurn(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -500,9 +500,6 @@ void DTurn(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -529,9 +526,6 @@ void BTurn(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -567,9 +561,6 @@ void XRot(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -605,9 +596,6 @@ void YRot(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
@@ -643,9 +631,6 @@ void ZRot(int dir) {
     angle = 0;
     F = '~';
     stable = true;
-    for(int[] i : colors){
-      println(Arrays.toString(i));
-    }
   }
 }
 
