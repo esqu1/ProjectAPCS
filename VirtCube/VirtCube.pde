@@ -16,11 +16,12 @@ int startTime, endTime;
 String REALCONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
 String NUBCONTROLS = "Controls:\n1/! Top face\n2/@ Bottom face\n3/# Right face\n4/$ Left face\n5/% Front face\n6/^ Back face\n7/& Cube Rotation (a-axis)\n8/* Cube Rotation (y-axis)\n9/( Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
+char[] controlrealman = {'j','f','s','l','d','e','i','k','h','g','w','o','y','b',';','a','p','q'};
+char[] controls = controlrealman;
 boolean nubControls = false;
 PImage img;
 boolean MrKScramble, displayFace;
 int startFaceTime;
-//char[] controlrealman = 
 
 // Array for all cubes
 Cube[][][] cubes = new Cube[3][3][3];
@@ -228,9 +229,11 @@ void mouseClicked(){
     }
     else if (mouseX <= 110 && mouseX >= 10 && mouseY <= 60 && mouseY >= 10){
       nubControls = true;
+      controls = controlnub;
     }
     else if (mouseX <= 110 && mouseX >= 10 && mouseY <= 130 && mouseY >= 80){
       nubControls = false;
+      controls = controlrealman;
     }
   }  
 }
@@ -307,140 +310,70 @@ void turn() {
 
 // translates key pressed into face turn
 void keyPressed() {
-  if (stable && stage == 1 && !nubControls) {
-    if (key == 'i') {
-      stable = false;
-      F = 'r';
-    } else if (key == 'j') {
+  if (stable && stage == 1) {
+    if (key == controls[0]) {
       stable = false;
       F = 'u';
-    } else if (key == 'k') {
-      stable = false;
-      F = 'R';
-    } else if (key == 'f') {
+    } else if (key == controls[1]) {
       stable = false;
       F = 'U';
-    } else if (key == 'h') {
+    } else if (key == controls[2]) {
+      stable = false;
+      F = 'd';
+    } else if (key == controls[3]) {
+      stable = false;
+      F = 'D';
+    } else if (key == controls[4]) {
+      stable = false;
+      F = 'l';
+    } else if (key == controls[5]) {
+      stable = false;
+      F = 'L';
+    } else if (key == controls[6]) {
+      stable = false;
+      F = 'r';
+    } else if (key == controls[7]) {
+      stable = false;
+      F = 'R';
+    } else if (key == controls[8]) {
       stable = false;
       F = 'f';
-    } else if (key == 'g') {
+    } else if (key == controls[9]) {
       stable = false; 
       F = 'F';
-    } else if (key == 'd') {
-      stable = false;
-      F = 'l';
-    } else if (key == 'e') {
-      stable = false;
-      F = 'L';
-    } else if (key == 's') {
-      stable = false;
-      F = 'd';
-    } else if (key == 'l') {
-      stable = false;
-      F = 'D';
-    } else if (key == 'w') {
+    } else if (key == controls[10]) {
       stable = false;
       F = 'b';
-    } else if (key == 'o') {
+    } else if (key == controls[11]) {
       stable = false;
       F = 'B';
-    } else if (key == 'y' || key == 't') {
+    } else if (key == controls[12]) {
       stable = false;
       F = 'x';
-    } else if (key == 'b' || key == 'n') {
+    } else if (key == controls[13]) {
       stable = false;
       F = 'X';
-    } else if (key == ';') {
+    } else if (key == controls[14]) {
       stable = false;
       F = 'y';
-    } else if (key == 'a') {
+    } else if (key == controls[15]) {
       stable = false;
       F = 'Y';
-    } else if (key == 'p') {
+    } else if (key == controls[16]) {
       stable = false;
       F = 'z';
-    } else if (key == 'q') {
+    } else if (key == controls[17]) {
       stable = false;
       F = 'Z';
-    } else if (key == ' ') {
-      stable = false;
-      F = '$';
-    }
-  }
-  else if (stable && stage == 1 && nubControls){
-    if (key == '1'){
-      stable = false;
-      F = 'u';
-    }
-    else if (key == '!'){
-      stable = false;
-      F = 'U';
-    }
-    else if (key == '2'){
-      stable = false;
-      F = 'd';
-    }
-    else if (key == '@'){
-      stable = false;
-      F = 'D';
-    }
-    else if (key == '3'){
-      stable = false;
-      F = 'r';
-    }
-    else if (key == '#'){
-      stable = false;
-      F = 'R';
-    }
-    else if (key == '4'){
-      stable = false;
-      F = 'l';
-    }
-    else if (key == '$'){
-      stable = false;
-      F = 'L';
-    }
-    else if (key == '5'){
-      stable = false;
-      F = 'f';
-    }
-    else if (key == '%'){
-      stable = false;
-      F = 'F';
-    }
-    else if (key == '6'){
-      stable = false;
-      F = 'b';
-    }
-    else if (key == '^'){
-      stable = false;
-      F = 'B';
-    }
-    else if (key == '7'){
+    } else if (key == 't' && !nubControls){
       stable = false;
       F = 'x';
-    }
-    else if (key == '&'){
+    } else if (key == 'n' && !nubControls){
       stable = false;
       F = 'X';
     }
-    else if (key == '8'){
-      stable = false;
-      F = 'y';
-    }
-    else if (key == '*'){
-      stable = false;
-      F = 'Y';
-    }
-    else if (key == '9'){
-      stable = false;
-      F = 'z';
-    }
-    else if (key == '('){
-      stable = false;
-      F = 'Z';
-    }
   }
+  
 }
 
 // swaps the cubelets in "cubes" to be rotated

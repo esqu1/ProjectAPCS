@@ -12,7 +12,9 @@ Features:
  - Hard scramble for those with experience
  - Mr. K's scramble for Mr. Konstantinovich himself :)
 - Timer to see how fast your solves are.
-
+- Two different control styles:
+ - Nub control style for beginners
+ - Real Man's control style for those experienced with virtual cubes
 
 Update Log
 
@@ -72,3 +74,6 @@ Update Log
 2015-01-19
 - A congratulations message appears when the cube is solved.
 - Stopwatch added for timing solves.
+
+2015-01-20
+- Added nub controls and Real Man's Controls
