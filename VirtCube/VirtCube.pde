@@ -14,7 +14,7 @@ ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
 int startTime, endTime;
 String REALCONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
-String NUBCONTROLS = "Controls:\n1/! Top face\n2/@ Bottom face\n3/# Right face\n4/$ Left face\n5/% Front face\n6/^ Back face\n7/& Cube Rotation (a-axis)\n8/* Cube Rotation (y-axis)\n9/( Cube Rotation (z-axis)";
+String NUBCONTROLS = "Controls:\n1/! Top face\n2/@ Bottom face\n3/# Left face\n4/$ Right face\n5/% Front face\n6/^ Back face\n7/& Cube Rotation (a-axis)\n8/* Cube Rotation (y-axis)\n9/( Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
 char[] controlrealman = {'j','f','s','l','d','e','i','k','h','g','w','o','y','b',';','a','p','q'};
 char[] controls = controlrealman;
@@ -180,6 +180,9 @@ void draw() {
   } else if(stage == 2) {
       fill(255,255,255);
       strokeWeight(5);
+      if (mouseX <= 210 && mouseX >= 10 && mouseY <= 390 && mouseY >= 290){
+        fill(245,250,18);
+      }
       rect(10, 290, 200, 100);
       fill(0, 102, 153);
       textSize(20);
