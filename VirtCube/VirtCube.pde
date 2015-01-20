@@ -141,8 +141,19 @@ void draw() {
       text(REALCONTROLS,650,100);
     }
     strokeWeight(5);
+    if (mouseX <= 210 && mouseX >= 10 && mouseY <= 390 && mouseY >= 290){
+      fill(245,250,18);
+    }
     rect(10, 290, 200, 100);
+    fill(255,255,255);
+    if (mouseX <= 110 && mouseX >= 10 && mouseY <= 60 && mouseY >= 10){
+      fill(245,250,18);
+    }
     rect(10, 10, 100, 50); //Nub Controls
+    fill(255,255,255);
+    if (mouseX <= 110 && mouseX >= 10 && mouseY <= 130 && mouseY >= 80){
+      fill(245,250,18);
+    }
     rect(10, 80, 100, 50); //Real-Man Controls
     fill(0, 102, 153);
     textSize(20);
