@@ -76,4 +76,5 @@ Update Log
 - Stopwatch added for timing solves.
 
 2015-01-20
-- Added nub controls and Real Man's Controls
+- Added nub controls and Real Man's Controls.
+- Added button highlighting when the cursor is over it.

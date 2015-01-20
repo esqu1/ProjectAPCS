@@ -107,9 +107,24 @@ void draw() {
     textSize(32);
     text("Choose your mode", 400,50);
     strokeWeight(5);
+    if(mouseX <= 390 && mouseX >= 10 && mouseY <= 240 && mouseY >= 100){
+      fill(245,250,18);
+    }
     rect(10,100,380,120); //Solved
+    fill(200);
+    if (mouseX <= 390 && mouseX >= 10 && mouseY <= 370 && mouseY >= 250){
+      fill(245,250,18);
+    }
     rect(10,250,380,120); //Easy
+    fill(200);
+    if (mouseX <= 780 && mouseX >= 400 && mouseY <= 240 && mouseY >= 100){
+      fill(245,250,18);
+    }
     rect(400,100,380,120); //Hard
+    fill(200);
+    if (mouseX <= 780 && mouseX >= 400 && mouseY <= 370 && mouseY >= 250){
+      fill(245,250,18);
+    }
     rect(400,250,380,120); //Mr.K
     fill(0,102,153);
     text("Solved Cube", 200,150);
