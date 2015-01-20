@@ -13,8 +13,10 @@ boolean stable = true, checkSolve = false, scrambling = false, started = false;;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
 int startTime, endTime;
-String CONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
+String REALCONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
+String NUBCONTROLS = "Controls:\n1/! Top face\n2/@ Bottom face\n3/# Right face\n4/$ Left face\n5/% Front face\n6/^ Back face\n7/& Cube Rotation (a-axis)\n8/* Cube Rotation (y-axis)\n9/( Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
+boolean nubControls = false;
 //char[] controlrealman = 
 
 // Array for all cubes
@@ -111,12 +113,22 @@ void draw() {
   }else if(stage == 1){
     fill(255,255,255);
     textSize(16);
-    text(CONTROLS,650,100);
+    if (nubControls){
+      text(NUBCONTROLS,650,100);
+    }
+    else{
+      text(REALCONTROLS,650,100);
+    }
     strokeWeight(5);
     rect(10, 290, 200, 100);
+    rect(10, 10, 100, 50); //Nub Controls
+    rect(10, 80, 100, 50); //Real-Man Controls
     fill(0, 102, 153);
     textSize(20);
     text("Return to \nMenu", 105, 330);
+    textSize(14);
+    text("Nub Controls", 60, 40);
+    text("Real-Man \nControls", 60, 100);
     strokeWeight(10);
     translate(width/2, height/2, 100);
     rotateX(radians(-40));
@@ -187,6 +199,12 @@ void mouseClicked(){
       stage = 0;
       resetCube();
       checkSolve = false;
+    }
+    else if (mouseX <= 110 && mouseX >= 10 && mouseY <= 60 && mouseY >= 10){
+      nubControls = true;
+    }
+    else if (mouseX <= 110 && mouseX >= 10 && mouseY <= 130 && mouseY >= 80){
+      nubControls = false;
     }
   }  
 }
@@ -263,7 +281,7 @@ void turn() {
 
 // translates key pressed into face turn
 void keyPressed() {
-  if (stable && stage == 1) {
+  if (stable && stage == 1 && !nubControls) {
     if (key == 'i') {
       stable = false;
       F = 'r';
@@ -321,6 +339,80 @@ void keyPressed() {
     } else if (key == ' ') {
       stable = false;
       F = '$';
+    }
+  }
+  else if (stable && stage == 1 && nubControls){
+    if (key == '1'){
+      stable = false;
+      F = 'u';
+    }
+    else if (key == '!'){
+      stable = false;
+      F = 'U';
+    }
+    else if (key == '2'){
+      stable = false;
+      F = 'd';
+    }
+    else if (key == '@'){
+      stable = false;
+      F = 'D';
+    }
+    else if (key == '3'){
+      stable = false;
+      F = 'r';
+    }
+    else if (key == '#'){
+      stable = false;
+      F = 'R';
+    }
+    else if (key == '4'){
+      stable = false;
+      F = 'l';
+    }
+    else if (key == '$'){
+      stable = false;
+      F = 'L';
+    }
+    else if (key == '5'){
+      stable = false;
+      F = 'f';
+    }
+    else if (key == '%'){
+      stable = false;
+      F = 'F';
+    }
+    else if (key == '6'){
+      stable = false;
+      F = 'b';
+    }
+    else if (key == '^'){
+      stable = false;
+      F = 'B';
+    }
+    else if (key == '7'){
+      stable = false;
+      F = 'x';
+    }
+    else if (key == '&'){
+      stable = false;
+      F = 'X';
+    }
+    else if (key == '8'){
+      stable = false;
+      F = 'y';
+    }
+    else if (key == '*'){
+      stable = false;
+      F = 'Y';
+    }
+    else if (key == '9'){
+      stable = false;
+      F = 'z';
+    }
+    else if (key == '('){
+      stable = false;
+      F = 'Z';
     }
   }
 }
