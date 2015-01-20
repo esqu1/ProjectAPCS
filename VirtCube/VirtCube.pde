@@ -17,6 +17,9 @@ String REALCONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\
 String NUBCONTROLS = "Controls:\n1/! Top face\n2/@ Bottom face\n3/# Right face\n4/$ Left face\n5/% Front face\n6/^ Back face\n7/& Cube Rotation (a-axis)\n8/* Cube Rotation (y-axis)\n9/( Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
 boolean nubControls = false;
+PImage img;
+boolean MrKScramble, displayFace;
+int startFaceTime;
 //char[] controlrealman = 
 
 // Array for all cubes
@@ -44,8 +47,9 @@ void setup() {
   translate(width/2, height/2, 100);
   rotateX(radians(-40));
   rotateY(radians(-40));
-
-
+  MrKScramble = false;
+  displayFace = false;
+  
   // boolean arrays to choose to color the face of a cubelet or not
   boolean[] WBO = {true, false, true, false, true, false};
   boolean[] WB = {true, false, false, false, true, false};
@@ -78,6 +82,7 @@ void setup() {
     WBO, WB, WBR, WO, WC, WR, WGO, WG, WGR, BO, BC, BR, OC, CORE, RC, GO, GC, GR, YBO, YB, YBR, YO, YC, YR, YGO, YG, YGR
   };
   int m = 0;
+  img = loadImage("unnamed.png");
 
   for (int j = -1; j < 2; j++) {
     for (int k = -1; k < 2; k++) {
@@ -135,27 +140,47 @@ void draw() {
     rotateY(radians(-40));
     drawAllCubes();
     turn();
-    if(checkSolve && checkSolved()){
+    if(checkSolve && checkSolved() && MrKScramble){
+      println("You solved it!");
+      endTime = millis();
+      stage = 3;
+    }
+    else if (checkSolve && checkSolved()){
       println("You solved it!");
       endTime = millis();
       stage = 2;
     }
   } else if(stage == 2) {
-    fill(255,255,255);
-    strokeWeight(5);
-    rect(10, 290, 200, 100);
-    fill(0, 102, 153);
-    textSize(20);
-    text("Return to \nMenu", 105, 330);
-    textSize(48);
-    text("You\nsolved\nit\n in " + ((float)(endTime - startTime) / 1000) + " \nseconds!", 675,50);
-    strokeWeight(10);
-    translate(width/2, height/2, 100);
-    rotateX(radians(-40));
-    rotateY(radians(-40));
-    drawAllCubes();
+      fill(255,255,255);
+      strokeWeight(5);
+      rect(10, 290, 200, 100);
+      fill(0, 102, 153);
+      textSize(20);
+      text("Return to \nMenu", 105, 330);
+      textSize(48);
+      text("You\nsolved\nit\n in " + ((float)(endTime - startTime) / 1000) + " \nseconds!", 675,50);
+      strokeWeight(10);
+      translate(width/2, height/2, 100);
+      rotateX(radians(-40));
+      rotateY(radians(-40));
+      drawAllCubes();
+    
+    }
+    else if (stage == 3){
+      if (!displayFace){
+        startFaceTime = millis();
+        displayFace = true;
+      }
+      image(img, 0, 0, width, height);
+      if (millis() - startFaceTime > 2000){
+        stage = 2;
+      }
+    }
+      
   }
-}
+
+
+
 
 void colorSwapperHelper(int start, int end, int[] m){
   int temp = colors[m[start]][m[start+1]];
@@ -192,6 +217,7 @@ void mouseClicked(){
       scrambleMrK();
       stage = 1;
       checkSolve = true;
+      MrKScramble = true;
     }
   }
   else if (stage >= 1){
