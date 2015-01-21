@@ -8,37 +8,22 @@
 
 // Used for overall rotation
 import java.util.*;
-int angle = 0, stage = 0;
-boolean stable = true, checkSolve = false, scrambling = false, started = false;;
+int angle = 0, stage = 0, startTime, endTime, startFaceTime;
+boolean stable = true, checkSolve = false, scrambling = false, started = false, nubControls = false, MrKScramble, displayFace;
 ArrayList<Character> scramble = new ArrayList<Character>();
 char F;
-int startTime, endTime;
 String REALCONTROLS = "Controls:\nj/f Top face\ns/l Bottom face\ni/k Right face\nd/e Left face\nh/g Front face\nw/o Back face\nt,y/b,n Cube Rotation (x-axis)\na/; Cube Rotation (y-axis)\np/q Cube Rotation (z-axis)";
 String NUBCONTROLS = "Controls:\n1/! Top face\n2/@ Bottom face\n3/# Left face\n4/$ Right face\n5/% Front face\n6/^ Back face\n7/& Cube Rotation (a-axis)\n8/* Cube Rotation (y-axis)\n9/( Cube Rotation (z-axis)";
 char[] controlnub = {'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','('};
 char[] controlrealman = {'j','f','s','l','d','e','i','k','h','g','w','o','y','b',';','a','p','q'};
 char[] controls = controlrealman;
-boolean nubControls = false;
 PImage img;
-boolean MrKScramble, displayFace;
-int startFaceTime;
 
 // Array for all cubes
 Cube[][][] cubes = new Cube[3][3][3];
 
 // Array for colors
 int[][] colors;
-
-
-// Pauses the animation
-static void pause(int n) {
-  try {
-    Thread.sleep(1000 * n);
-  }
-  catch(InterruptedException e) {
-    Thread.currentThread().interrupt();
-  }
-}
 
 // Sets up the cube 
 void setup() {
