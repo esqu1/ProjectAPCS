@@ -74,6 +74,7 @@ Update Log
 2015-01-19
 - A congratulations message appears when the cube is solved.
 - Stopwatch added for timing solves.
+- Easter egg added.
 
 2015-01-20
 - Added nub controls and Real Man's Controls.
