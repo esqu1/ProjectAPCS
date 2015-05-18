@@ -107,7 +107,7 @@ void setup() {
    cubes[24] = new Cube(30, -52.5, 37.5, 37.5);
    cubes[25] = new Cube(30, -7.5, 37.5, 37.5);
    cubes[26] = new Cube(30, 37.5, 37.5, 37.5); */
-   for(
+   
   cubes[0] = new Cube(30, 0, 0, 0);
   cubes[1] = new Cube(30, -45, -45, -45);
   cubes[2] = new Cube(30, 0, -45, -45);
