@@ -1,4 +1,4 @@
-FINAL PROJECT FOR APCS
+VirtCube
 ====
 By Peter Strbik and Brandon Lin
 
